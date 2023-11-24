@@ -19,6 +19,11 @@ config/icon="res://icon.svg"
 
 Genisys="*res://src/genisys/genisys_controller.gd"
 
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=2160
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

@@ -231,6 +231,11 @@ cull_mask = 1047551
 current = true
 far = 50.0
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Cameras/SubViewport/CameraP1"]
+material_override = ExtResource("5_bsvwi")
+extra_cull_margin = 16384.0
+mesh = SubResource("QuadMesh_4m15c")
+
 [node name="SubViewport2" type="SubViewport" parent="Cameras"]
 handle_input_locally = false
 size = Vector2i(1920, 1080)
@@ -241,6 +246,11 @@ transform = Transform3D(0.0548805, 1.21859e-17, 0.998493, -2.22045e-16, 1, 9.860
 cull_mask = 1046527
 current = true
 far = 50.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Cameras/SubViewport2/CameraP2"]
+material_override = ExtResource("5_bsvwi")
+extra_cull_margin = 16384.0
+mesh = SubResource("QuadMesh_4m15c")
 
 [node name="FPSCounter" type="Label" parent="."]
 offset_right = 119.0

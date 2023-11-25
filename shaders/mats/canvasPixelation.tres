@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://pnix2sbjxvlh"]
+
+[ext_resource type="Shader" path="res://shaders/3Dpixelation.gdshader" id="1_m6ano"]
+
+[resource]
+shader = ExtResource("1_m6ano")
+shader_parameter/color_multi = 1.0
+shader_parameter/pixelSize = 20

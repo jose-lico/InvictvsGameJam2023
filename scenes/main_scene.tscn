@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://mb7ktx0ginrt" path="res://assets/20230920155417_GAME_JAM_-_NEWS.png" id="3_k074u"]
 
 [sub_resource type="SystemFont" id="SystemFont_qrm3g"]
+subpixel_positioning = 0
 
 [sub_resource type="LabelSettings" id="LabelSettings_gwqfi"]
 font = SubResource("SystemFont_qrm3g")

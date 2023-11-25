@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://cnd8csali34k0"]
+
+[ext_resource type="Texture2D" uid="uid://djn2qrbxaiuun" path="res://assets/western_stuff/Preview_WesternTrimV2_Albedo.png" id="1_krlrb"]
+[ext_resource type="Texture2D" uid="uid://ccom3ubi827i6" path="res://assets/western_stuff/Preview_WesternTrimV2_Metalness-WesternTrimV2_Roughness.png" id="2_xdw3d"]
+[ext_resource type="Texture2D" uid="uid://dvdio8ihepe7i" path="res://assets/western_stuff/Preview_WesternTrimV2_Normal.png" id="3_5rlfh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_me08p"]
+resource_name = "Walls"
+cull_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_krlrb")
+metallic = 1.0
+metallic_texture = ExtResource("2_xdw3d")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_xdw3d")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_5rlfh")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_60kt4"]
+_surfaces = [{
+"aabb": AABB(0, 0, 0, 2, 3, 1e-05),
+"format": 4097,
+"index_count": 6,
+"index_data": PackedByteArray(2, 0, 1, 0, 3, 0, 2, 0, 0, 0, 1, 0),
+"name": "Walls",
+"primitive": 3,
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 0, 0, 0, 0, 0, 0, 64, 64, 0, 0, 0, 128, 0, 0, 0, 64, 0, 0, 0, 0, 0, 0, 0, 128, 0, 0, 0, 64, 0, 0, 64, 64, 0, 0, 0, 128)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_sy8dj"]
+resource_name = "Preview_Cube_316"
+_surfaces = [{
+"aabb": AABB(0, 0, 0, 2, 3, 1e-05),
+"attribute_data": PackedByteArray(15, 0, 128, 63, 226, 255, 127, 63, 226, 255, 127, 63, 196, 255, 255, 62, 30, 0, 0, 63, 0, 0, 128, 63, 196, 255, 255, 62, 0, 0, 0, 63),
+"format": 4119,
+"index_count": 6,
+"index_data": PackedByteArray(2, 0, 1, 0, 3, 0, 2, 0, 0, 0, 1, 0),
+"material": SubResource("StandardMaterial3D_me08p"),
+"name": "Walls",
+"primitive": 3,
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 128, 255, 127, 255, 127, 0, 0, 255, 63, 0, 0, 0, 0, 0, 0, 64, 64, 0, 0, 0, 128, 255, 127, 255, 127, 0, 0, 255, 63, 0, 0, 0, 64, 0, 0, 0, 0, 0, 0, 0, 128, 255, 127, 255, 127, 0, 0, 255, 63, 0, 0, 0, 64, 0, 0, 64, 64, 0, 0, 0, 128, 255, 127, 255, 127, 0, 0, 255, 63)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_60kt4")
+
+[node name="Wall" type="MeshInstance3D"]
+mesh = SubResource("ArrayMesh_sy8dj")
+skeleton = NodePath("")

@@ -6,7 +6,6 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dpqlq"]
 resource_name = "Wood_Painted_White"
-cull_mode = 2
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("1_k50x2")
 metallic_texture = ExtResource("2_fv1rs")

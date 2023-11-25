@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://cantllydggfmu"]
 
-[ext_resource type="Texture2D" uid="uid://bn6q8wb4b1ro3" path="res://assets/western_stuff/Preview_WesternTrimV2_Albedo.png" id="1_n6yhj"]
+[ext_resource type="Texture2D" uid="uid://djn2qrbxaiuun" path="res://assets/western_stuff/Preview_WesternTrimV2_Albedo.png" id="1_n6yhj"]
 [ext_resource type="Texture2D" uid="uid://ccom3ubi827i6" path="res://assets/western_stuff/Preview_WesternTrimV2_Metalness-WesternTrimV2_Roughness.png" id="2_mecur"]
 [ext_resource type="Texture2D" uid="uid://dvdio8ihepe7i" path="res://assets/western_stuff/Preview_WesternTrimV2_Normal.png" id="3_35j8b"]
 [ext_resource type="Texture2D" uid="uid://cntr2dlvxc2lu" path="res://assets/western_stuff/Preview_Windoorv4_2_Albedo.png" id="4_202no"]
@@ -9,7 +9,6 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_me08p"]
 resource_name = "Walls"
-cull_mode = 2
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("1_n6yhj")
 metallic = 1.0
@@ -22,7 +21,6 @@ normal_texture = ExtResource("3_35j8b")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q13kd"]
 resource_name = "Windoorv4"
-cull_mode = 2
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("4_202no")
 metallic = 1.0

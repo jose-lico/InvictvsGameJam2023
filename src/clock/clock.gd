@@ -6,6 +6,7 @@ signal sig_clock_tick(tick: int)
 signal sig_light();
 signal sig_blackout();
 signal sig_flash();
+signal sig_stopmoving();
 
 # - - - - - - - - - - - - - - - - - - - - -
 # Values
@@ -88,6 +89,7 @@ func __on_timer_timeout__():
 	match current_tick_count:
 		2: sig_light.emit();
 		8: sig_blackout.emit();
+		12: sig_stopmoving.emit();
 		13: sig_flash.emit();
 
 	if(current_tick_count < total_ticks):

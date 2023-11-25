@@ -105,16 +105,39 @@ func shoot():
 		#time for the pointers :) 
 		
 		var one_bound = 0
-		var his_kids = enemyChar.get_children()
+		var getenemybody = enemyChar.get_child(0)
+		var his_kids = getenemybody.get_children()
+
 		
-		for kid in his_kids: 
+		
+		
+		for kid in his_kids:
+		
 			if (kid.is_in_group('bounds')):
+			
 				var query = PhysicsRayQueryParameters3D.create(playerCam.global_position,
 				kid.global_position)
 				var collision = space.intersect_ray(query)
+				print(collision)
 				
-				if collision:
-					one_bound += 1
+				
+				if collision.collider.is_in_group('Player'):
+				
+					
+					var angulodogajo = self.transform.basis.z * -1
+					angulodogajo.y = 0
+					
+					var vectorinimigo = (kid.global_transform.origin - playerCam.global_transform.origin)
+					vectorinimigo.y = 0
+					vectorinimigo = vectorinimigo.normalized()
+					
+					
+					
+					var angulomerdoso = angulodogajo.angle_to(vectorinimigo)
+				
+					
+					if (rad_to_deg(angulomerdoso)  < 30):
+						one_bound += 1
 				
 		if (one_bound > 0):
 			one_bound = 0
@@ -122,6 +145,10 @@ func shoot():
 		else:
 			print("nadinha")
 
+func _on_game_sig_stopmoving():
+	canPlay = 0
+	
 
 
-
+func _on_game_sig_light():
+	canPlay = 1

@@ -1,13 +1,14 @@
-[gd_scene load_steps=16 format=3 uid="uid://c1n4kpxdgl0l2"]
+[gd_scene load_steps=17 format=3 uid="uid://bh7rox2t2dku0"]
 
 [ext_resource type="Script" path="res://src/clock/clock.gd" id="1_1rb5a"]
 [ext_resource type="Texture2D" uid="uid://bigmlu3kud431" path="res://assets/fps.png" id="1_5d5k7"]
 [ext_resource type="AudioStream" uid="uid://r8a3hnbluvtf" path="res://audio/Audio_AWP.wav" id="3_72jv1"]
 [ext_resource type="Script" path="res://src/fps_counter.gd" id="3_kdw8v"]
 [ext_resource type="AudioStream" uid="uid://b7c5mtggq1yf3" path="res://audio/tick.wav" id="3_kgfql"]
+[ext_resource type="Material" uid="uid://pnix2sbjxvlh" path="res://shaders/mats/canvasPixelation.tres" id="4_6df06"]
 [ext_resource type="Script" path="res://src/debug_screen.gd" id="4_c2jey"]
-[ext_resource type="PackedScene" uid="uid://cs14j0uxsij30" path="res://prefab player.tscn" id="6_csodm"]
-[ext_resource type="PackedScene" uid="uid://bvlq7iejuw17a" path="res://scenes/saloon.tscn" id="8_cogct"]
+[ext_resource type="PackedScene" path="res://prefab player.tscn" id="6_csodm"]
+[ext_resource type="PackedScene" uid="uid://cfblonq8svpc7" path="res://scenes/saloon.tscn" id="8_cogct"]
 
 [sub_resource type="Animation" id="Animation_dvox1"]
 resource_name = "Animation_Blackout"
@@ -210,11 +211,13 @@ autoplay = true
 [node name="Cameras" type="Node" parent="."]
 
 [node name="ViewP1" type="TextureRect" parent="Cameras"]
+material = ExtResource("4_6df06")
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = SubResource("ViewportTexture_tljrq")
 
 [node name="ViewP2" type="TextureRect" parent="Cameras"]
+material = ExtResource("4_6df06")
 offset_top = 1080.0
 offset_right = 1920.0
 offset_bottom = 2160.0
@@ -231,26 +234,16 @@ cull_mask = 1047551
 current = true
 far = 50.0
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Cameras/SubViewport/CameraP1"]
-material_override = ExtResource("5_bsvwi")
-extra_cull_margin = 16384.0
-mesh = SubResource("QuadMesh_4m15c")
-
 [node name="SubViewport2" type="SubViewport" parent="Cameras"]
 handle_input_locally = false
 size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
 [node name="CameraP2" type="Camera3D" parent="Cameras/SubViewport2"]
-transform = Transform3D(0.0548805, 1.21859e-17, 0.998493, -2.22045e-16, 1, 9.86076e-32, -0.998493, -2.2171e-16, 0.0548805, 20.329, 1.77356, 0.0747499)
+transform = Transform3D(0.0548804, 1.21859e-17, 0.998493, -2.22045e-16, 1, 1.65436e-24, -0.998493, -2.2171e-16, 0.0548804, 20.329, 1.77356, 0.0747499)
 cull_mask = 1046527
 current = true
 far = 50.0
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Cameras/SubViewport2/CameraP2"]
-material_override = ExtResource("5_bsvwi")
-extra_cull_margin = 16384.0
-mesh = SubResource("QuadMesh_4m15c")
 
 [node name="FPSCounter" type="Label" parent="."]
 offset_right = 119.0

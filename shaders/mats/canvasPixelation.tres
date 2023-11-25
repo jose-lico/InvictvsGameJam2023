@@ -5,4 +5,4 @@
 [resource]
 shader = ExtResource("1_m6ano")
 shader_parameter/color_multi = 1.0
-shader_parameter/pixelSize = 20
+shader_parameter/pixelSize = 8

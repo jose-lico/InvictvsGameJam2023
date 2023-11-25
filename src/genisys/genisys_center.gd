@@ -111,8 +111,7 @@ func send_data(id: String, payload: Dictionary = {}):
 		packed.merge(payload, true);
 		
 		print("Sending data id: [%s]" % id);
-
-		var error = client_websocket.send(JSON.stringify(packed).to_utf8_buffer());
+		var error = client_websocket.send_text(JSON.stringify(packed));
 		if(error != OK):
 			print_debug("Failed to send package. Code [%s]" % error);
 
@@ -177,23 +176,6 @@ func load_json_data(path)-> Dictionary:
 # - - - - - - - - - - - - - - - - - - - - -
 # Creates the websocket signal connections and process the connect to url 
 func _connect_socket():
-	#warning-ignore-all:return_value_discarded
-	
-	# if(!client_websocket.is_connected("connection_closed", Callable(self, "_on_closed"))):
-	# 	client_websocket.connect("connection_closed", Callable(self, "_on_closed"));
-
-	# if(!client_websocket.is_connected("server_close_request", Callable(self, "_on_server_close_request"))):
-	# 	client_websocket.connect("server_close_request", Callable(self, "_on_server_close_request"));
-
-	# if(!client_websocket.is_connected("connection_error", Callable(self, "_on_connection_error"))):
-	# 	client_websocket.connect("connection_error", Callable(self, "_on_connection_error"));
-
-	# if(!client_websocket.is_connected("connection_established", Callable(self, "_on_connection_established"))):
-	# 	client_websocket.connect("connection_established", Callable(self, "_on_connection_established"));
-
-	# if(!client_websocket.is_connected("data_received", Callable(self, "_on_data_received"))):
-	# 	client_websocket.connect("data_received", Callable(self, "_on_data_received"));
-
 	var error = client_websocket.connect_to_url(server_url);
 	if(error != OK):
 		print_debug("Failed to connect with error %s" % error);
@@ -207,7 +189,7 @@ func _connect_socket():
 # Disconnect the connected socket
 func _disconnect_socket():
 	if(skt_is_connected):
-		client_websocket.disconnect_from_host(1002, "closing game");
+		client_websocket.close(1002, "closing game");
 
 
 # - - - - - - - - - - - - - - - - - - - - -

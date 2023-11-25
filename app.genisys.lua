@@ -3,6 +3,7 @@ local genisys = require("genisys")
 local game = genisys.create_application("game")
 
 game.name = "Invictvs Game Jam 2023"
+game.fullscreen = true
 game.version = "0.0.69"
 game.description = [[Our awesome game.]]
 

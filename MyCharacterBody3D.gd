@@ -22,6 +22,11 @@ var moveInput = 0
 const RAY_LENGTH = 9999
 var shootInput = 0
 
+func _ready():
+	Genisys.bind_input_to_callback(Foward, Callable(self, "_on_genisys_input"));
+	Genisys.bind_input_to_callback(Left, Callable(self, "_on_genisys_input"));
+	Genisys.bind_input_to_callback(Right, Callable(self, "_on_genisys_input"));
+
 func _physics_process(delta):
 	#check shoot
 	if (shootInput == 1):
@@ -47,38 +52,41 @@ func _physics_process(delta):
 	move_and_slide()
 
 
-
+func _on_genisys_input(payload):
+	_my_input(payload.data.name, true if payload.data.input_state == "active" else false);
 
 func _input(event):
+	if( event is InputEventKey):
+		_my_input(event.as_text(), event.pressed);
+
+func _my_input(name, pressed : bool):
 	
-	if event is InputEventKey:
-		print(event.as_text())
-		if event.as_text()  == DISPARAR :
-			if (event.pressed):
-				shootInput = 1
-			else:
-				shootInput = 0
+	if name == DISPARAR :
+		if (pressed):
+			shootInput = 1
+		else:
+			shootInput = 0
 		
 	
-		if event.as_text() == Foward:
-			if event.pressed:
-				moveInput = 1
-			else: 
-				moveInput = 0
+	if name == Foward:
+		if pressed:
+			moveInput = 1
+		else: 
+			moveInput = 0
 
-		if event.as_text() == Left:
-			if event.pressed:
-				camdirection.x = 1
-			elif !event.pressed:
-				camdirection.x = 0 
+	if name == Left:
+		if pressed:
+			camdirection.x = 1
+		else:
+			camdirection.x = 0 
 				
-		if event.as_text()  == Right:
-			if event.pressed:
-				camdirection.y = -1
-			elif !event.pressed:
-				camdirection.y = 0
+	if name  == Right:
+		if pressed:
+			camdirection.y = -1
+		else:
+			camdirection.y = 0
 					
-		cameraInput = camdirection.x + camdirection.y
+	cameraInput = camdirection.x + camdirection.y
 
 func rotateCamera():
 	self.rotate_y(deg_to_rad( camSpeed * cameraInput)) 
@@ -100,10 +108,7 @@ func shoot():
 			print( collision.collider.name)
 		else:
 			print("nadinha")
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	playerCam.position = self.position
-	playerCam.rotation = self.rotation
+
 
 
 

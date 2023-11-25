@@ -15,4 +15,4 @@ func _process(_delta):
 	var gpu_time = RenderingServer.viewport_get_measured_render_time_gpu(viewport1.get_viewport_rid()) +\
 		RenderingServer.viewport_get_measured_render_time_gpu(viewport2.get_viewport_rid());
 	
-	text = "FPS:" + str(Engine.get_frames_per_second()) + " | CPU:" + "%.3f"%cpu_time + "ms | GPU:" + "%.3f"%gpu_time + "ms | Total:" + "%.3f"%(cpu_time + gpu_time) + "ms";
+	text = "FPS:" + str(Engine.get_frames_per_second()) + " | CPU:" + "%.3f"%cpu_time + "ms | GPU:" + "%.3f"%gpu_time + "ms | Total:" + "%.3f"%(cpu_time + gpu_time) + "ms" + "\n";

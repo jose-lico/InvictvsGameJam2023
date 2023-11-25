@@ -49,6 +49,8 @@ func _enter_tree():
 	ref_timer.set_one_shot(true);
 	ref_timer.timeout.connect(__on_timer_timeout__);
 
+	start_new_timer(1.0);
+
 
 # - - - - - - - - - - - - - - - - - - - - -
 # Clear the timer state
@@ -75,3 +77,5 @@ func __on_timer_timeout__():
 
 	if(current_tick_count < total_ticks):
 		ref_timer.start(time_between_ticks);
+	else:
+		start_new_timer(1.0);

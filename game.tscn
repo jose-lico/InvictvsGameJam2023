@@ -1,10 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://7lqkign4wvpn"]
+[gd_scene load_steps=18 format=3 uid="uid://d33nvxo6letbu"]
 
 [ext_resource type="Script" path="res://src/clock/clock.gd" id="1_1rb5a"]
 [ext_resource type="Texture2D" uid="uid://bigmlu3kud431" path="res://assets/fps.png" id="1_5d5k7"]
+[ext_resource type="Script" path="res://scenes/temp_input.gd" id="1_t4gwn"]
 [ext_resource type="Script" path="res://MyCharacterBody3D.gd" id="3_adqii"]
 [ext_resource type="Script" path="res://src/fps_counter.gd" id="3_kdw8v"]
 [ext_resource type="AudioStream" uid="uid://b7c5mtggq1yf3" path="res://audio/tick.wav" id="3_kgfql"]
+[ext_resource type="Script" path="res://src/debug_screen.gd" id="4_c2jey"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_tljrq"]
 viewport_path = NodePath("Cameras/SubViewport")
@@ -33,6 +35,7 @@ sky = SubResource("Sky_7s57k")
 size = Vector2(30, 30)
 
 [node name="Game" type="Node3D"]
+script = ExtResource("1_t4gwn")
 
 [node name="Clock" type="Node" parent="."]
 unique_name_in_owner = true
@@ -57,7 +60,7 @@ size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
 [node name="CameraP1" type="Camera3D" parent="Cameras/SubViewport"]
-transform = Transform3D(0.567744, 0, -0.823205, 0, 1, 0, 0.823205, 0, 0.567744, -7.40972, 1.59603, 13.3254)
+transform = Transform3D(0.209381, 3.46916e-10, -0.977834, -1.65687e-09, 1, 2.46892e-17, 0.977834, 1.62014e-09, 0.209381, 9.13, 1, -10.306)
 cull_mask = 1046527
 current = true
 
@@ -67,7 +70,7 @@ size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
 [node name="CameraP2" type="Camera3D" parent="Cameras/SubViewport2"]
-transform = Transform3D(-0.799401, 0, 0.600797, 0, 1, 0, -0.600797, 0, -0.799401, 10.7473, 1.6, -10.8174)
+transform = Transform3D(-0.777618, -5.7937e-09, 0.628736, -7.45057e-09, 1, 3.44107e-22, -0.628736, -4.68445e-09, -0.777618, -13.2673, 1, 13.7022)
 cull_mask = 1047551
 current = true
 
@@ -78,6 +81,15 @@ theme_override_colors/font_color = Color(0, 1, 0, 1)
 theme_override_font_sizes/font_size = 60
 text = "FPS:"
 script = ExtResource("3_kdw8v")
+
+[node name="debug" type="Label" parent="."]
+offset_top = 80.0
+offset_right = 119.0
+offset_bottom = 166.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 60
+text = "FPS:"
+script = ExtResource("4_c2jey")
 
 [node name="DesculpaQuerida" type="Label" parent="."]
 offset_left = 134.0
@@ -125,13 +137,13 @@ scale = Vector2(1.5, 1.5)
 texture = ExtResource("1_5d5k7")
 
 [node name="P1 CharBody" type="CharacterBody3D" parent="." node_paths=PackedStringArray("playerCam", "enemyCam")]
-transform = Transform3D(0.209381, 0, -0.977836, -1.65687e-09, 1, -4.68446e-09, 0.977836, 0, 0.209381, 9.13032, 2, -10.3064)
+transform = Transform3D(0.209381, 0, -0.977836, -1.65687e-09, 1, -4.68446e-09, 0.977836, 0, 0.209381, 9.13, 1, -10.306)
 script = ExtResource("3_adqii")
 playerCam = NodePath("../Cameras/SubViewport/CameraP1")
 enemyCam = NodePath("../Cameras/SubViewport2/CameraP2")
-Foward = "W"
-Left = "Q"
-Right = "E"
+Foward = "help"
+Left = "service"
+Right = "bet_1"
 
 [node name="Player2Body" type="MeshInstance3D" parent="P1 CharBody"]
 layers = 2048
@@ -141,14 +153,18 @@ skeleton = NodePath("../../Cameras/SubViewport")
 [node name="P1 Colshape" type="CollisionShape3D" parent="P1 CharBody"]
 shape = SubResource("CapsuleShape3D_v6a14")
 
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="P1 CharBody"]
+remote_path = NodePath("../../Cameras/SubViewport/CameraP1")
+update_scale = false
+
 [node name="P2 CharBody" type="CharacterBody3D" parent="." node_paths=PackedStringArray("playerCam", "enemyCam")]
 transform = Transform3D(-0.777619, 0, 0.628737, -7.45058e-09, 1, 0, -0.628737, 0, -0.777619, -13.2673, 1, 13.7022)
 script = ExtResource("3_adqii")
 playerCam = NodePath("../Cameras/SubViewport2/CameraP2")
 enemyCam = NodePath("../Cameras/SubViewport/CameraP1")
-Foward = "U"
-Left = "Y"
-Right = "I"
+Foward = "bet_6"
+Left = "bet_3"
+Right = "bet_10"
 
 [node name="Player1Body" type="MeshInstance3D" parent="P2 CharBody"]
 layers = 1024
@@ -158,6 +174,10 @@ skeleton = NodePath("../../Cameras/SubViewport")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="P2 CharBody"]
 shape = SubResource("CapsuleShape3D_esr64")
 
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="P2 CharBody"]
+remote_path = NodePath("../../Cameras/SubViewport2/CameraP2")
+update_scale = false
+
 [node name="World" type="Node3D" parent="."]
 
 [node name="Ground" type="MeshInstance3D" parent="World"]
@@ -166,3 +186,7 @@ mesh = SubResource("PlaneMesh_kf7r3")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_kgfql")
 autoplay = true
+
+[connection signal="sig_flash" from="Clock" to="." method="flash"]
+[connection signal="sig_flash" from="Clock" to="P1 CharBody" method="shoot"]
+[connection signal="sig_flash" from="Clock" to="P2 CharBody" method="shoot"]

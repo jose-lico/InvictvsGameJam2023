@@ -24,6 +24,8 @@ var _id_binds: Dictionary;
 var _ledpatterns_data: Dictionary;
 var _blinkpatterns_data: Dictionary;
 
+signal sig_on_debug(data : Dictionary)
+
 # ==================== ====================
 # Godot Override
 # ==================== ====================
@@ -229,6 +231,7 @@ func _on_connection_established():
 func _on_data_received(data: PackedByteArray ):
 	var parsed_data: Dictionary = JSON.parse_string(data.get_string_from_utf8());
 	# print(JSON.stringify(parsed_data, "\t"));
+	sig_on_debug.emit(parsed_data);
 
 	if(parsed_data.has("id")):
 		var data_id: String = parsed_data.id;

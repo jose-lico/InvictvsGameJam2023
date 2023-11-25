@@ -1,11 +1,12 @@
-[gd_scene load_steps=26 format=3 uid="uid://bh7rox2t2dku0"]
+[gd_scene load_steps=27 format=3 uid="uid://bh7rox2t2dku0"]
 
 [ext_resource type="Script" path="res://src/clock/clock.gd" id="1_1rb5a"]
 [ext_resource type="Texture2D" uid="uid://bigmlu3kud431" path="res://assets/fps.png" id="1_5d5k7"]
+[ext_resource type="AudioStream" uid="uid://b7c5mtggq1yf3" path="res://audio/Audio_Tick.wav" id="2_fgccr"]
 [ext_resource type="AudioStream" uid="uid://r8a3hnbluvtf" path="res://audio/Audio_AWP.wav" id="3_72jv1"]
 [ext_resource type="Script" path="res://src/fps_counter.gd" id="3_kdw8v"]
-[ext_resource type="AudioStream" uid="uid://b7c5mtggq1yf3" path="res://audio/tick.wav" id="3_kgfql"]
 [ext_resource type="Script" path="res://src/debug_screen.gd" id="4_c2jey"]
+[ext_resource type="AudioStream" uid="uid://bfqosg78h57gv" path="res://audio/Audio_Ambience.wav" id="4_nnxm7"]
 [ext_resource type="PackedScene" uid="uid://cs14j0uxsij30" path="res://prefab player.tscn" id="6_csodm"]
 [ext_resource type="PackedScene" uid="uid://bvlq7iejuw17a" path="res://scenes/saloon.tscn" id="8_cogct"]
 
@@ -580,13 +581,15 @@ libraries = {
 [node name="Audio" type="Node" parent="."]
 
 [node name="TikTokOnTheClock" type="AudioStreamPlayer" parent="Audio"]
-stream = ExtResource("3_kgfql")
+stream = ExtResource("2_fgccr")
 
 [node name="AWP" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("3_72jv1")
 volume_db = -10.0
 
 [node name="Ambience" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("4_nnxm7")
+volume_db = -25.0
 autoplay = true
 
 [node name="Cameras" type="Node" parent="."]

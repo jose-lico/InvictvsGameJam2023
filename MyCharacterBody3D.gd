@@ -144,9 +144,9 @@ func shoot():
 				
 		if (one_bound > 0):
 			one_bound = 0
-			get_node('.').calcwinner(1)
+			get_node('root/Game').calcwinner(1)
 		else:
-			get_node('.').calcwinner(0)
+			get_node('root/Game').calcwinner(0)
 
 func _on_game_sig_stopmoving():
 	canPlay = 0

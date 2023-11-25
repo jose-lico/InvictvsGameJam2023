@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://src/fps_counter.gd" id="3_kdw8v"]
 [ext_resource type="AudioStream" uid="uid://b7c5mtggq1yf3" path="res://audio/tick.wav" id="3_kgfql"]
 [ext_resource type="Script" path="res://src/debug_screen.gd" id="4_c2jey"]
+[ext_resource type="PackedScene" uid="uid://cs14j0uxsij30" path="res://prefab player.tscn" id="6_csodm"]
 
 [sub_resource type="Animation" id="Animation_dvox1"]
 resource_name = "Animation_Blackout"
@@ -191,14 +192,12 @@ sky = SubResource("Sky_7s57k")
 
 [sub_resource type="TorusMesh" id="TorusMesh_g8v5m"]
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_dep7v"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_v6a14"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_esr64"]
-
 [sub_resource type="PlaneMesh" id="PlaneMesh_kf7r3"]
 size = Vector2(30, 30)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_njf5g"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_0aymn"]
 
 [node name="Game" type="Node3D"]
 script = ExtResource("1_1rb5a")
@@ -321,9 +320,8 @@ offset_bottom = 1910.0
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("1_5d5k7")
 
-[node name="P1 CharBody" type="CharacterBody3D" parent="." node_paths=PackedStringArray("playerCam", "enemyCam")]
-transform = Transform3D(0.209381, 0, -0.977836, -1.65687e-09, 1, -4.68446e-09, 0.977836, 0, 0.209381, 9.13, 1, -10.306)
-script = ExtResource("3_adqii")
+[node name="P1" parent="." node_paths=PackedStringArray("playerCam", "enemyCam") instance=ExtResource("6_csodm")]
+transform = Transform3D(0.209381, 0, -0.977836, -1.65687e-09, 1, -4.68446e-09, 0.977836, 0, 0.209381, 9.13, 1, 4.16313)
 playerCam = NodePath("../Cameras/SubViewport/CameraP1")
 enemyCam = NodePath("../Cameras/SubViewport2/CameraP2")
 

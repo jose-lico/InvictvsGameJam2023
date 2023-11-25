@@ -3,11 +3,14 @@ extends CharacterBody3D
 @export var playerCam : Camera3D  
 @export var enemyCam : Camera3D
 
+@export var enemyChar : CharacterBody3D
+
 @export var Foward : String
 @export var Left : String
 @export var Right : String
 var DISPARAR = "play"
 
+var canPlay = 1
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
@@ -60,33 +63,33 @@ func _input(event):
 		_my_input(event.as_text(), event.pressed);
 
 func _my_input(name, pressed : bool):
-	
-	if name == DISPARAR :
-		if (pressed):
-			shootInput = 1
-		else:
-			shootInput = 0
+	if canPlay == 1:
+		if name == DISPARAR :
+			if (pressed):
+				shootInput = 1
+			else:
+				shootInput = 0
+			
 		
-	
-	if name == Foward:
-		if pressed:
-			moveInput = 1
-		else: 
-			moveInput = 0
+		if name == Foward:
+			if pressed:
+				moveInput = 1
+			else: 
+				moveInput = 0
 
-	if name == Left:
-		if pressed:
-			camdirection.x = 1
-		else:
-			camdirection.x = 0 
-				
-	if name  == Right:
-		if pressed:
-			camdirection.y = -1
-		else:
-			camdirection.y = 0
+		if name == Left:
+			if pressed:
+				camdirection.x = 1
+			else:
+				camdirection.x = 0 
 					
-	cameraInput = camdirection.x + camdirection.y
+		if name  == Right:
+			if pressed:
+				camdirection.y = -1
+			else:
+				camdirection.y = 0
+						
+		cameraInput = camdirection.x + camdirection.y
 
 func rotateCamera():
 	self.rotate_y(deg_to_rad( camSpeed * cameraInput)) 
@@ -99,16 +102,25 @@ func shoot():
 	if (playerCam ==null || enemyCam == null):
 		print("rip pointers")
 	else:
-		var query = PhysicsRayQueryParameters3D.create(playerCam.global_position,
-		enemyCam.global_position - playerCam.global_transform.basis.z * 100)
-		var collision = space.intersect_ray(query)
+		#time for the pointers :) 
 		
+		var one_bound = 0
+		var his_kids = enemyChar.get_children()
 		
-		if collision:
-			print( collision.collider.name)
+		for kid in his_kids: 
+			if (kid.is_in_group('bounds')):
+				var query = PhysicsRayQueryParameters3D.create(playerCam.global_position,
+				kid.global_position)
+				var collision = space.intersect_ray(query)
+				
+				if collision:
+					one_bound += 1
+				
+		if (one_bound > 0):
+			one_bound = 0
+			print("eu jogador: " + name + "matei o: " + enemyChar.name)
 		else:
 			print("nadinha")
-
 
 
 

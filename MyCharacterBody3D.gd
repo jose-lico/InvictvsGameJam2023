@@ -97,7 +97,9 @@ func _my_input(name, pressed : bool):
 		cameraInput = camdirection.x + camdirection.y
 		
 	else:
-		print("cant move")
+		cameraInput = 0
+		moveInput = 0
+		shootInput = 0
 
 func rotateCamera():
 	self.rotate_y(deg_to_rad( camSpeed * cameraInput)) 
@@ -144,7 +146,7 @@ func shoot():
 					var angulomerdoso = angulodogajo.angle_to(vectorinimigo)
 				
 					
-					if (rad_to_deg(angulomerdoso)  < 30):
+					if (rad_to_deg(angulomerdoso)  < 20):
 						one_bound += 1
 				
 		if (one_bound > 0):

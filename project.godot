@@ -18,6 +18,7 @@ config/icon="res://assets/Ricardo_Campos_-_perfil_portal_-_v2.jpg"
 [autoload]
 
 Genisys="*res://src/genisys/genisys_controller.gd"
+GameManager="*res://src/game_manager.gd"
 
 [display]
 

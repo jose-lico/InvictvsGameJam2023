@@ -75,8 +75,6 @@ func _on_state_change(state: GameManager.STATES):
 			start_new_timer(1.0);
 
 
-
-
 # - - - - - - - - - - - - - - - - - - - - -
 # Clear the timer state
 func __clear_current_timer__():
@@ -97,7 +95,10 @@ func __on_timer_timeout__():
 	sig_clock_tick.emit(current_tick_count);
 
 	if(tick_audio != null):
-		tick_audio.play();
+		print(current_tick_count / 11.0)
+		tick_audio.set_volume_db(linear_to_db((current_tick_count / 11.0) * 10.0));
+		if(current_tick_count < 12):
+			tick_audio.play();
 
 	match current_tick_count:
 		2: sig_light.emit();

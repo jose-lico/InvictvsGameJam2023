@@ -66,5 +66,4 @@ func _on_get_active_capabilities(payload: Dictionary):
 
 # - - - - - - - - - - - - - - - - - - - - -
 func _on_play_state_change(payload: Dictionary):
-
 	print(JSON.stringify(payload, "\t"));

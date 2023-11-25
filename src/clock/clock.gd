@@ -41,6 +41,8 @@ func start_new_timer(interval: float):
 # - - - - - - - - - - - - - - - - - - - - -
 # Godot API Override
 func _enter_tree():
+	GameManager.state_changed.connect(_on_state_change);
+
 	ref_timer = Timer.new();
 	add_child(ref_timer);
 
@@ -48,7 +50,20 @@ func _enter_tree():
 	ref_timer.set_one_shot(true);
 	ref_timer.timeout.connect(__on_timer_timeout__);
 
-	start_new_timer(1.0);
+	_on_state_change(GameManager.current_state);
+	# start_new_timer(1.0);
+
+
+func _on_state_change(state: GameManager.STATES):
+	match state:
+		GameManager.STATES.INTROGAME:
+			GameManager.change_state(GameManager.STATES.GAME);
+			
+
+		GameManager.STATES.GAME:
+			start_new_timer(1.0);
+
+
 
 
 # - - - - - - - - - - - - - - - - - - - - -

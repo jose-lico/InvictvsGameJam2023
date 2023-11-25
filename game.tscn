@@ -1,12 +1,30 @@
-[gd_scene load_steps=2 format=3 uid="uid://bmrrvj37sm35e"]
+[gd_scene load_steps=9 format=3 uid="uid://dysiqaqn06x6v"]
+
+[ext_resource type="Texture2D" uid="uid://d0u1l6t2lqef4" path="res://Ricardo_Campos_-_perfil_portal_-_v2.jpg" id="1_3wei1"]
+[ext_resource type="Texture2D" uid="uid://drmtku4jensnc" path="res://eurico_martins_Portal_do_Gamer.jpg" id="2_r0xjq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0601n"]
+albedo_texture = ExtResource("1_3wei1")
 
 [sub_resource type="BoxMesh" id="BoxMesh_q0hpq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_grxon"]
+albedo_texture = ExtResource("2_r0xjq")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6dbjg"]
+
+[sub_resource type="Sky" id="Sky_7s57k"]
+sky_material = SubResource("ProceduralSkyMaterial_6dbjg")
+
+[sub_resource type="Environment" id="Environment_c3xbe"]
+background_mode = 2
+sky = SubResource("Sky_7s57k")
 
 [node name="Game" type="Node"]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 1920.0
+offset_bottom = 2164.0
 
 [node name="TopDisplay" type="SubViewportContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -17,6 +35,7 @@ size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="VBoxContainer/TopDisplay/SubViewport"]
+material_override = SubResource("StandardMaterial3D_0601n")
 mesh = SubResource("BoxMesh_q0hpq")
 
 [node name="Camera3D" type="Camera3D" parent="VBoxContainer/TopDisplay/SubViewport/MeshInstance3D"]
@@ -32,7 +51,30 @@ render_target_update_mode = 4
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="VBoxContainer/BottomDisplay/SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.62749, -0.539751, -1.0994)
+material_override = SubResource("StandardMaterial3D_grxon")
 mesh = SubResource("BoxMesh_q0hpq")
 
 [node name="Camera3D" type="Camera3D" parent="VBoxContainer/BottomDisplay/SubViewport/MeshInstance3D"]
 transform = Transform3D(0.457626, 0, 0.889145, 0, 1, 0, -0.889145, 0, 0.457626, 1.88927, 0.472599, 2.21397)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.782641, 0, 0.622474, -0.145102, 0.972451, 0.182438, -0.605325, -0.233106, 0.76108, 6.3841, 0, 7.38824)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_c3xbe")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 134.0
+offset_top = 112.0
+offset_right = 1798.0
+offset_bottom = 388.0
+theme_override_font_sizes/font_size = 200
+text = "DesculpaQuerida"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 81.0
+offset_top = 1266.0
+offset_right = 2381.0
+offset_bottom = 1542.0
+theme_override_font_sizes/font_size = 150
+text = "IstoNuncaMeAconteceu"

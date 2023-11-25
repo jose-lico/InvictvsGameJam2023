@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bh7rox2t2dku0"]
+[gd_scene load_steps=26 format=3 uid="uid://bh7rox2t2dku0"]
 
 [ext_resource type="Script" path="res://src/clock/clock.gd" id="1_1rb5a"]
 [ext_resource type="Texture2D" uid="uid://bigmlu3kud431" path="res://assets/fps.png" id="1_5d5k7"]
@@ -181,9 +181,348 @@ viewport_path = NodePath("Cameras/SubViewport")
 [sub_resource type="ViewportTexture" id="ViewportTexture_5ef12"]
 viewport_path = NodePath("Cameras/SubViewport2")
 
-[node name="Game" type="Node3D" node_paths=PackedStringArray("tick_audio")]
+[sub_resource type="Animation" id="Animation_ilstf"]
+resource_name = "miss"
+length = 0.8
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MissLabel:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.21376, 0.58784, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(634, 373), Vector2(634, 373), Vector2(634, 373), Vector2(634, 373)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MissLabel:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.21376, 0.58784, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(988.667, -50), Vector2(-200.667, -108.667), Vector2(-264.667, -119.333), Vector2(-1358, -124.667)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MissLabel:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TieLabel:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_cg7pv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MissLabel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(988.667, -50)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MissLabel:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(634, 373)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TieLabel:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-71.9999, -71.3333)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TieLabel:size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(634, 373)]
+}
+
+[sub_resource type="Animation" id="Animation_jkrma"]
+resource_name = "tie"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TieLabel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MissLabel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TieLabel:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(941.333, -7.33333), Vector2(-71.9999, -71.3333), Vector2(-71.9999, -71.3333), Vector2(-1096, -12.6667)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TieLabel:size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(634, 373), Vector2(634, 373), Vector2(634, 373), Vector2(634, 373)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6ew5r"]
+_data = {
+"RESET": SubResource("Animation_cg7pv"),
+"miss": SubResource("Animation_ilstf"),
+"tie": SubResource("Animation_jkrma")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_41285"]
+font_size = 271
+outline_size = 68
+outline_color = Color(0.960784, 0.294118, 0.294118, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_wgfp1"]
+font_size = 271
+outline_size = 68
+outline_color = Color(0.92549, 0.666667, 0.168627, 1)
+
+[sub_resource type="Animation" id="Animation_banng"]
+resource_name = "miss"
+length = 0.8
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MissLabel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TieLabel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MissLabel:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.216667, 0.483333, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(634, 373), Vector2(634, 373), Vector2(634, 373), Vector2(634, 373)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MissLabel:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.216667, 0.483333, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(951.333, -108.667), Vector2(-190, -130), Vector2(-190, -130), Vector2(-1406, -103.333)]
+}
+
+[sub_resource type="Animation" id="Animation_roygp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MissLabel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-190, -130)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MissLabel:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(634, 373)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TieLabel:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-107.333, -78)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TieLabel:size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(634, 373)]
+}
+
+[sub_resource type="Animation" id="Animation_cdhtr"]
+resource_name = "tie"
+length = 0.8
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MissLabel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TieLabel:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TieLabel:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.533333, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1146, 23.3334), Vector2(-107.333, -78), Vector2(-107.333, -78), Vector2(-1174, -56.6666)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TieLabel:size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.533333, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(634, 373), Vector2(634, 373), Vector2(634, 373), Vector2(634, 373)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fr6lg"]
+_data = {
+"RESET": SubResource("Animation_roygp"),
+"miss": SubResource("Animation_banng"),
+"tie": SubResource("Animation_cdhtr")
+}
+
+[node name="Game" type="Node3D" node_paths=PackedStringArray("tick_audio", "animation_player_p1", "animation_player_p2")]
 script = ExtResource("1_1rb5a")
 tick_audio = NodePath("Audio/TikTokOnTheClock")
+animation_player_p1 = NodePath("Player1/AnimationPlayer_p1")
+animation_player_p2 = NodePath("Player2/AnimationPlayer_p2")
 
 [node name="GameAnimations" type="AnimationPlayer" parent="."]
 libraries = {
@@ -194,7 +533,6 @@ libraries = {
 
 [node name="TikTokOnTheClock" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("3_kgfql")
-volume_db = -39.89
 
 [node name="AWP" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("3_72jv1")
@@ -285,6 +623,49 @@ offset_bottom = 830.0
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("1_5d5k7")
 
+[node name="AnimationPlayer_p1" type="AnimationPlayer" parent="Player1"]
+libraries = {
+"": SubResource("AnimationLibrary_6ew5r")
+}
+
+[node name="MissLabel" type="Label" parent="Player1"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 988.667
+offset_top = -50.0
+offset_right = 1122.67
+offset_bottom = -177.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.50493, 1.50493)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = -220
+text = "MISS"
+label_settings = SubResource("LabelSettings_41285")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TieLabel" type="Label" parent="Player1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -71.9999
+offset_top = -71.3333
+offset_right = 62.0001
+offset_bottom = -198.333
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.24264, 1.24264)
+pivot_offset = Vector2(300, 180.667)
+text = "TIE"
+label_settings = SubResource("LabelSettings_wgfp1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Player2" type="TextureRect" parent="."]
 offset_left = 629.0
 offset_top = 1410.0
@@ -292,6 +673,49 @@ offset_right = 1129.0
 offset_bottom = 1910.0
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("1_5d5k7")
+
+[node name="AnimationPlayer_p2" type="AnimationPlayer" parent="Player2"]
+libraries = {
+"": SubResource("AnimationLibrary_fr6lg")
+}
+
+[node name="MissLabel" type="Label" parent="Player2"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -190.0
+offset_top = -130.0
+offset_right = -55.9999
+offset_bottom = -257.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.50493, 1.50493)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = -220
+text = "MISS"
+label_settings = SubResource("LabelSettings_41285")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TieLabel" type="Label" parent="Player2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -107.333
+offset_top = -78.0
+offset_right = 26.6666
+offset_bottom = -205.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.24264, 1.24264)
+pivot_offset = Vector2(300, 180.667)
+text = "TIE"
+label_settings = SubResource("LabelSettings_wgfp1")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="P1" parent="." node_paths=PackedStringArray("playerCam", "enemyCam", "enemyChar") groups=["Player"] instance=ExtResource("6_csodm")]
 transform = Transform3D(0.00921523, 0, -1.99998, 0, 2, 0, 1.99998, 0, 0.00921523, -10.267, 1.806, 0.082)

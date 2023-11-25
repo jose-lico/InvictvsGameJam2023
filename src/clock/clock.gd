@@ -1,5 +1,4 @@
-extends Node
-
+extends Node3D
 
 # - - - - - - - - - - - - - - - - - - - - -
 # Signal
@@ -67,9 +66,10 @@ func __clear_current_timer__():
 #
 func __on_timer_timeout__():
 	current_tick_count += 1;
+	# print(current_tick_count);
 
 	sig_clock_tick.emit(current_tick_count);
-
+	
 	match current_tick_count:
 		2: sig_light.emit();
 		8: sig_blackout.emit();
@@ -79,3 +79,6 @@ func __on_timer_timeout__():
 		ref_timer.start(time_between_ticks);
 	else:
 		start_new_timer(1.0);
+
+func flash():
+	Genisys.send_data("hardware/led_strips/set_pattern", {payload="flash"});

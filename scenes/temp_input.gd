@@ -14,6 +14,3 @@ func _input(event):
 		elif(event.keycode == KEY_F):
 			Genisys.send_data("hardware/led_strips/set_pattern", {payload="flash"});
 	
-
-func flash():
-	Genisys.send_data("hardware/led_strips/set_pattern", {payload="flash"});

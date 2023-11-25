@@ -1,12 +1,178 @@
-[gd_scene load_steps=18 format=3 uid="uid://d33nvxo6letbu"]
+[gd_scene load_steps=23 format=3 uid="uid://cfwhh0y510du1"]
 
 [ext_resource type="Script" path="res://src/clock/clock.gd" id="1_1rb5a"]
 [ext_resource type="Texture2D" uid="uid://bigmlu3kud431" path="res://assets/fps.png" id="1_5d5k7"]
-[ext_resource type="Script" path="res://scenes/temp_input.gd" id="1_t4gwn"]
+[ext_resource type="AudioStream" uid="uid://r8a3hnbluvtf" path="res://audio/Audio_AWP.wav" id="3_72jv1"]
 [ext_resource type="Script" path="res://MyCharacterBody3D.gd" id="3_adqii"]
 [ext_resource type="Script" path="res://src/fps_counter.gd" id="3_kdw8v"]
 [ext_resource type="AudioStream" uid="uid://b7c5mtggq1yf3" path="res://audio/tick.wav" id="3_kgfql"]
 [ext_resource type="Script" path="res://src/debug_screen.gd" id="4_c2jey"]
+
+[sub_resource type="Animation" id="Animation_dvox1"]
+resource_name = "Animation_Blackout"
+
+[sub_resource type="Animation" id="Animation_j2n5e"]
+resource_name = "Animation_Flash"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cameras/ViewP1:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.3, 0.7, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 2,
+"values": [Color(6, 6, 6, 1), Color(6, 6, 6, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cameras/ViewP2:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3, 0.7, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 2,
+"values": [Color(6, 6, 6, 1), Color(6, 6, 6, 1), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Cameras/SubViewport/CameraP1:far")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.7, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 2,
+"values": [100.0, 30.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Cameras/SubViewport2/CameraP2:far")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.7, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 2,
+"values": [100.0, 30.0]
+}
+
+[sub_resource type="Animation" id="Animation_idgyy"]
+resource_name = "Animation_Light"
+length = 6.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cameras/ViewP1:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(6),
+"transitions": PackedFloat32Array(1),
+"update": 2,
+"values": [Color(0.0980392, 0.0980392, 0.0980392, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cameras/ViewP2:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(6),
+"transitions": PackedFloat32Array(1),
+"update": 2,
+"values": [Color(0.0980392, 0.0980392, 0.0980392, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Cameras/SubViewport/CameraP1:far")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(5.6),
+"transitions": PackedFloat32Array(1),
+"update": 2,
+"values": [5.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Cameras/SubViewport2/CameraP2:far")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(5.6),
+"transitions": PackedFloat32Array(1),
+"update": 2,
+"values": [5.0]
+}
+
+[sub_resource type="Animation" id="Animation_nyj2a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cameras/SubViewport/CameraP1:fov")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [75.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cameras/SubViewport2/CameraP2:fov")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [75.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Cameras/ViewP2:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Cameras/ViewP1:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xd564"]
+_data = {
+"Animation_Blackout": SubResource("Animation_dvox1"),
+"Animation_Flash": SubResource("Animation_j2n5e"),
+"Animation_Light": SubResource("Animation_idgyy"),
+"RESET": SubResource("Animation_nyj2a")
+}
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_tljrq"]
 viewport_path = NodePath("Cameras/SubViewport")
@@ -35,11 +201,26 @@ sky = SubResource("Sky_7s57k")
 size = Vector2(30, 30)
 
 [node name="Game" type="Node3D"]
-script = ExtResource("1_t4gwn")
-
-[node name="Clock" type="Node" parent="."]
-unique_name_in_owner = true
 script = ExtResource("1_1rb5a")
+
+[node name="GameAnimations" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xd564")
+}
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="TikTokOnTheClock" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("3_kgfql")
+volume_db = 20.0
+autoplay = true
+
+[node name="AWP" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("3_72jv1")
+volume_db = -10.0
+
+[node name="Ambience" type="AudioStreamPlayer" parent="Audio"]
+autoplay = true
 
 [node name="Cameras" type="Node" parent="."]
 
@@ -60,9 +241,10 @@ size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
 [node name="CameraP1" type="Camera3D" parent="Cameras/SubViewport"]
-transform = Transform3D(0.209381, 3.46916e-10, -0.977834, -1.65687e-09, 1, 2.46892e-17, 0.977834, 1.62014e-09, 0.209381, 9.13, 1, -10.306)
-cull_mask = 1046527
+transform = Transform3D(0.209381, 3.46916e-10, -0.977834, -1.65687e-09, 1, 3.06633e-18, 0.977834, 1.62014e-09, 0.209381, 9.13, 1, -10.306)
+cull_mask = 1047551
 current = true
+far = 50.0
 
 [node name="SubViewport2" type="SubViewport" parent="Cameras"]
 handle_input_locally = false
@@ -70,9 +252,10 @@ size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
 [node name="CameraP2" type="Camera3D" parent="Cameras/SubViewport2"]
-transform = Transform3D(-0.777618, -5.7937e-09, 0.628736, -7.45057e-09, 1, 3.44107e-22, -0.628736, -4.68445e-09, -0.777618, -13.2673, 1, 13.7022)
-cull_mask = 1047551
+transform = Transform3D(0.723847, 0, -0.689961, 0, 1, 0, 0.689961, 0, 0.723847, -13.2673, 1, 13.7022)
+cull_mask = 1046527
 current = true
+far = 50.0
 
 [node name="FPSCounter" type="Label" parent="."]
 offset_right = 119.0
@@ -92,6 +275,7 @@ text = "FPS:"
 script = ExtResource("4_c2jey")
 
 [node name="DesculpaQuerida" type="Label" parent="."]
+visible = false
 offset_left = 134.0
 offset_top = 112.0
 offset_right = 1798.0
@@ -100,6 +284,7 @@ theme_override_font_sizes/font_size = 200
 text = "DesculpaQuerida"
 
 [node name="IstoNuncaMeAconteceu" type="Label" parent="."]
+visible = false
 offset_left = 81.0
 offset_top = 1266.0
 offset_right = 2381.0
@@ -141,9 +326,6 @@ transform = Transform3D(0.209381, 0, -0.977836, -1.65687e-09, 1, -4.68446e-09, 0
 script = ExtResource("3_adqii")
 playerCam = NodePath("../Cameras/SubViewport/CameraP1")
 enemyCam = NodePath("../Cameras/SubViewport2/CameraP2")
-Foward = "help"
-Left = "service"
-Right = "bet_1"
 
 [node name="Player2Body" type="MeshInstance3D" parent="P1 CharBody"]
 layers = 2048
@@ -158,13 +340,10 @@ remote_path = NodePath("../../Cameras/SubViewport/CameraP1")
 update_scale = false
 
 [node name="P2 CharBody" type="CharacterBody3D" parent="." node_paths=PackedStringArray("playerCam", "enemyCam")]
-transform = Transform3D(-0.777619, 0, 0.628737, -7.45058e-09, 1, 0, -0.628737, 0, -0.777619, -13.2673, 1, 13.7022)
+transform = Transform3D(0.723847, 0, -0.689961, 0, 1, 0, 0.689961, 0, 0.723847, -13.2673, 1, 13.7022)
 script = ExtResource("3_adqii")
 playerCam = NodePath("../Cameras/SubViewport2/CameraP2")
 enemyCam = NodePath("../Cameras/SubViewport/CameraP1")
-Foward = "bet_6"
-Left = "bet_3"
-Right = "bet_10"
 
 [node name="Player1Body" type="MeshInstance3D" parent="P2 CharBody"]
 layers = 1024
@@ -187,6 +366,10 @@ mesh = SubResource("PlaneMesh_kf7r3")
 stream = ExtResource("3_kgfql")
 autoplay = true
 
-[connection signal="sig_flash" from="Clock" to="." method="flash"]
-[connection signal="sig_flash" from="Clock" to="P1 CharBody" method="shoot"]
-[connection signal="sig_flash" from="Clock" to="P2 CharBody" method="shoot"]
+[connection signal="sig_blackout" from="." to="GameAnimations" method="play" binds= ["Animation_Blackout"]]
+[connection signal="sig_flash" from="." to="." method="flash"]
+[connection signal="sig_flash" from="." to="Audio/AWP" method="play"]
+[connection signal="sig_flash" from="." to="P1 CharBody" method="shoot"]
+[connection signal="sig_flash" from="." to="P2 CharBody" method="shoot"]
+[connection signal="sig_flash" from="." to="GameAnimations" method="play" binds= ["Animation_Flash"]]
+[connection signal="sig_light" from="." to="GameAnimations" method="play" binds= ["Animation_Light"]]

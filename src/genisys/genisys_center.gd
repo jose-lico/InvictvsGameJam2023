@@ -152,6 +152,9 @@ func on_destroy():
 # - - - - - - - - - - - - - - - - - - - - -
 # Creates the connection url
 func _generate_url():
+	if(OS.has_feature("standalone")):
+		server_address = "localhost";
+	
 	server_url = "ws";
 	if(use_wss):
 		server_url += "s";

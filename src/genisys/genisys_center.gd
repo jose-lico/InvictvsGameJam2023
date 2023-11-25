@@ -110,7 +110,7 @@ func send_data(id: String, payload: Dictionary = {}):
 		var packed: Dictionary = {"id": "%s/%s" % [protocol_version, id] };
 		packed.merge(payload, true);
 		
-		print("Sending data id: [%s]" % id);
+		print("-> %s" % id);
 		var error = client_websocket.send_text(JSON.stringify(packed));
 		if(error != OK):
 			print_debug("Failed to send package. Code [%s]" % error);
@@ -232,6 +232,8 @@ func _on_data_received(data: PackedByteArray ):
 
 	if(parsed_data.has("id")):
 		var data_id: String = parsed_data.id;
+		print("<- %s" % data_id);
+
 		if(SERVICE_PREFIX in data_id):
 			data_id = data_id.substr(SERVICE_PREFIX.length());
 			_dispatch_response(data_id, parsed_data.payload);

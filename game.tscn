@@ -1,5 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://7lqkign4wvpn"]
 
+[ext_resource type="Script" path="res://src/clock/clock.gd" id="1_1rb5a"]
 [ext_resource type="Texture2D" uid="uid://bigmlu3kud431" path="res://assets/fps.png" id="1_5d5k7"]
 [ext_resource type="Script" path="res://MyCharacterBody3D.gd" id="3_adqii"]
 [ext_resource type="Script" path="res://src/fps_counter.gd" id="3_kdw8v"]
@@ -32,6 +33,10 @@ sky = SubResource("Sky_7s57k")
 size = Vector2(30, 30)
 
 [node name="Game" type="Node3D"]
+
+[node name="Clock" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_1rb5a")
 
 [node name="Cameras" type="Node" parent="."]
 

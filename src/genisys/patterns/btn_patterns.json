@@ -1,0 +1,44 @@
+{
+	"patterns": [
+		{
+			"group": "tower_light",
+			"patterns": [
+				{
+					"frames": [
+						{
+							"duration": 500,
+							"outputs": [
+								17
+							]
+						},
+						{
+							"duration": 500,
+							"outputs": [
+								21
+							]
+						}
+					],
+					"id": "tower_blink"
+				}
+			]
+		},
+		{
+			"group": "buttons",
+			"patterns" : [
+				{
+					"frames": [
+						{
+							"duration" : 300,
+							"outputs": [8]
+						},
+						{
+							"duration" : 300,
+							"outputs": []
+						}
+					],
+					"id": "initial_set"
+				}
+			]
+		}
+	]
+}

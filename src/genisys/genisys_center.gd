@@ -97,6 +97,16 @@ func bind_id_to_callback(id: String, callback: Callable):
 		_id_binds.all[id] = [callback];
 
 
+
+# - - - - - - - - - - - - - - - - - - - - -
+func unbind_id_to_callback(id: String, callback: Callable):
+	if(_id_binds.all.has(id)):
+		for i in range(_id_binds.all[id].size() -1, -1, -1):
+			var reg_call: Callable = _id_binds.all[id][i];
+			if(reg_call.get_method() == callback.get_method() && reg_call.get_object() == callback.get_object()):
+				_id_binds.all[id].remove_at(i);
+
+
 # - - - - - - - - - - - - - - - - - - - - -
 func bind_input_to_callback(id:String, callback: Callable):
 	if(_id_binds.input.has(id)):
@@ -104,6 +114,13 @@ func bind_input_to_callback(id:String, callback: Callable):
 	else:
 		_id_binds.input[id] = [callback];
 
+
+func unbind_input_to_callback(id: String, callback: Callable):
+	if(_id_binds.input.has(id)):
+		for i in range(_id_binds.input[id].size() -1, -1, -1):
+			var reg_call: Callable = _id_binds.input[id][i];
+			if(reg_call.get_method() == callback.get_method() && reg_call.get_object() == callback.get_object()):
+				_id_binds.input[id].remove_at(i);
 
 # - - - - - - - - - - - - - - - - - - - - -
 # 

@@ -60,8 +60,8 @@ func _on_get_active_capabilities(payload: Dictionary):
 		send_data("hardware/outputs/add_blink_patterns", {payload=_blinkpatterns_data.patterns});
 
 		#! To Remove
-		send_data("hardware/outputs/start_blink_pattern", {payload={"group": "tower_light", "id": "tower_blink"}});
-		send_data("hardware/outputs/start_blink_pattern", {payload={"group": "buttons", "id": "initial_set"}});
+		# send_data("hardware/outputs/start_blink_pattern", {payload={"group": "tower_light", "id": "tower_blink"}});
+		# send_data("hardware/outputs/start_blink_pattern", {payload={"group": "buttons", "id": "initial_set"}});
 
 
 # - - - - - - - - - - - - - - - - - - - - -

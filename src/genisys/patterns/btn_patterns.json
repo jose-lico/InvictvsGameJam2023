@@ -37,6 +37,39 @@
 						}
 					],
 					"id": "initial_set"
+				},
+				{
+					"frames": [
+						{
+							"duration": 150,
+							"outputs": [
+								12, 15, 13
+							]
+						},
+						{
+							"duration": 150,
+							"outputs": [
+								11, 16, 20
+							]
+						}
+					],
+					"id": "ingame_set"
+				},
+				{
+					"frames": [
+						{
+							"duration": 50,
+							"outputs": [
+								12, 15, 13, 11, 16, 20, 8
+							]
+						},
+						{
+							"duration": 50,
+							"outputs": [
+							]
+						}
+					],
+					"id": "flash"
 				}
 			]
 		}

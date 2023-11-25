@@ -8,6 +8,8 @@ signal sig_blackout();
 signal sig_flash();
 signal sig_stopmoving();
 
+@export var tick_audio: AudioStreamPlayer;
+
 # - - - - - - - - - - - - - - - - - - - - -
 # Values
 const KTOTAL_TICKS : int = 13;
@@ -33,6 +35,9 @@ func start_new_timer(interval: float):
 	self.time_between_ticks = interval;
 
 	ref_timer.start(time_between_ticks);
+
+	Genisys.send_data("hardware/outputs/start_blink_pattern",
+		{payload={"group": "buttons", "id": "ingame_set"}});
 
 
 # ==================== ====================
@@ -62,9 +67,11 @@ func _on_state_change(state: GameManager.STATES):
 	match state:
 		GameManager.STATES.INTROGAME:
 			GameManager.change_state(GameManager.STATES.GAME);
-			
+
 
 		GameManager.STATES.GAME:
+			Genisys.send_data("hardware/outputs/start_blink_pattern",
+				{payload={"group": "buttons", "id": "ingame_set"}});
 			start_new_timer(1.0);
 
 
@@ -88,7 +95,10 @@ func __on_timer_timeout__():
 	# print(current_tick_count);
 
 	sig_clock_tick.emit(current_tick_count);
-	
+
+	if(tick_audio != null):
+		tick_audio.play();
+
 	match current_tick_count:
 		2: sig_light.emit();
 		8: sig_blackout.emit();
@@ -97,23 +107,27 @@ func __on_timer_timeout__():
 
 	if(current_tick_count < total_ticks):
 		ref_timer.start(time_between_ticks);
-	else:
-		start_new_timer(1.0);
-		
-		
+	# else:
+	# 	start_new_timer(1.0);
+
+
 var winnerArray = []
 func calcwinner(value):
 	winnerArray.push_front(value)
-	
+
 	if (winnerArray.size() == 2 ):
+		await get_tree().create_timer(2.0).timeout;
+
 		var totalwinner = winnerArray[0] + winnerArray[1]
 		#winner calc!!
 		if totalwinner == 2:
 			#TIE!
 			print("TIE")
+			start_new_timer(1.0);
 		elif totalwinner == 0:
 			#MISSED!
 			print("BOTH MISSED")
+			start_new_timer(1.0);
 		elif winnerArray[0] == 1:
 			print("Player 1 won!")
 			GameManager.Go_To_Menu()
@@ -121,17 +135,18 @@ func calcwinner(value):
 			queue_free()
 		elif winnerArray[1] == 1:
 			print("Player 2 won!")
-			
+
 			GameManager.Go_To_Menu()
 			GameManager.state_changed.disconnect(_on_state_change)
 			queue_free()
-			
-		winnerArray.clear() 
-		
-			
-	
-	
-		
+
+		winnerArray.clear()
+
+
+
+
+
 
 func flash():
 	Genisys.send_data("hardware/led_strips/set_pattern", {payload="flash"});
+	Genisys.send_data("hardware/outputs/start_blink_pattern", {payload={"group": "buttons", "id": "flash"}});

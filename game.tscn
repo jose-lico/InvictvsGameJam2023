@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c1n4kpxdgl0l2"]
+[gd_scene load_steps=16 format=3 uid="uid://bh7rox2t2dku0"]
 
 [ext_resource type="Script" path="res://src/clock/clock.gd" id="1_1rb5a"]
 [ext_resource type="Texture2D" uid="uid://bigmlu3kud431" path="res://assets/fps.png" id="1_5d5k7"]
@@ -6,8 +6,8 @@
 [ext_resource type="Script" path="res://src/fps_counter.gd" id="3_kdw8v"]
 [ext_resource type="AudioStream" uid="uid://b7c5mtggq1yf3" path="res://audio/tick.wav" id="3_kgfql"]
 [ext_resource type="Script" path="res://src/debug_screen.gd" id="4_c2jey"]
-[ext_resource type="PackedScene" uid="uid://cs14j0uxsij30" path="res://prefab player.tscn" id="6_csodm"]
-[ext_resource type="PackedScene" uid="uid://dcp1jldjf2n1d" path="res://scenes/saloon.tscn" id="8_cogct"]
+[ext_resource type="PackedScene" path="res://prefab player.tscn" id="6_csodm"]
+[ext_resource type="PackedScene" uid="uid://cfblonq8svpc7" path="res://scenes/saloon.tscn" id="8_cogct"]
 
 [sub_resource type="Animation" id="Animation_dvox1"]
 resource_name = "Animation_Blackout"
@@ -181,8 +181,9 @@ viewport_path = NodePath("Cameras/SubViewport")
 [sub_resource type="ViewportTexture" id="ViewportTexture_5ef12"]
 viewport_path = NodePath("Cameras/SubViewport2")
 
-[node name="Game" type="Node3D"]
+[node name="Game" type="Node3D" node_paths=PackedStringArray("tick_audio")]
 script = ExtResource("1_1rb5a")
+tick_audio = NodePath("Audio/TikTokOnTheClock")
 
 [node name="GameAnimations" type="AnimationPlayer" parent="."]
 libraries = {
@@ -332,7 +333,11 @@ remote_path = NodePath("../../Cameras/SubViewport2/CameraP2")
 [connection signal="sig_flash" from="." to="P1" method="shoot"]
 [connection signal="sig_flash" from="." to="P2" method="shoot"]
 [connection signal="sig_flash" from="." to="GameAnimations" method="play" binds= ["Animation_Flash"]]
+[connection signal="sig_light" from="." to="P1" method="_on_game_sig_light"]
+[connection signal="sig_light" from="." to="P2" method="_on_game_sig_light"]
 [connection signal="sig_light" from="." to="GameAnimations" method="play" binds= ["Animation_Light"]]
+[connection signal="sig_stopmoving" from="." to="P1" method="_on_game_sig_stopmoving"]
+[connection signal="sig_stopmoving" from="." to="P2" method="_on_game_sig_stopmoving"]
 
 [editable path="P1"]
 [editable path="P2"]

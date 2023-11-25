@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://7lqkign4wvpn"]
+[gd_scene load_steps=16 format=3 uid="uid://7lqkign4wvpn"]
 
 [ext_resource type="Script" path="res://src/clock/clock.gd" id="1_1rb5a"]
 [ext_resource type="Texture2D" uid="uid://bigmlu3kud431" path="res://assets/fps.png" id="1_5d5k7"]
@@ -142,7 +142,7 @@ skeleton = NodePath("../../Cameras/SubViewport")
 shape = SubResource("CapsuleShape3D_v6a14")
 
 [node name="P2 CharBody" type="CharacterBody3D" parent="." node_paths=PackedStringArray("playerCam", "enemyCam")]
-transform = Transform3D(-0.777619, 0, 0.628737, -7.45058e-09, 1, 0, -0.628737, 0, -0.777619, -13.2862, 1, 13.7395)
+transform = Transform3D(-0.777619, 0, 0.628737, -7.45058e-09, 1, 0, -0.628737, 0, -0.777619, -13.2673, 1, 13.7022)
 script = ExtResource("3_adqii")
 playerCam = NodePath("../Cameras/SubViewport2/CameraP2")
 enemyCam = NodePath("../Cameras/SubViewport/CameraP1")

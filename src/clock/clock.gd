@@ -66,7 +66,7 @@ func __clear_current_timer__():
 #
 func __on_timer_timeout__():
 	current_tick_count += 1;
-	print(current_tick_count);
+	# print(current_tick_count);
 
 	sig_clock_tick.emit(current_tick_count);
 	

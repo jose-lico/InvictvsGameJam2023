@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dysiqaqn06x6v"]
+[gd_scene load_steps=23 format=3 uid="uid://cfwhh0y510du1"]
 
 [ext_resource type="Script" path="res://src/clock/clock.gd" id="1_1rb5a"]
 [ext_resource type="Texture2D" uid="uid://bigmlu3kud431" path="res://assets/fps.png" id="1_5d5k7"]
@@ -241,7 +241,7 @@ size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
 [node name="CameraP1" type="Camera3D" parent="Cameras/SubViewport"]
-transform = Transform3D(0.209381, 3.46916e-10, -0.977834, -1.65687e-09, 1, 0, 0.977834, 1.62014e-09, 0.209381, 9.13, 1, -10.306)
+transform = Transform3D(0.209381, 3.46916e-10, -0.977834, -1.65687e-09, 1, 3.06633e-18, 0.977834, 1.62014e-09, 0.209381, 9.13, 1, -10.306)
 cull_mask = 1047551
 current = true
 far = 50.0
@@ -326,9 +326,6 @@ transform = Transform3D(0.209381, 0, -0.977836, -1.65687e-09, 1, -4.68446e-09, 0
 script = ExtResource("3_adqii")
 playerCam = NodePath("../Cameras/SubViewport/CameraP1")
 enemyCam = NodePath("../Cameras/SubViewport2/CameraP2")
-Foward = "help"
-Left = "service"
-Right = "bet_1"
 
 [node name="Player2Body" type="MeshInstance3D" parent="P1 CharBody"]
 layers = 2048
@@ -347,9 +344,6 @@ transform = Transform3D(0.723847, 0, -0.689961, 0, 1, 0, 0.689961, 0, 0.723847, 
 script = ExtResource("3_adqii")
 playerCam = NodePath("../Cameras/SubViewport2/CameraP2")
 enemyCam = NodePath("../Cameras/SubViewport/CameraP1")
-Foward = "bet_6"
-Left = "bet_3"
-Right = "bet_10"
 
 [node name="Player1Body" type="MeshInstance3D" parent="P2 CharBody"]
 layers = 1024

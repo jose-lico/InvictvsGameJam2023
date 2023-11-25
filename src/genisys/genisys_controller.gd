@@ -9,7 +9,7 @@ func _enter_tree():
 	led_pattern_json_path="res://src/genisys/test_pattern.json"
 	blink_pattern_json_path = "res://src/genisys/patterns/btn_patterns.json"
 
-	server_address = "localhost"
+	server_address = "192.168.220.109"
 	_boot_controller();
 
 

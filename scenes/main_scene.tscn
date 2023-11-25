@@ -1,9 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://bqtb8sey31dwb"]
+[gd_scene load_steps=15 format=3 uid="uid://bqtb8sey31dwb"]
 
 [ext_resource type="Script" path="res://src/welcomeScreen/welcomescreen.gd" id="1_ta6vg"]
-[ext_resource type="PackedScene" uid="uid://7pd1lduu7wdf" path="res://game.tscn" id="2_nm5sd"]
+[ext_resource type="PackedScene" uid="uid://c1n4kpxdgl0l2" path="res://game.tscn" id="2_nm5sd"]
 [ext_resource type="Texture2D" uid="uid://bigum27ytm0tl" path="res://assets/erectile-dysfunction.png" id="3_bn6j8"]
 [ext_resource type="Texture2D" uid="uid://mb7ktx0ginrt" path="res://assets/20230920155417_GAME_JAM_-_NEWS.png" id="3_k074u"]
+[ext_resource type="Texture2D" uid="uid://1lmju52nynwg" path="res://assets/Official_unity_logo.png" id="4_vjxvx"]
+[ext_resource type="Texture2D" uid="uid://jsdiielm40vg" path="res://assets/godot-gaming-engine.png" id="5_didla"]
 
 [sub_resource type="SystemFont" id="SystemFont_qrm3g"]
 subpixel_positioning = 0
@@ -100,6 +102,54 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("intro_game/ColorRect/Not:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("intro_game/ColorRect/Godot:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("intro_game/ColorRect/Godot:scale")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(10, 10)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("intro_game/ColorRect/Unity:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_wuslw"]
@@ -244,6 +294,54 @@ tracks/3/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("intro_game/ColorRect/Not:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2.0708, 2.3046, 5.00001),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("intro_game/ColorRect/Godot:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.48334, 1.9, 5.00001),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("intro_game/ColorRect/Godot:scale")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1.3694, 1.9, 5.00001),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(10, 10), Vector2(10, 10), Vector2(1, 1), Vector2(1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("intro_game/ColorRect/Unity:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1.8203, 2.0541, 5.00001),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_xmh3s"]
 resource_name = "outro"
@@ -365,6 +463,26 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 texture = ExtResource("3_k074u")
 
+[node name="Unity" type="TextureRect" parent="intro_game/ColorRect"]
+layout_mode = 0
+offset_left = 585.0
+offset_top = 1367.0
+offset_right = 1340.0
+offset_bottom = 1630.0
+texture = ExtResource("4_vjxvx")
+expand_mode = 1
+
+[node name="Godot" type="TextureRect" parent="intro_game/ColorRect"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 441.0
+offset_top = 1135.0
+offset_right = 1405.0
+offset_bottom = 1730.0
+scale = Vector2(10, 10)
+texture = ExtResource("5_didla")
+expand_mode = 1
+
 [node name="Label" type="Label" parent="intro_game/ColorRect"]
 layout_mode = 1
 anchors_preset = -1
@@ -374,7 +492,23 @@ anchor_right = 1.00052
 anchor_bottom = 0.837963
 grow_horizontal = 2
 grow_vertical = 2
-text = "Not made with Unity"
+text = "Made With Unity"
+label_settings = SubResource("LabelSettings_gwqfi")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Not" type="Label" parent="intro_game/ColorRect"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.000520833
+anchor_top = 0.80463
+anchor_right = 1.00052
+anchor_bottom = 0.837963
+grow_horizontal = 2
+grow_vertical = 2
+text = "NOT                                          "
 label_settings = SubResource("LabelSettings_gwqfi")
 horizontal_alignment = 1
 vertical_alignment = 1

@@ -1,15 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://dysiqaqn06x6v"]
+[gd_scene load_steps=10 format=3 uid="uid://dysiqaqn06x6v"]
 
-[ext_resource type="Texture2D" uid="uid://d0u1l6t2lqef4" path="res://Ricardo_Campos_-_perfil_portal_-_v2.jpg" id="1_3wei1"]
-[ext_resource type="Texture2D" uid="uid://drmtku4jensnc" path="res://eurico_martins_Portal_do_Gamer.jpg" id="2_r0xjq"]
+[ext_resource type="Texture2D" uid="uid://bigmlu3kud431" path="res://assets/fps.png" id="1_5d5k7"]
+[ext_resource type="Script" path="res://src/fps_counter.gd" id="3_kdw8v"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0601n"]
-albedo_texture = ExtResource("1_3wei1")
+[sub_resource type="ViewportTexture" id="ViewportTexture_tljrq"]
+viewport_path = NodePath("Cameras/SubViewport")
 
-[sub_resource type="BoxMesh" id="BoxMesh_q0hpq"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_grxon"]
-albedo_texture = ExtResource("2_r0xjq")
+[sub_resource type="ViewportTexture" id="ViewportTexture_5ef12"]
+viewport_path = NodePath("Cameras/SubViewport2")
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6dbjg"]
 
@@ -20,50 +18,55 @@ sky_material = SubResource("ProceduralSkyMaterial_6dbjg")
 background_mode = 2
 sky = SubResource("Sky_7s57k")
 
-[node name="Game" type="Node"]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_dep7v"]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[sub_resource type="PlaneMesh" id="PlaneMesh_kf7r3"]
+size = Vector2(30, 30)
+
+[node name="Game" type="Node3D"]
+
+[node name="Cameras" type="Node" parent="."]
+
+[node name="ViewP1" type="TextureRect" parent="Cameras"]
 offset_right = 1920.0
-offset_bottom = 2164.0
+offset_bottom = 1080.0
+texture = SubResource("ViewportTexture_tljrq")
 
-[node name="TopDisplay" type="SubViewportContainer" parent="VBoxContainer"]
-layout_mode = 2
+[node name="ViewP2" type="TextureRect" parent="Cameras"]
+offset_top = 1080.0
+offset_right = 1920.0
+offset_bottom = 2160.0
+texture = SubResource("ViewportTexture_5ef12")
 
-[node name="SubViewport" type="SubViewport" parent="VBoxContainer/TopDisplay"]
+[node name="SubViewport" type="SubViewport" parent="Cameras"]
 handle_input_locally = false
 size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="VBoxContainer/TopDisplay/SubViewport"]
-material_override = SubResource("StandardMaterial3D_0601n")
-mesh = SubResource("BoxMesh_q0hpq")
+[node name="CameraP1" type="Camera3D" parent="Cameras/SubViewport"]
+transform = Transform3D(0.567744, 0, -0.823205, 0, 1, 0, 0.823205, 0, 0.567744, -13.0491, 1.59603, 13.3254)
+cull_mask = 1047551
+current = true
 
-[node name="Camera3D" type="Camera3D" parent="VBoxContainer/TopDisplay/SubViewport/MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.54028)
-
-[node name="BottomDisplay" type="SubViewportContainer" parent="VBoxContainer"]
-layout_mode = 2
-
-[node name="SubViewport" type="SubViewport" parent="VBoxContainer/BottomDisplay"]
+[node name="SubViewport2" type="SubViewport" parent="Cameras"]
 handle_input_locally = false
 size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="VBoxContainer/BottomDisplay/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.62749, -0.539751, -1.0994)
-material_override = SubResource("StandardMaterial3D_grxon")
-mesh = SubResource("BoxMesh_q0hpq")
+[node name="CameraP2" type="Camera3D" parent="Cameras/SubViewport2"]
+transform = Transform3D(-0.799401, 0, 0.600797, 0, 1, 0, -0.600797, 0, -0.799401, 10.7473, 1.6, -10.8174)
+cull_mask = 1046527
+current = true
 
-[node name="Camera3D" type="Camera3D" parent="VBoxContainer/BottomDisplay/SubViewport/MeshInstance3D"]
-transform = Transform3D(0.457626, 0, 0.889145, 0, 1, 0, -0.889145, 0, 0.457626, 1.88927, 0.472599, 2.21397)
+[node name="FPSCounter" type="Label" parent="."]
+offset_right = 119.0
+offset_bottom = 86.0
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_font_sizes/font_size = 60
+text = "FPS:"
+script = ExtResource("3_kdw8v")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.782641, 0, 0.622474, -0.145102, 0.972451, 0.182438, -0.605325, -0.233106, 0.76108, 6.3841, 0, 7.38824)
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_c3xbe")
-
-[node name="Label" type="Label" parent="."]
+[node name="DesculpaQuerida" type="Label" parent="."]
 offset_left = 134.0
 offset_top = 112.0
 offset_right = 1798.0
@@ -71,10 +74,51 @@ offset_bottom = 388.0
 theme_override_font_sizes/font_size = 200
 text = "DesculpaQuerida"
 
-[node name="Label2" type="Label" parent="."]
+[node name="IstoNuncaMeAconteceu" type="Label" parent="."]
 offset_left = 81.0
 offset_top = 1266.0
 offset_right = 2381.0
 offset_bottom = 1542.0
 theme_override_font_sizes/font_size = 150
 text = "IstoNuncaMeAconteceu"
+
+[node name="Environment" type="Node" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
+transform = Transform3D(0.782641, -2.44908e-07, 0.622473, -0.145102, 0.972451, 0.182438, -0.605325, -0.233106, 0.76108, 6.3841, 0, 7.38824)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+environment = SubResource("Environment_c3xbe")
+
+[node name="Player1" type="TextureRect" parent="."]
+offset_left = 565.0
+offset_top = 330.0
+offset_right = 1065.0
+offset_bottom = 830.0
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_5d5k7")
+
+[node name="Player2" type="TextureRect" parent="."]
+offset_left = 629.0
+offset_top = 1410.0
+offset_right = 1129.0
+offset_bottom = 1910.0
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_5d5k7")
+
+[node name="Player1Body" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.777619, 0, 0.628737, -7.45058e-09, 1, 0, -0.628737, 0, -0.777619, -13.2862, 1, 13.7395)
+layers = 1024
+mesh = SubResource("CapsuleMesh_dep7v")
+skeleton = NodePath("../Cameras/SubViewport")
+
+[node name="Player2Body" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.70728, 0, -0.706934, -7.45058e-09, 1, 0, 0.706934, 0, 0.70728, 11.0491, 1, -11.1195)
+layers = 2048
+mesh = SubResource("CapsuleMesh_dep7v")
+skeleton = NodePath("../Cameras/SubViewport")
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="Ground" type="MeshInstance3D" parent="World"]
+mesh = SubResource("PlaneMesh_kf7r3")

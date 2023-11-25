@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://dysiqaqn06x6v"]
+[gd_scene load_steps=15 format=3 uid="uid://7lqkign4wvpn"]
 
 [ext_resource type="Texture2D" uid="uid://bigmlu3kud431" path="res://assets/fps.png" id="1_5d5k7"]
+[ext_resource type="Script" path="res://MyCharacterBody3D.gd" id="3_adqii"]
 [ext_resource type="Script" path="res://src/fps_counter.gd" id="3_kdw8v"]
 [ext_resource type="AudioStream" uid="uid://b7c5mtggq1yf3" path="res://audio/tick.wav" id="3_kgfql"]
 
@@ -19,7 +20,13 @@ sky_material = SubResource("ProceduralSkyMaterial_6dbjg")
 background_mode = 2
 sky = SubResource("Sky_7s57k")
 
+[sub_resource type="TorusMesh" id="TorusMesh_g8v5m"]
+
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_dep7v"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_v6a14"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_esr64"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_kf7r3"]
 size = Vector2(30, 30)
@@ -45,8 +52,8 @@ size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
 [node name="CameraP1" type="Camera3D" parent="Cameras/SubViewport"]
-transform = Transform3D(0.567744, 0, -0.823205, 0, 1, 0, 0.823205, 0, 0.567744, -13.0491, 1.59603, 13.3254)
-cull_mask = 1047551
+transform = Transform3D(0.567744, 0, -0.823205, 0, 1, 0, 0.823205, 0, 0.567744, -7.40972, 1.59603, 13.3254)
+cull_mask = 1046527
 current = true
 
 [node name="SubViewport2" type="SubViewport" parent="Cameras"]
@@ -56,7 +63,7 @@ render_target_update_mode = 4
 
 [node name="CameraP2" type="Camera3D" parent="Cameras/SubViewport2"]
 transform = Transform3D(-0.799401, 0, 0.600797, 0, 1, 0, -0.600797, 0, -0.799401, 10.7473, 1.6, -10.8174)
-cull_mask = 1046527
+cull_mask = 1047551
 current = true
 
 [node name="FPSCounter" type="Label" parent="."]
@@ -99,6 +106,11 @@ offset_bottom = 830.0
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("1_5d5k7")
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0269194, 1.19938, 0.0136251)
+mesh = SubResource("TorusMesh_g8v5m")
+skeleton = NodePath("../World")
+
 [node name="Player2" type="TextureRect" parent="."]
 offset_left = 629.0
 offset_top = 1410.0
@@ -107,17 +119,39 @@ offset_bottom = 1910.0
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("1_5d5k7")
 
-[node name="Player1Body" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.777619, 0, 0.628737, -7.45058e-09, 1, 0, -0.628737, 0, -0.777619, -13.2862, 1, 13.7395)
-layers = 1024
-mesh = SubResource("CapsuleMesh_dep7v")
-skeleton = NodePath("../Cameras/SubViewport")
+[node name="P1 CharBody" type="CharacterBody3D" parent="." node_paths=PackedStringArray("playerCam", "enemyCam")]
+transform = Transform3D(0.209381, 0, -0.977836, -1.65687e-09, 1, -4.68446e-09, 0.977836, 0, 0.209381, 9.13032, 2, -10.3064)
+script = ExtResource("3_adqii")
+playerCam = NodePath("../Cameras/SubViewport/CameraP1")
+enemyCam = NodePath("../Cameras/SubViewport2/CameraP2")
+Foward = "W"
+Left = "Q"
+Right = "E"
 
-[node name="Player2Body" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.70728, 0, -0.706934, -7.45058e-09, 1, 0, 0.706934, 0, 0.70728, 11.0491, 1, -11.1195)
+[node name="Player2Body" type="MeshInstance3D" parent="P1 CharBody"]
 layers = 2048
 mesh = SubResource("CapsuleMesh_dep7v")
-skeleton = NodePath("../Cameras/SubViewport")
+skeleton = NodePath("../../Cameras/SubViewport")
+
+[node name="P1 Colshape" type="CollisionShape3D" parent="P1 CharBody"]
+shape = SubResource("CapsuleShape3D_v6a14")
+
+[node name="P2 CharBody" type="CharacterBody3D" parent="." node_paths=PackedStringArray("playerCam", "enemyCam")]
+transform = Transform3D(-0.777619, 0, 0.628737, -7.45058e-09, 1, 0, -0.628737, 0, -0.777619, -13.2862, 1, 13.7395)
+script = ExtResource("3_adqii")
+playerCam = NodePath("../Cameras/SubViewport2/CameraP2")
+enemyCam = NodePath("../Cameras/SubViewport/CameraP1")
+Foward = "U"
+Left = "Y"
+Right = "I"
+
+[node name="Player1Body" type="MeshInstance3D" parent="P2 CharBody"]
+layers = 1024
+mesh = SubResource("CapsuleMesh_dep7v")
+skeleton = NodePath("../../Cameras/SubViewport")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="P2 CharBody"]
+shape = SubResource("CapsuleShape3D_esr64")
 
 [node name="World" type="Node3D" parent="."]
 

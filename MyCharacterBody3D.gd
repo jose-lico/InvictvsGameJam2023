@@ -2,6 +2,13 @@ extends CharacterBody3D
 
 @export var playerCam : Camera3D  
 @export var enemyCam : Camera3D
+
+@export var Foward : String
+@export var Left : String
+@export var Right : String
+var DISPARAR = "play"
+
+
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
 		
@@ -42,30 +49,30 @@ func _physics_process(delta):
 
 
 
-
-
 func _input(event):
+	
 	if event is InputEventKey:
-		if event.keycode == KEY_SPACE:
+		print(event.as_text())
+		if event.as_text()  == DISPARAR :
 			if (event.pressed):
 				shootInput = 1
 			else:
 				shootInput = 0
 		
 	
-		if event.keycode == KEY_W:
+		if event.as_text() == Foward:
 			if event.pressed:
 				moveInput = 1
 			else: 
 				moveInput = 0
 
-		if event.keycode == KEY_Q:
+		if event.as_text() == Left:
 			if event.pressed:
 				camdirection.x = 1
 			elif !event.pressed:
 				camdirection.x = 0 
 				
-		if event.keycode == KEY_E:
+		if event.as_text()  == Right:
 			if event.pressed:
 				camdirection.y = -1
 			elif !event.pressed:
@@ -90,8 +97,6 @@ func shoot():
 		
 		
 		if collision:
-			print("zzzzz")
-			print(query)
 			print( collision.collider.name)
 		else:
 			print("nadinha")

@@ -6,6 +6,7 @@ extends GenisysCenter
 # ==================== ====================
 
 func _enter_tree():
+	led_pattern_json_path="res://src/genisys/test_pattern.json"
 	server_address = "192.168.220.109"
 	_boot_controller();
 
@@ -28,25 +29,30 @@ func register():
 	bind_input_to_callback("autoplay", Callable(self, "_on_auto_state_change"));
 
 	bind_id_to_callback("hardware/led_strips/get_info", Callable(self, "_print_payload"));
+	bind_id_to_callback("hardware/led_strips/add_patterns", Callable(self, "_print_payload"));
+	bind_id_to_callback("hardware/led_strips/set_pattern", Callable(self, "_print_payload"));
 
 
 # - - - - - - - - - - - - - - - - - - - - -
 # Override this function
 # Called after connection established
 func connection_established():
-	send_data("core/settings/remove_capability", {payload="hardware"});
-	send_data("hardware/led_strips/get_info");
-	
-	# send_data("core/settings/add_capability", {payload="hardware"});
 
+	if(!_ledpatterns_data.is_empty()):
+		send_data("hardware/led_strips/remove_patterns");
+		send_data("hardware/led_strips/add_patterns", {payload=_ledpatterns_data.patterns});
+		Genisys.send_data("hardware/led_strips/set_pattern", {payload="2"});
+	pass
+	
 	# send_data("core/settings/update_configuration", {payload={
 	# 	"hardware/cabinet_type":2, "hardware/io_type": "quixant", "hardware/io_light_tower_enable": false}});
 	
 	# send_data("core/settings/get_configuration");
+	# send_data("hardware/led_strips/get_info");
 
-	if(!_ledpatterns_data.is_empty()):
-		send_data("hardware/led_strips/add_patterns", {payload=_ledpatterns_data.patterns});
-		# send_data("hardware/led_strips/set_pattern", {payload="first_example"});
+	# if(!_ledpatterns_data.is_empty()):
+	# 	send_data("hardware/led_strips/add_patterns", {payload=_ledpatterns_data.patterns});
+	# 	send_data("hardware/led_strips/set_pattern", {payload="first_example"});
 
 	# if(!_blinkpatterns_data.is_empty()):
 	# 	send_data("hardware/outputs/add_blink_patterns", {payload=_blinkpatterns_data.patterns});
@@ -61,25 +67,28 @@ func connection_established():
 # 	print(JSON.print(payload, "\t"));
 
 func _on_led_strips_get_info(payload: Dictionary):
+	print("_on_led_strips_get_info callback");
 	print(JSON.stringify(payload, "\t"));
 
+func _print_payload(payload: Dictionary):
+	print(JSON.stringify(payload, "\t"));
 
-# # - - - - - - - - - - - - - - -
-# # Callback on enter state
-# func _on_enter_state(_current_state):
-# 	if(_current_state == null):
-# 		return;
+# - - - - - - - - - - - - - - -
+# Callback on enter state
+func _on_enter_state(_current_state):
+	if(_current_state == null):
+		return;
 	
 
-# 	match _current_state:
-# 		"idle", "end_game":
-# 			send_data("hardware/outputs/stop_blink_pattern", {payload={group="draw_group"}});
-# 			send_data("hardware/outputs/start_blink_pattern", {payload={"group": "idle_group", "id": "test_pattern"}});
+	match _current_state:
+		"idle", "end_game":
+			send_data("hardware/outputs/stop_blink_pattern", {payload={group="draw_group"}});
+			send_data("hardware/outputs/start_blink_pattern", {payload={"group": "idle_group", "id": "test_pattern"}});
 
 
-# 		"draw_balls":
-# 			send_data("hardware/outputs/stop_blink_pattern", {payload={group="idle_group"}});
-# 			send_data("hardware/outputs/start_blink_pattern", {payload={"group": "draw_group", "id": "test_pattern"}});
+		"draw_balls":
+			send_data("hardware/outputs/stop_blink_pattern", {payload={group="idle_group"}});
+			send_data("hardware/outputs/start_blink_pattern", {payload={"group": "draw_group", "id": "test_pattern"}});
 
 
 # - - - - - - - - - - - - - - - - - - - - -
@@ -143,7 +152,7 @@ func _on_led_strips_get_info(payload: Dictionary):
 # - - - - - - - - - - - - - - - - - - - - -
 # Callback function for the play button
 func _on_play_state_change(payload: Dictionary):
-
+	# print("on play pressed");
 	print(JSON.stringify(payload, "\t"));
 # 	if(payload.data.input_state == "active"):
 # 		EventCenter.emit("evt_key_space", self);

@@ -1,3 +1,13 @@
-[gd_scene format=3 uid="uid://8or36ybd4apj"]
+[gd_scene load_steps=2 format=3 uid="uid://8or36ybd4apj"]
+
+[ext_resource type="Script" path="res://scenes/temp_input.gd" id="1_40xif"]
 
 [node name="main" type="Node"]
+script = ExtResource("1_40xif")
+
+[node name="Control" type="Control" parent="."]
+modulate = Color(0.235294, 0, 0, 1)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

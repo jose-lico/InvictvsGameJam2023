@@ -1,12 +1,13 @@
-[gd_scene load_steps=27 format=3 uid="uid://bh7rox2t2dku0"]
+[gd_scene load_steps=28 format=3 uid="uid://bh7rox2t2dku0"]
 
 [ext_resource type="Script" path="res://src/clock/clock.gd" id="1_1rb5a"]
 [ext_resource type="Texture2D" uid="uid://bigmlu3kud431" path="res://assets/fps.png" id="1_5d5k7"]
 [ext_resource type="AudioStream" uid="uid://b7c5mtggq1yf3" path="res://audio/Audio_Tick.wav" id="2_fgccr"]
-[ext_resource type="AudioStream" uid="uid://r8a3hnbluvtf" path="res://audio/Audio_AWP.wav" id="3_72jv1"]
+[ext_resource type="AudioStream" uid="uid://boke673hsm6xh" path="res://audio/Audio_AWP.wav" id="3_72jv1"]
 [ext_resource type="Script" path="res://src/fps_counter.gd" id="3_kdw8v"]
 [ext_resource type="Script" path="res://src/debug_screen.gd" id="4_c2jey"]
 [ext_resource type="AudioStream" uid="uid://bfqosg78h57gv" path="res://audio/Audio_Ambience.wav" id="4_nnxm7"]
+[ext_resource type="AudioStream" uid="uid://giyajfuodes5" path="res://audio/Audio_Zumbido.wav" id="5_7pjwa"]
 [ext_resource type="PackedScene" uid="uid://cs14j0uxsij30" path="res://prefab player.tscn" id="6_csodm"]
 [ext_resource type="PackedScene" uid="uid://bvlq7iejuw17a" path="res://scenes/saloon.tscn" id="8_cogct"]
 
@@ -18,7 +19,7 @@ resource_name = "Animation_Flash"
 length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("Cameras/ViewP1:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
@@ -30,7 +31,7 @@ tracks/0/keys = {
 }
 tracks/1/type = "value"
 tracks/1/imported = false
-tracks/1/enabled = false
+tracks/1/enabled = true
 tracks/1/path = NodePath("Cameras/ViewP2:self_modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
@@ -63,6 +64,30 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 2,
 "values": [100.0, 30.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Audio/Ambience:volume_db")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-25.0, -40.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Audio/AWP:volume_db")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-10.0, -30.0]
 }
 
 [sub_resource type="Animation" id="Animation_idgyy"]
@@ -116,6 +141,18 @@ tracks/3/keys = {
 "update": 2,
 "values": [5.0]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Audio/Ambience:volume_db")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.5),
+"transitions": PackedFloat32Array(1),
+"update": 2,
+"values": [-25.0]
+}
 
 [sub_resource type="Animation" id="Animation_nyj2a"]
 length = 0.001
@@ -166,6 +203,30 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Audio/Ambience:volume_db")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-25.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Audio/AWP:volume_db")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-10.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xd564"]
@@ -572,6 +633,7 @@ script = ExtResource("1_1rb5a")
 tick_audio = NodePath("Audio/TikTokOnTheClock")
 animation_player_p1 = NodePath("Player1/AnimationPlayer_p1")
 animation_player_p2 = NodePath("Player2/AnimationPlayer_p2")
+tickVolumeIncreaseRate = 18.0
 
 [node name="GameAnimations" type="AnimationPlayer" parent="."]
 libraries = {
@@ -591,6 +653,10 @@ volume_db = -10.0
 stream = ExtResource("4_nnxm7")
 volume_db = -25.0
 autoplay = true
+
+[node name="Zumbido" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("5_7pjwa")
+volume_db = -10.0
 
 [node name="Cameras" type="Node" parent="."]
 
@@ -621,7 +687,7 @@ size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
 [node name="CameraP2" type="Camera3D" parent="Cameras/SubViewport2"]
-transform = Transform3D(0.499712, 1.10958e-16, 0.866192, -2.22044e-16, 1, -6.61746e-24, -0.866192, -1.92333e-16, 0.499712, 19.6994, 3.51501, 10.3578)
+transform = Transform3D(0.499712, 1.10958e-16, 0.866192, -2.22044e-16, 1, -6.61744e-24, -0.866192, -1.92333e-16, 0.499712, 19.6994, 3.51501, 10.3578)
 cull_mask = 1046527
 current = true
 
@@ -786,6 +852,7 @@ remote_path = NodePath("../../Cameras/SubViewport2/CameraP2")
 [connection signal="sig_blackout" from="." to="GameAnimations" method="play" binds= ["Animation_Blackout"]]
 [connection signal="sig_flash" from="." to="." method="flash"]
 [connection signal="sig_flash" from="." to="Audio/AWP" method="play"]
+[connection signal="sig_flash" from="." to="Audio/Zumbido" method="play"]
 [connection signal="sig_flash" from="." to="P1" method="shoot"]
 [connection signal="sig_flash" from="." to="P2" method="shoot"]
 [connection signal="sig_flash" from="." to="GameAnimations" method="play" binds= ["Animation_Flash"]]

@@ -9,6 +9,7 @@ signal sig_flash();
 signal sig_stopmoving();
 
 const TIME_HOLD_AFTER_FLASH : float = 1.5;
+const TICK_TIME = 10000.0;
 
 @export var tick_audio: AudioStreamPlayer;
 
@@ -80,7 +81,7 @@ func _on_state_change(state: GameManager.STATES):
 		GameManager.STATES.GAME:
 			Genisys.send_data("hardware/outputs/start_blink_pattern",
 				{payload={"group": "buttons", "id": "ingame_set"}});
-			start_new_timer(1.0);
+			start_new_timer(TICK_TIME);
 
 
 # - - - - - - - - - - - - - - - - - - - - -
@@ -132,9 +133,17 @@ func calcwinner(value):
 		if totalwinner == 2:
 			#TIE!
 			print("TIE")
+			start_new_timer(TICK_TIME);
 			animation_player_p1.play("tie");
 			animation_player_p2.play("tie");
-			
+		elif totalwinner == 0:
+			#MISSED!
+			print("BOTH MISSED")
+			start_new_timer(TICK_TIME);
+			animation_player_p1.play("miss");
+			animation_player_p2.play("miss");
+		elif winnerArray[0] == 1:
+			print("Player 1 won!")
 			GameManager.Go_To_Menu()
 			GameManager.state_changed.disconnect(_on_state_change)
 			queue_free()
@@ -162,11 +171,6 @@ func calcwinner(value):
 			queue_free()
 
 		winnerArray.clear()
-
-
-
-
-
 
 func flash():
 	Genisys.send_data("hardware/led_strips/set_pattern", {payload="flash"});

@@ -34,6 +34,9 @@ func _on_state_change(state: GameManager.STATES):
 			if(animationP != null):
 				animationP.play("intro");
 
+			Genisys.send_data("hardware/outputs/start_blink_pattern", {payload={"group": "buttons", "id": "initial_set"}});
+
+
 		GameManager.STATES.INTROGAME:
 			if(next_scene != null):
 				next_scene = ResourceLoader.load("res://game.tscn")

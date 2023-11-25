@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://cfblonq8svpc7"]
+[gd_scene load_steps=49 format=3 uid="uid://bvlq7iejuw17a"]
 
 [ext_resource type="Texture2D" uid="uid://bj5dl40s78k1c" path="res://assets/western_stuff/Textures/Planks/Planks_2/Planks_Base_Color.png" id="1_lrwac"]
 [ext_resource type="PackedScene" uid="uid://cnd8csali34k0" path="res://assets/western_stuff/wall_1.tscn" id="2_0diuw"]

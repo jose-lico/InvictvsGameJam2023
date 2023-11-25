@@ -29,6 +29,11 @@ func _ready():
 	Genisys.bind_input_to_callback(Foward, Callable(self, "_on_genisys_input"));
 	Genisys.bind_input_to_callback(Left, Callable(self, "_on_genisys_input"));
 	Genisys.bind_input_to_callback(Right, Callable(self, "_on_genisys_input"));
+	
+func _exit_tree():
+	Genisys.unbind_input_to_callback(Foward, Callable(self, "_on_genisys_input"));
+	Genisys.unbind_input_to_callback(Left, Callable(self, "_on_genisys_input"));
+	Genisys.unbind_input_to_callback(Right, Callable(self, "_on_genisys_input"));
 
 func _physics_process(delta):
 	#check shoot
@@ -144,9 +149,9 @@ func shoot():
 				
 		if (one_bound > 0):
 			one_bound = 0
-			get_node('root/Game').calcwinner(1)
+			get_tree().root.get_node('Game').calcwinner(1)
 		else:
-			get_node('root/Game').calcwinner(0)
+			get_tree().root.get_node('Game').calcwinner(0)
 
 func _on_game_sig_stopmoving():
 	canPlay = 0

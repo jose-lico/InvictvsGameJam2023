@@ -23,7 +23,10 @@ func _enter_tree():
 # Public
 # ==================== ====================
 
-
+func Go_To_Menu():
+	var menuscene = ResourceLoader.load("res://scenes/main_scene.tscn")
+	get_tree().get_root().add_child(menuscene.instantiate());
+	change_state(STATES.MENU)
 # - - - - - - - - - - - - - - - - - - - - -
 func change_state(target_state: STATES):
 	previous_state = current_state;

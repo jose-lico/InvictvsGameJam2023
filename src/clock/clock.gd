@@ -54,6 +54,9 @@ func _enter_tree():
 	_on_state_change(GameManager.current_state);
 	# start_new_timer(1.0);
 
+func _exit_tree():
+	GameManager.state_changed.disconnect(_on_state_change);
+	queue_free()
 
 func _on_state_change(state: GameManager.STATES):
 	match state:
@@ -99,7 +102,7 @@ func __on_timer_timeout__():
 		
 		
 var winnerArray = []
-func calcWinner(value):
+func calcwinner(value):
 	winnerArray.push_front(value)
 	
 	if (winnerArray.size() == 2 ):
@@ -113,12 +116,18 @@ func calcWinner(value):
 			print("BOTH MISSED")
 		elif winnerArray[0] == 1:
 			print("Player 1 won!")
-			GameManager.change_state(GameManager.goto_menu_state())
+			GameManager.Go_To_Menu()
+			GameManager.state_changed.disconnect(_on_state_change)
+			queue_free()
 		elif winnerArray[1] == 1:
 			print("Player 2 won!")
-			GameManager.change_state(GameManager.goto_menu_state())
+			
+			GameManager.Go_To_Menu()
+			GameManager.state_changed.disconnect(_on_state_change)
+			queue_free()
 			
 		winnerArray.clear() 
+		
 			
 	
 	

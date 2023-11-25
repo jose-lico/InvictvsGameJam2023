@@ -276,6 +276,8 @@ func _on_input_change(payload:Dictionary):
 	if(payload.has("data") && payload.data.has("name")):
 		if(_id_binds.input.has(payload.data.name)):
 			for callback in _id_binds.input[payload.data.name]:
+				if (callback == null):
+					continue
 				(callback as Callable).call(payload);
 
 

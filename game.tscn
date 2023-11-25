@@ -1,14 +1,13 @@
-[gd_scene load_steps=17 format=3 uid="uid://bh7rox2t2dku0"]
+[gd_scene load_steps=16 format=3 uid="uid://c1n4kpxdgl0l2"]
 
 [ext_resource type="Script" path="res://src/clock/clock.gd" id="1_1rb5a"]
 [ext_resource type="Texture2D" uid="uid://bigmlu3kud431" path="res://assets/fps.png" id="1_5d5k7"]
 [ext_resource type="AudioStream" uid="uid://r8a3hnbluvtf" path="res://audio/Audio_AWP.wav" id="3_72jv1"]
 [ext_resource type="Script" path="res://src/fps_counter.gd" id="3_kdw8v"]
 [ext_resource type="AudioStream" uid="uid://b7c5mtggq1yf3" path="res://audio/tick.wav" id="3_kgfql"]
-[ext_resource type="Material" uid="uid://pnix2sbjxvlh" path="res://shaders/mats/canvasPixelation.tres" id="4_6df06"]
 [ext_resource type="Script" path="res://src/debug_screen.gd" id="4_c2jey"]
-[ext_resource type="PackedScene" path="res://prefab player.tscn" id="6_csodm"]
-[ext_resource type="PackedScene" uid="uid://cfblonq8svpc7" path="res://scenes/saloon.tscn" id="8_cogct"]
+[ext_resource type="PackedScene" uid="uid://cs14j0uxsij30" path="res://prefab player.tscn" id="6_csodm"]
+[ext_resource type="PackedScene" uid="uid://dcp1jldjf2n1d" path="res://scenes/saloon.tscn" id="8_cogct"]
 
 [sub_resource type="Animation" id="Animation_dvox1"]
 resource_name = "Animation_Blackout"
@@ -211,13 +210,11 @@ autoplay = true
 [node name="Cameras" type="Node" parent="."]
 
 [node name="ViewP1" type="TextureRect" parent="Cameras"]
-material = ExtResource("4_6df06")
 offset_right = 1920.0
 offset_bottom = 1080.0
 texture = SubResource("ViewportTexture_tljrq")
 
 [node name="ViewP2" type="TextureRect" parent="Cameras"]
-material = ExtResource("4_6df06")
 offset_top = 1080.0
 offset_right = 1920.0
 offset_bottom = 2160.0

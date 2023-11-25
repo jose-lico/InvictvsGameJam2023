@@ -15,6 +15,8 @@ const TIME_HOLD_AFTER_FLASH : float = 1.5;
 @export var animation_player_p1: AnimationPlayer;
 @export var animation_player_p2: AnimationPlayer;
 
+@export_range(1, 20, 0.2) var tickVolumeIncreaseRate: float
+
 
 # - - - - - - - - - - - - - - - - - - - - -
 # Values
@@ -102,7 +104,7 @@ func __on_timer_timeout__():
 
 	if(tick_audio != null):
 		print(current_tick_count / 11.0)
-		tick_audio.set_volume_db(linear_to_db((current_tick_count / 11.0) * 8.0));
+		tick_audio.set_volume_db(linear_to_db((current_tick_count / 11.0) * tickVolumeIncreaseRate));
 		if(current_tick_count < 12):
 			tick_audio.play();
 
@@ -130,20 +132,28 @@ func calcwinner(value):
 		if totalwinner == 2:
 			#TIE!
 			print("TIE")
-			start_new_timer(1.0);
 			animation_player_p1.play("tie");
 			animation_player_p2.play("tie");
-		elif totalwinner == 0:
-			#MISSED!
-			print("BOTH MISSED")
-			start_new_timer(1.0);
-			animation_player_p1.play("miss");
-			animation_player_p2.play("miss");
-		elif winnerArray[0] == 1:
-			print("Player 1 won!")
+			
 			GameManager.Go_To_Menu()
 			GameManager.state_changed.disconnect(_on_state_change)
 			queue_free()
+			
+		elif totalwinner == 0:
+			#MISSED!
+			print("BOTH MISSED")
+			animation_player_p1.play("miss");
+			animation_player_p2.play("miss");
+			
+			start_new_timer(1.0);
+			
+		elif winnerArray[0] == 1:
+			print("Player 1 won!")
+			
+			GameManager.Go_To_Menu()
+			GameManager.state_changed.disconnect(_on_state_change)
+			queue_free()
+			
 		elif winnerArray[1] == 1:
 			print("Player 2 won!")
 

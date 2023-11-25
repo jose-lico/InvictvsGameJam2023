@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://7pd1lduu7wdf"]
+[gd_scene load_steps=16 format=3 uid="uid://c1n4kpxdgl0l2"]
 
 [ext_resource type="Script" path="res://src/clock/clock.gd" id="1_1rb5a"]
 [ext_resource type="Texture2D" uid="uid://bigmlu3kud431" path="res://assets/fps.png" id="1_5d5k7"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://b7c5mtggq1yf3" path="res://audio/tick.wav" id="3_kgfql"]
 [ext_resource type="Script" path="res://src/debug_screen.gd" id="4_c2jey"]
 [ext_resource type="PackedScene" uid="uid://cs14j0uxsij30" path="res://prefab player.tscn" id="6_csodm"]
+[ext_resource type="PackedScene" uid="uid://bvlq7iejuw17a" path="res://scenes/saloon.tscn" id="8_cogct"]
 
 [sub_resource type="Animation" id="Animation_dvox1"]
 resource_name = "Animation_Blackout"
@@ -180,27 +181,6 @@ viewport_path = NodePath("Cameras/SubViewport")
 [sub_resource type="ViewportTexture" id="ViewportTexture_5ef12"]
 viewport_path = NodePath("Cameras/SubViewport2")
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6dbjg"]
-
-[sub_resource type="Sky" id="Sky_7s57k"]
-sky_material = SubResource("ProceduralSkyMaterial_6dbjg")
-
-[sub_resource type="Environment" id="Environment_c3xbe"]
-background_mode = 2
-sky = SubResource("Sky_7s57k")
-
-[sub_resource type="TorusMesh" id="TorusMesh_g8v5m"]
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_kf7r3"]
-size = Vector2(30, 30)
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_1mhyn"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_ptyi8"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_epuoe"]
-size = Vector3(1, 2.43274, 1)
-
 [node name="Game" type="Node3D"]
 script = ExtResource("1_1rb5a")
 
@@ -223,6 +203,10 @@ volume_db = -10.0
 [node name="Ambience" type="AudioStreamPlayer" parent="Audio"]
 autoplay = true
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("3_kgfql")
+autoplay = true
+
 [node name="Cameras" type="Node" parent="."]
 
 [node name="ViewP1" type="TextureRect" parent="Cameras"]
@@ -242,7 +226,7 @@ size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
 [node name="CameraP1" type="Camera3D" parent="Cameras/SubViewport"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 12.1507)
+transform = Transform3D(0.00460762, 0, -0.999989, 0, 1, 0, 0.999989, 0, 0.00460762, -10.3817, 2.79361, 0.082)
 cull_mask = 1047551
 current = true
 far = 50.0
@@ -253,7 +237,7 @@ size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
 [node name="CameraP2" type="Camera3D" parent="Cameras/SubViewport2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -13.3477)
+transform = Transform3D(0.0548805, 1.21859e-17, 0.998493, -2.22045e-16, 1, 1.65436e-24, -0.998493, -2.2171e-16, 0.0548805, 20.364, 2.84558, 0.35654)
 cull_mask = 1046527
 current = true
 far = 50.0
@@ -293,14 +277,6 @@ offset_bottom = 1542.0
 theme_override_font_sizes/font_size = 150
 text = "IstoNuncaMeAconteceu"
 
-[node name="Environment" type="Node" parent="."]
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
-transform = Transform3D(0.782641, -2.44908e-07, 0.622473, -0.145102, 0.972451, 0.182438, -0.605325, -0.233106, 0.76108, 6.3841, 0, 7.38824)
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
-environment = SubResource("Environment_c3xbe")
-
 [node name="Player1" type="TextureRect" parent="."]
 offset_left = 565.0
 offset_top = 330.0
@@ -308,11 +284,6 @@ offset_right = 1065.0
 offset_bottom = 830.0
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("1_5d5k7")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.62154, 1.19938, -5.81322)
-mesh = SubResource("TorusMesh_g8v5m")
-skeleton = NodePath("../World")
 
 [node name="Player2" type="TextureRect" parent="."]
 offset_left = 629.0
@@ -323,7 +294,7 @@ scale = Vector2(1.5, 1.5)
 texture = ExtResource("1_5d5k7")
 
 [node name="P1" parent="." node_paths=PackedStringArray("playerCam", "enemyCam", "enemyChar") groups=["Player"] instance=ExtResource("6_csodm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 12.1507)
+transform = Transform3D(0.00921523, 0, -1.99998, 0, 2, 0, 1.99998, 0, 0.00921523, -10.267, 1.806, 0.082)
 playerCam = NodePath("../Cameras/SubViewport/CameraP1")
 enemyCam = NodePath("../Cameras/SubViewport2/CameraP2")
 enemyChar = NodePath("../P2")
@@ -333,16 +304,16 @@ layers = 1024
 
 [node name="Colider" parent="P1" index="1" groups=["Player"]]
 
+[node name="RemoteTransform3D" parent="P1" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00026417, 0.493807, 0.0573325)
+
 [node name="P2" parent="." node_paths=PackedStringArray("playerCam", "enemyCam", "enemyChar") groups=["Player"] instance=ExtResource("6_csodm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -13.3477)
+transform = Transform3D(0.109761, 0, 1.99699, 0, 2, 0, -1.99699, 0, 0.109761, 20.364, 1.80566, 0.35654)
 playerCam = NodePath("../Cameras/SubViewport2/CameraP2")
 enemyCam = NodePath("../Cameras/SubViewport/CameraP1")
 enemyChar = NodePath("../P1")
 
 [node name="Body" parent="P2" index="0" groups=["Player"]]
-
-[node name="Bound2" parent="P2/Body" index="6"]
-transform = Transform3D(1, 0, 0, -2.22045e-16, 1, 0, 0, 0, 1, 0.468099, 0, 0.100232)
 
 [node name="Colider" parent="P2" index="1" groups=["Player"]]
 transform = Transform3D(1, 0.000153501, 0, -0.000153501, 1, 0.000212076, 0, -0.000212076, 1, 0, 0, 0)
@@ -350,26 +321,7 @@ transform = Transform3D(1, 0.000153501, 0, -0.000153501, 1, 0.000212076, 0, -0.0
 [node name="RemoteTransform3D" parent="P2" index="2"]
 remote_path = NodePath("../../Cameras/SubViewport2/CameraP2")
 
-[node name="World" type="Node3D" parent="."]
-
-[node name="Ground" type="MeshInstance3D" parent="World"]
-mesh = SubResource("PlaneMesh_kf7r3")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_kgfql")
-autoplay = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(-0.189895, 0, -19.3236, 0, 6.865, 0, 2.89879, 0, -1.26586, 0.175385, 0, 0)
-shape = SubResource("CylinderShape3D_1mhyn")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(4.30071, 0, 0, 0, 2.38254, 0, 0, 0, 5.45329, 0, -0.648041, -2.04695)
-physics_material_override = SubResource("PhysicsMaterial_ptyi8")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 2.72099, 0, 0, 0, 1, 0, 0, 0)
-shape = SubResource("BoxShape3D_epuoe")
+[node name="saloon" parent="." instance=ExtResource("8_cogct")]
 
 [connection signal="sig_blackout" from="." to="GameAnimations" method="play" binds= ["Animation_Blackout"]]
 [connection signal="sig_flash" from="." to="." method="flash"]

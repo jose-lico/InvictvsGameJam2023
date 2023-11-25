@@ -46,5 +46,6 @@ transform = Transform3D(1, 0, 0, -2.22045e-16, 1, 0, 0, 0, 1, 0.352352, 0, -0.34
 shape = SubResource("CapsuleShape3D_v6a14")
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="."]
+transform = Transform3D(1, 0, 0, -2.22045e-16, 1, 0, 0, 0, 1, 0, 0.519959, 0)
 remote_path = NodePath("../../Cameras/SubViewport/CameraP1")
 update_scale = false

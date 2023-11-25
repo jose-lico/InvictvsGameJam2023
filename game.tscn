@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cfwhh0y510du1"]
+[gd_scene load_steps=23 format=3 uid="uid://bh7rox2t2dku0"]
 
 [ext_resource type="Script" path="res://src/clock/clock.gd" id="1_1rb5a"]
 [ext_resource type="Texture2D" uid="uid://bigmlu3kud431" path="res://assets/fps.png" id="1_5d5k7"]

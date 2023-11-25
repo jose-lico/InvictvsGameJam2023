@@ -6,7 +6,6 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q13kd"]
 resource_name = "Windoorv4"
-cull_mode = 2
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("1_lm5sq")
 metallic = 1.0

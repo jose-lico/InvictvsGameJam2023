@@ -6,7 +6,6 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h8dsh"]
 resource_name = "WntedBoardBarStool"
-cull_mode = 2
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("1_co5tf")
 metallic = 1.0

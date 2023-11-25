@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://2krv53rpwyfg"]
 
-[ext_resource type="Texture2D" uid="uid://bn6q8wb4b1ro3" path="res://assets/western_stuff/Preview_WesternTrimV2_Albedo.png" id="1_o2b4k"]
+[ext_resource type="Texture2D" uid="uid://djn2qrbxaiuun" path="res://assets/western_stuff/Preview_WesternTrimV2_Albedo.png" id="1_o2b4k"]
 [ext_resource type="Texture2D" uid="uid://ccom3ubi827i6" path="res://assets/western_stuff/Preview_WesternTrimV2_Metalness-WesternTrimV2_Roughness.png" id="2_f014w"]
 [ext_resource type="Texture2D" uid="uid://dvdio8ihepe7i" path="res://assets/western_stuff/Preview_WesternTrimV2_Normal.png" id="3_tgbbe"]
 

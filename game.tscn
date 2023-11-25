@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dysiqaqn06x6v"]
+[gd_scene load_steps=23 format=3 uid="uid://dysiqaqn06x6v"]
 
 [ext_resource type="Script" path="res://src/clock/clock.gd" id="1_1rb5a"]
 [ext_resource type="Texture2D" uid="uid://bigmlu3kud431" path="res://assets/fps.png" id="1_5d5k7"]
@@ -241,7 +241,7 @@ size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
 [node name="CameraP1" type="Camera3D" parent="Cameras/SubViewport"]
-transform = Transform3D(0.567744, 0, -0.823205, 0, 1, 0, 0.823205, 0, 0.567744, -7.40972, 1.59603, 13.3254)
+transform = Transform3D(0.209381, 3.46916e-10, -0.977834, -1.65687e-09, 1, 0, 0.977834, 1.62014e-09, 0.209381, 9.13, 1, -10.306)
 cull_mask = 1047551
 current = true
 far = 50.0
@@ -252,7 +252,7 @@ size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
 [node name="CameraP2" type="Camera3D" parent="Cameras/SubViewport2"]
-transform = Transform3D(-0.799401, 0, 0.600797, 0, 1, 0, -0.600797, 0, -0.799401, 10.7473, 1.6, -10.8174)
+transform = Transform3D(0.723847, 0, -0.689961, 0, 1, 0, 0.689961, 0, 0.723847, -13.2673, 1, 13.7022)
 cull_mask = 1046527
 current = true
 far = 50.0
@@ -374,8 +374,8 @@ autoplay = true
 
 [connection signal="sig_blackout" from="." to="GameAnimations" method="play" binds= ["Animation_Blackout"]]
 [connection signal="sig_flash" from="." to="." method="flash"]
+[connection signal="sig_flash" from="." to="Audio/AWP" method="play"]
 [connection signal="sig_flash" from="." to="P1 CharBody" method="shoot"]
 [connection signal="sig_flash" from="." to="P2 CharBody" method="shoot"]
-[connection signal="sig_flash" from="." to="Audio/AWP" method="play"]
 [connection signal="sig_flash" from="." to="GameAnimations" method="play" binds= ["Animation_Flash"]]
 [connection signal="sig_light" from="." to="GameAnimations" method="play" binds= ["Animation_Light"]]

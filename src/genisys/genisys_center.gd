@@ -63,8 +63,8 @@ func _process(_delta):
 		var socket_State = client_websocket.get_ready_state();
 		match socket_State:
 			# Connecting to
-			# WebSocketPeer.STATE_CONNECTING:
-			# 	print("Connecting to server...");
+			WebSocketPeer.STATE_CONNECTING:
+				print("Connecting to server...");
 
 			# During a connected socket state
 			WebSocketPeer.STATE_OPEN:

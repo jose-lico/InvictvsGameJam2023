@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://djshwn0sckeub"]
+
+[ext_resource type="Texture2D" uid="uid://dw4yt8asx4wxr" path="res://assets/wild_west_asset_pack/textures/WntedBoardBarStool_baseColor.jpeg" id="1_co5tf"]
+[ext_resource type="Texture2D" uid="uid://bc3rvyiyydvg1" path="res://assets/wild_west_asset_pack/textures/WntedBoardBarStool_metallicRoughness.png" id="2_txtde"]
+[ext_resource type="Texture2D" uid="uid://bg02wgfal0ygt" path="res://assets/wild_west_asset_pack/textures/WntedBoardBarStool_normal.png" id="3_owkjx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h8dsh"]
+resource_name = "WntedBoardBarStool"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_co5tf")
+metallic = 1.0
+metallic_texture = ExtResource("2_txtde")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_txtde")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("3_owkjx")
+ao_enabled = true
+ao_texture = ExtResource("2_txtde")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_6e7bh"]
+_surfaces = [{
+"aabb": AABB(-2.5, -3.5, 0, 5, 7, 1e-05),
+"format": 4097,
+"index_count": 48,
+"index_data": PackedByteArray(0, 0, 2, 0, 1, 0, 3, 0, 2, 0, 0, 0, 4, 0, 2, 0, 3, 0, 4, 0, 6, 0, 5, 0, 6, 0, 8, 0, 7, 0, 4, 0, 8, 0, 6, 0, 3, 0, 8, 0, 4, 0, 9, 0, 11, 0, 10, 0, 9, 0, 12, 0, 11, 0, 9, 0, 13, 0, 12, 0, 12, 0, 15, 0, 14, 0, 15, 0, 12, 0, 13, 0, 9, 0, 3, 0, 13, 0, 3, 0, 9, 0, 8, 0, 13, 0, 0, 0, 15, 0, 0, 0, 13, 0, 3, 0),
+"name": "WntedBoardBarStool",
+"primitive": 3,
+"vertex_count": 16,
+"vertex_data": PackedByteArray(0, 0, 32, 192, 116, 25, 5, 64, 0, 0, 0, 0, 0, 0, 32, 192, 0, 0, 96, 192, 0, 0, 0, 0, 248, 54, 206, 191, 0, 0, 96, 192, 0, 0, 0, 0, 211, 64, 111, 191, 228, 93, 4, 64, 0, 0, 0, 0, 184, 52, 138, 191, 16, 185, 73, 192, 0, 0, 0, 0, 9, 216, 51, 191, 0, 0, 96, 192, 0, 0, 0, 0, 0, 0, 32, 64, 0, 0, 96, 192, 0, 0, 0, 0, 0, 0, 32, 64, 124, 164, 231, 63, 0, 0, 0, 0, 30, 141, 20, 64, 144, 210, 2, 64, 0, 0, 0, 0, 183, 114, 16, 64, 176, 165, 25, 64, 0, 0, 0, 0, 0, 0, 32, 64, 141, 221, 45, 64, 0, 0, 0, 0, 0, 0, 32, 64, 0, 0, 96, 64, 0, 0, 0, 0, 148, 142, 118, 191, 36, 135, 86, 64, 0, 0, 0, 0, 28, 9, 113, 191, 129, 186, 26, 64, 0, 0, 0, 0, 12, 32, 23, 192, 36, 135, 86, 64, 0, 0, 0, 0, 0, 0, 32, 192, 204, 59, 27, 64, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_sorwn"]
+resource_name = "Sketchfab_Scene_WantedPoster4_WntedBoardBarStool_0"
+_surfaces = [{
+"aabb": AABB(-2.5, -3.5, 0, 5, 7, 1e-05),
+"attribute_data": PackedByteArray(212, 215, 177, 62, 143, 142, 117, 63, 204, 38, 177, 62, 37, 17, 74, 63, 68, 2, 191, 62, 9, 3, 74, 63, 148, 62, 202, 62, 239, 94, 117, 63, 180, 85, 199, 62, 33, 177, 76, 63, 12, 44, 205, 62, 155, 244, 73, 63, 116, 24, 255, 62, 209, 193, 73, 63, 228, 192, 255, 62, 159, 36, 115, 63, 100, 254, 252, 62, 47, 251, 116, 63, 220, 9, 252, 62, 213, 195, 119, 63, 156, 221, 255, 62, 89, 54, 122, 63, 116, 246, 255, 62, 180, 40, 128, 63, 92, 245, 201, 62, 249, 96, 127, 63, 220, 45, 202, 62, 57, 24, 120, 63, 116, 41, 180, 62, 17, 119, 127, 63, 196, 226, 177, 62, 157, 64, 120, 63),
+"format": 4119,
+"index_count": 48,
+"index_data": PackedByteArray(0, 0, 2, 0, 1, 0, 3, 0, 2, 0, 0, 0, 4, 0, 2, 0, 3, 0, 4, 0, 6, 0, 5, 0, 6, 0, 8, 0, 7, 0, 4, 0, 8, 0, 6, 0, 3, 0, 8, 0, 4, 0, 9, 0, 11, 0, 10, 0, 9, 0, 12, 0, 11, 0, 9, 0, 13, 0, 12, 0, 12, 0, 15, 0, 14, 0, 15, 0, 12, 0, 13, 0, 9, 0, 3, 0, 13, 0, 3, 0, 9, 0, 8, 0, 13, 0, 0, 0, 15, 0, 0, 0, 13, 0, 3, 0),
+"material": SubResource("StandardMaterial3D_h8dsh"),
+"name": "WntedBoardBarStool",
+"primitive": 3,
+"vertex_count": 16,
+"vertex_data": PackedByteArray(0, 0, 32, 192, 116, 25, 5, 64, 0, 0, 0, 0, 255, 127, 255, 127, 252, 254, 128, 192, 0, 0, 32, 192, 0, 0, 96, 192, 0, 0, 0, 0, 255, 127, 255, 127, 252, 254, 128, 192, 248, 54, 206, 191, 0, 0, 96, 192, 0, 0, 0, 0, 255, 127, 255, 127, 252, 254, 128, 192, 211, 64, 111, 191, 228, 93, 4, 64, 0, 0, 0, 0, 255, 127, 255, 127, 252, 254, 128, 192, 184, 52, 138, 191, 16, 185, 73, 192, 0, 0, 0, 0, 255, 127, 255, 127, 252, 254, 128, 192, 9, 216, 51, 191, 0, 0, 96, 192, 0, 0, 0, 0, 255, 127, 255, 127, 252, 254, 128, 192, 0, 0, 32, 64, 0, 0, 96, 192, 0, 0, 0, 0, 255, 127, 255, 127, 251, 254, 128, 192, 0, 0, 32, 64, 124, 164, 231, 63, 0, 0, 0, 0, 255, 127, 255, 127, 250, 254, 129, 192, 30, 141, 20, 64, 144, 210, 2, 64, 0, 0, 0, 0, 255, 127, 255, 127, 252, 254, 128, 192, 183, 114, 16, 64, 176, 165, 25, 64, 0, 0, 0, 0, 255, 127, 255, 127, 253, 254, 128, 192, 0, 0, 32, 64, 141, 221, 45, 64, 0, 0, 0, 0, 255, 127, 255, 127, 253, 254, 127, 192, 0, 0, 32, 64, 0, 0, 96, 64, 0, 0, 0, 0, 255, 127, 255, 127, 253, 254, 128, 192, 148, 142, 118, 191, 36, 135, 86, 64, 0, 0, 0, 0, 255, 127, 255, 127, 253, 254, 128, 192, 28, 9, 113, 191, 129, 186, 26, 64, 0, 0, 0, 0, 255, 127, 255, 127, 253, 254, 128, 192, 12, 32, 23, 192, 36, 135, 86, 64, 0, 0, 0, 0, 255, 127, 255, 127, 253, 254, 127, 192, 0, 0, 32, 192, 204, 59, 27, 64, 0, 0, 0, 0, 255, 127, 255, 127, 253, 254, 128, 192)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_6e7bh")
+
+[node name="WantedPoster4_WntedBoardBarStool_0" type="MeshInstance3D"]
+mesh = SubResource("ArrayMesh_sorwn")
+skeleton = NodePath("")

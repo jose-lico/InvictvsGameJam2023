@@ -8,6 +8,8 @@ signal sig_blackout();
 signal sig_flash();
 signal sig_stopmoving();
 
+const TIME_HOLD_AFTER_FLASH : float = 1.5;
+
 @export var tick_audio: AudioStreamPlayer;
 
 @export var animation_player_p1: AnimationPlayer;
@@ -121,7 +123,7 @@ func calcwinner(value):
 	winnerArray.push_front(value)
 
 	if (winnerArray.size() == 2 ):
-		await get_tree().create_timer(2.0).timeout;
+		await get_tree().create_timer(TIME_HOLD_AFTER_FLASH).timeout;
 
 		var totalwinner = winnerArray[0] + winnerArray[1]
 		#winner calc!!

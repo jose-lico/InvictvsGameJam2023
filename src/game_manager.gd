@@ -1,7 +1,7 @@
 extends Node
 
 # - - - - - - - - - - - - - - - - - - - - -
-enum STATES {INTRO, MENU, INTROGAME, GAME, ENDGAME}
+enum STATES {INTRO, MENU, INTROGAME, GAME, ENDGAMECALC,ENDGAME}
 
 # - - - - - - - - - - - - - - - - - - - - -
 signal state_changed(state: STATES)

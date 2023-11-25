@@ -96,6 +96,33 @@ func __on_timer_timeout__():
 		ref_timer.start(time_between_ticks);
 	else:
 		start_new_timer(1.0);
+		
+		
+var winnerArray = []
+func calcWinner(value):
+	winnerArray.push_front(value)
+	
+	if (winnerArray.size() == 2 ):
+		var totalwinner = winnerArray[0] + winnerArray[1]
+		#winner calc!!
+		if totalwinner == 2:
+			#TIE!
+			print("TIE")
+		elif totalwinner == 0:
+			#MISSED!
+			print("BOTH MISSED")
+		elif winnerArray[0] == 1:
+			print("Player 1 won!")
+			GameManager.change_state(GameManager.goto_menu_state())
+		elif winnerArray[1] == 1:
+			print("Player 2 won!")
+			GameManager.change_state(GameManager.goto_menu_state())
+			
+		winnerArray.clear() 
+			
+	
+	
+		
 
 func flash():
 	Genisys.send_data("hardware/led_strips/set_pattern", {payload="flash"});

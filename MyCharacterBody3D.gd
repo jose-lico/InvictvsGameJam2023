@@ -90,6 +90,9 @@ func _my_input(name, pressed : bool):
 				camdirection.y = 0
 						
 		cameraInput = camdirection.x + camdirection.y
+		
+	else:
+		print("cant move")
 
 func rotateCamera():
 	self.rotate_y(deg_to_rad( camSpeed * cameraInput)) 
@@ -141,9 +144,9 @@ func shoot():
 				
 		if (one_bound > 0):
 			one_bound = 0
-			print("eu jogador: " + name + "matei o: " + enemyChar.name)
+			get_node('.').calcwinner(1)
 		else:
-			print("nadinha")
+			get_node('.').calcwinner(0)
 
 func _on_game_sig_stopmoving():
 	canPlay = 0

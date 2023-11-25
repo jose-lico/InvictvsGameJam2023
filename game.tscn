@@ -237,7 +237,7 @@ size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
 [node name="CameraP2" type="Camera3D" parent="Cameras/SubViewport2"]
-transform = Transform3D(0.0548805, 1.21859e-17, 0.998493, -2.22045e-16, 1, 1.65436e-24, -0.998493, -2.2171e-16, 0.0548805, 20.364, 2.84558, 0.35654)
+transform = Transform3D(0.0548805, 1.21859e-17, 0.998493, -2.22045e-16, 1, 9.86076e-32, -0.998493, -2.2171e-16, 0.0548805, 20.329, 1.77356, 0.0747499)
 cull_mask = 1046527
 current = true
 far = 50.0
@@ -308,10 +308,13 @@ layers = 1024
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00026417, 0.493807, 0.0573325)
 
 [node name="P2" parent="." node_paths=PackedStringArray("playerCam", "enemyCam", "enemyChar") groups=["Player"] instance=ExtResource("6_csodm")]
-transform = Transform3D(0.109761, 0, 1.99699, 0, 2, 0, -1.99699, 0, 0.109761, 20.364, 1.80566, 0.35654)
+transform = Transform3D(0.109761, 0, 1.99699, 0, 2, 0, -1.99699, 0, 0.109761, 20.329, 0.733646, 0.0747499)
 playerCam = NodePath("../Cameras/SubViewport2/CameraP2")
 enemyCam = NodePath("../Cameras/SubViewport/CameraP1")
 enemyChar = NodePath("../P1")
+Foward = "bet_6"
+Left = "bet_3"
+Right = "bet_10"
 
 [node name="Body" parent="P2" index="0" groups=["Player"]]
 

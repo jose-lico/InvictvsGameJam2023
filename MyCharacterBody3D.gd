@@ -8,6 +8,11 @@ extends CharacterBody3D
 @export var Foward : String
 @export var Left : String
 @export var Right : String
+
+@export var EditorFoward : String
+@export var EditorLeft : String
+@export var EditorRight : String
+
 var DISPARAR = "play"
 
 var canPlay = 1
@@ -26,23 +31,19 @@ const RAY_LENGTH = 9999
 var shootInput = 0
 
 func _ready():
-	Genisys.bind_input_to_callback(Foward, Callable(self, "_on_genisys_input"));
-	Genisys.bind_input_to_callback(Left, Callable(self, "_on_genisys_input"));
-	Genisys.bind_input_to_callback(Right, Callable(self, "_on_genisys_input"));
-	
+		Genisys.bind_input_to_callback(Foward, Callable(self, "_on_genisys_input"));
+		Genisys.bind_input_to_callback(Left, Callable(self, "_on_genisys_input"));
+		Genisys.bind_input_to_callback(Right, Callable(self, "_on_genisys_input"));		
+		
 func _exit_tree():
-	Genisys.unbind_input_to_callback(Foward, Callable(self, "_on_genisys_input"));
-	Genisys.unbind_input_to_callback(Left, Callable(self, "_on_genisys_input"));
-	Genisys.unbind_input_to_callback(Right, Callable(self, "_on_genisys_input"));
+		Genisys.unbind_input_to_callback(Foward, Callable(self, "_on_genisys_input"));
+		Genisys.unbind_input_to_callback(Left, Callable(self, "_on_genisys_input"));
+		Genisys.unbind_input_to_callback(Right, Callable(self, "_on_genisys_input"));
 
 func _physics_process(delta):
 	#check shoot
 	if (shootInput == 1):
 		shoot()
-	
-	# Add the gravity.
-
-
 	
 	if (moveInput == 1):
 		var direction = (transform.basis * Vector3(0,0,-1)).normalized() 
@@ -65,7 +66,16 @@ func _on_genisys_input(payload):
 
 func _input(event):
 	if( event is InputEventKey):
-		_my_input(event.as_text(), event.pressed);
+		if(OS.has_feature("template")):
+			_my_input(event.as_text(), event.pressed);
+		else:
+			match event.as_text():
+				EditorFoward:
+					_my_input(Foward, event.pressed);
+				EditorLeft:
+					_my_input(Left, event.pressed);
+				EditorRight:
+					_my_input(Right, event.pressed);
 
 func _my_input(name, pressed : bool):
 	if canPlay == 1:
@@ -74,8 +84,7 @@ func _my_input(name, pressed : bool):
 				shootInput = 1
 			else:
 				shootInput = 0
-			
-		
+				
 		if name == Foward:
 			if pressed:
 				moveInput = 1
@@ -118,9 +127,6 @@ func shoot():
 		var getenemybody = enemyChar.get_child(0)
 		var his_kids = getenemybody.get_children()
 
-		
-		
-		
 		for kid in his_kids:
 		
 			if (kid.is_in_group('bounds')):
@@ -130,9 +136,7 @@ func shoot():
 				var collision = space.intersect_ray(query)
 				print(collision)
 				
-				
 				if collision.collider.is_in_group('Player'):
-				
 					
 					var angulodogajo = self.transform.basis.z * -1
 					angulodogajo.y = 0
@@ -140,12 +144,9 @@ func shoot():
 					var vectorinimigo = (kid.global_transform.origin - playerCam.global_transform.origin)
 					vectorinimigo.y = 0
 					vectorinimigo = vectorinimigo.normalized()
-					
-					
-					
+						
 					var angulomerdoso = angulodogajo.angle_to(vectorinimigo)
-				
-					
+										
 					if (rad_to_deg(angulomerdoso)  < 20):
 						one_bound += 1
 				

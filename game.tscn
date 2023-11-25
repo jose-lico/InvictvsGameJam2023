@@ -589,10 +589,6 @@ volume_db = -10.0
 [node name="Ambience" type="AudioStreamPlayer" parent="Audio"]
 autoplay = true
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Audio"]
-stream = ExtResource("3_kgfql")
-autoplay = true
-
 [node name="Cameras" type="Node" parent="."]
 
 [node name="ViewP1" type="TextureRect" parent="Cameras"]
@@ -750,6 +746,9 @@ transform = Transform3D(0.00921523, 0, -1.99998, 0, 2, 0, 1.99998, 0, 0.00921523
 playerCam = NodePath("../Cameras/SubViewport/CameraP1")
 enemyCam = NodePath("../Cameras/SubViewport2/CameraP2")
 enemyChar = NodePath("../P2")
+EditorFoward = "W"
+EditorLeft = "A"
+EditorRight = "D"
 
 [node name="Body" parent="P1" index="0" groups=["Player"]]
 layers = 1024
@@ -767,6 +766,9 @@ enemyChar = NodePath("../P1")
 Foward = "bet_6"
 Left = "bet_3"
 Right = "bet_10"
+EditorFoward = "O"
+EditorLeft = "K"
+EditorRight = "Semicolon"
 
 [node name="Body" parent="P2" index="0" groups=["Player"]]
 

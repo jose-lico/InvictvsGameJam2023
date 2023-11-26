@@ -185,6 +185,9 @@ func flash():
 	Genisys.send_data("hardware/led_strips/set_pattern", {payload="flash"});
 	Genisys.send_data("hardware/outputs/start_blink_pattern", {payload={"group": "buttons", "id": "flash"}});
 
+func _on_blink_move():
+	Genisys.send_data("hardware/outputs/start_blink_pattern",
+		{payload={"group": "buttons", "id": "ingame_set"}});
 
 func _on_sig_shoot():
 	pass # Replace with function body.

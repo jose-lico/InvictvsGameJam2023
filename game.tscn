@@ -212,12 +212,51 @@ tracks/7/path = NodePath(".")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
 "method": &"flash"
+}, {
+"args": [],
+"method": &"_on_blink_move"
 }]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Cameras/ViewP1:material:shader_parameter/r_displacement")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.9, 1.3, 1.6, 2.1, 2.6, 3.7, 4.5, 5.6, 6.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(4.795, 24.4), Vector2(0.555, 9.85), Vector2(-0.345, 19.23), Vector2(2.725, 6.095), Vector2(1.255, 20.665), Vector2(-0.18, 29.075), Vector2(9.625, 14.87), Vector2(8.335, 17.15), Vector2(7.375, 18.395), Vector2(0, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Cameras/ViewP1:material:shader_parameter/g_displacement")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.8, 1.1, 1.4, 1.81, 2.2, 3.53, 4.3, 5.4, 6.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(10.09, 5.9), Vector2(13.15, 9.27), Vector2(5.105, 2.095), Vector2(12.705, 8.535), Vector2(4.79, 1.47), Vector2(13.8, 3.07), Vector2(5.31, 1.07), Vector2(7.385, 1.69), Vector2(14.695, 7.83), Vector2(0, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Cameras/ViewP1:material:shader_parameter/b_displacement")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.7, 1, 1.5, 1.9, 2.65, 3.3, 4.7, 5.2, 6.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(8.84, 11.85), Vector2(4.67, 16.07), Vector2(3.035, 7.08), Vector2(15.37, 8.765), Vector2(5.78, 8.78), Vector2(14.165, 17.03), Vector2(4.145, 7.625), Vector2(3.815, 7.27), Vector2(12.865, 16.18), Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_nyj2a"]
@@ -1003,7 +1042,7 @@ size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
 [node name="CameraP2" type="Camera3D" parent="Cameras/SubViewport2"]
-transform = Transform3D(-0.868632, 0.171081, -0.464985, 0, 0.938493, 0.345298, 0.495459, 0.299937, -0.815205, -22.83, 6.9754, -12.9894)
+transform = Transform3D(-0.733492, -1.62868e-16, -0.679698, -2.22045e-16, 1, 6.61745e-24, 0.679698, 1.50924e-16, -0.733492, -12.3521, 4.5, -14.445)
 current = true
 fov = 65.0
 

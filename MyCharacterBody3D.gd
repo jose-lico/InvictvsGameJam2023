@@ -1,7 +1,10 @@
 extends CharacterBody3D
 
+@onready var steps_audio_player = $"../Audio/Footstep"
+
 @export var playerCam : Camera3D  
 @export var enemyCam : Camera3D
+@export var footsteps : Array[AudioStreamWAV]
 
 @export var enemyChar : CharacterBody3D
 
@@ -32,6 +35,7 @@ var moveInput = 0
 var can_move : bool = true
 var shootInput = 0
 var zoomed_in : bool = false
+var current_step : int = 0
 
 
 @export var anim_tree : AnimationTree;
@@ -66,7 +70,7 @@ func _physics_process(delta):
 		var direction = (transform.basis * Vector3.FORWARD).normalized()
 		velocity.x = direction.x * MOVE_SPEED 
 		velocity.z = direction.z * MOVE_SPEED
-	
+		
 	if(Input.is_key_pressed(editor_forward) && can_move):
 		animation_state_machine.travel("walking");
 		var direction = (transform.basis * Vector3.FORWARD).normalized()
@@ -78,9 +82,11 @@ func _physics_process(delta):
 	
 	if(Input.is_key_pressed(editor_right)):
 		camera_input -= 1
-	
+		
 	rotateCamera(delta)
 
+	
+	
 	move_and_slide()
 
 func _on_genisys_input(payload):
@@ -139,13 +145,23 @@ func tilt_hand(delta):
 		tilt += camera_input * delta * TILT_SPEED * compensate
 		#tilt += (cam_direction.x + cam_direction.y) * delta * TILT_SPEED
 	
-	tilt = clamp(tilt, -TILT_MAX_AMOUNT, TILT_MAX_AMOUNT);
-	
+	tilt = clamp(tilt, -TILT_MAX_AMOUNT, TILT_MAX_AMOUNT);			
+		
 	player_hand.rotation_degrees = 0 - tilt
 	var hand_tilt = Vector2(tilt * 1.25, -abs(tilt) * 0.25) * 5.0
 	var hand_bobble_y = sin(Time.get_ticks_msec() * delta * (0.33 + velocity.length() * 0.05)) * (3 + velocity.length() * 0.7)
 	var hand_bobble_x = cos((Time.get_ticks_msec() * delta * (0.33 + velocity.length() * 0.05)) * 0.5)  * (2 + velocity.length() * 0.5);
-
+	
+	# play steps audio
+	if(hand_bobble_y < -2.5 && abs(velocity.z) > 0):
+		current_step+=1;
+		if(current_step == footsteps.size()):
+			current_step = 0;
+				
+		if(!steps_audio_player.playing):				
+			steps_audio_player.stream = footsteps[current_step];
+			steps_audio_player.play();				
+	
 	player_hand.position = player_hand_original_pos + Vector2(hand_bobble_x, hand_bobble_y) - hand_tilt
 	
 	remote_transform.rotation_degrees = Vector3(0, remote_transform.rotation_degrees.y, 0 + tilt * 0.15)

@@ -66,7 +66,7 @@ func _physics_process(delta):
 
 	velocity = Vector3.ZERO
 
-	if(moveInput == 1):
+	if(moveInput == 1 && can_move):
 		var direction = (transform.basis * Vector3.FORWARD).normalized()
 		velocity.x = direction.x * MOVE_SPEED 
 		velocity.z = direction.z * MOVE_SPEED
@@ -85,8 +85,6 @@ func _physics_process(delta):
 		
 	rotateCamera(delta)
 
-	
-	
 	move_and_slide()
 
 func _on_genisys_input(payload):
@@ -128,7 +126,7 @@ func rotateCamera(delta):
 	tilt_hand(delta)
 
 	# COMMENT THIS FOR DEPLOYMENT ON MACHINE
-	camera_input = 0
+	#camera_input = 0
 
 func tilt_hand(delta):
 	# tilt tends towards the middle
@@ -171,6 +169,9 @@ func _on_game_sig_startmoving():
 	can_move = true
 func _on_game_sig_stopmoving():
 	can_move = false
+	camera_input = 0
+	cam_direction = Vector2(0,0)
+	moveInput = 0
 
 func _on_game_sig_shoot():
 	

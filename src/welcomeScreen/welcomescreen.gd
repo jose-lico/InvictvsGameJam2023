@@ -15,11 +15,11 @@ func _exit_tree():
 # - - - - - - - - - - - - - - - - - - - - -
 #
 func _ready():
-	Genisys.bind_input_to_callback("play", _on_play_pressed);
 	if(GameManager.previous_state == GameManager.STATES.INTRO):
 		GameManager.change_state(GameManager.STATES.INTRO);
 
-
+func allow_play():
+	Genisys.bind_input_to_callback("play", _on_play_pressed);
 
 func _on_state_change(state: GameManager.STATES):
 	match state:

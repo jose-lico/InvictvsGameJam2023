@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://bh7rox2t2dku0"]
+[gd_scene load_steps=52 format=3 uid="uid://bh7rox2t2dku0"]
 
 [ext_resource type="Script" path="res://src/clock/clock.gd" id="1_1rb5a"]
 [ext_resource type="Script" path="res://flashbangerz.gd" id="2_25288"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dx81re0af5oft" path="res://assets/fps/revolver2.png" id="7_eas78"]
 [ext_resource type="AudioStream" uid="uid://c5whu7l3u0ven" path="res://audio/Audio_MATARAM-ME.wav" id="7_js7y1"]
 [ext_resource type="PackedScene" uid="uid://bvlq7iejuw17a" path="res://scenes/saloon.tscn" id="8_cogct"]
+[ext_resource type="AudioStream" uid="uid://c073782o742bt" path="res://audio/Audio_Gasp.wav" id="8_x4be7"]
 [ext_resource type="Texture2D" uid="uid://dsanm14fe7g51" path="res://assets/fps/revolver3.png" id="8_xvh5g"]
 [ext_resource type="FontFile" uid="uid://cl6vdmb7q5frf" path="res://assets/font/rio_grande/RioGrande.ttf" id="10_7qumc"]
 [ext_resource type="Texture2D" uid="uid://ccg4nwljmqvhh" path="res://assets/animations/lowCowBoy_Cowboy_red.png" id="13_1b4l7"]
@@ -44,60 +45,12 @@ resource_name = "Animation_Light"
 length = 6.0
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = false
-tracks/0/path = NodePath("Cameras/ViewP1:self_modulate")
+tracks/0/enabled = true
+tracks/0/path = NodePath("Audio/Ambience:volume_db")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(6),
-"transitions": PackedFloat32Array(1),
-"update": 2,
-"values": [Color(0.0980392, 0.0980392, 0.0980392, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = false
-tracks/1/path = NodePath("Cameras/ViewP2:self_modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(6),
-"transitions": PackedFloat32Array(1),
-"update": 2,
-"values": [Color(0.0980392, 0.0980392, 0.0980392, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Cameras/SubViewport/CameraP1:far")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(5.6),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [5.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = false
-tracks/3/path = NodePath("Cameras/SubViewport2/CameraP2:far")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(5.6),
-"transitions": PackedFloat32Array(1),
-"update": 2,
-"values": [5.0]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Audio/Ambience:volume_db")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(1.5),
+"times": PackedFloat32Array(2.6),
 "transitions": PackedFloat32Array(1),
 "update": 2,
 "values": [-25.0]
@@ -113,10 +66,10 @@ tracks/0/path = NodePath("Audio/Ambience:volume_db")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.3, 0.6),
+"times": PackedFloat32Array(0, 1.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [-25.0, -40.0]
+"values": [-15.0, -18.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -271,7 +224,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [-25.0]
+"values": [-15.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -308,6 +261,42 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [Vector3(1.5, 1.5, 1.5)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Cameras/ViewP1:material:shader_parameter/r_displacement")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Cameras/ViewP1:material:shader_parameter/g_displacement")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Cameras/ViewP1:material:shader_parameter/b_displacement")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_sotaw"]
@@ -465,6 +454,42 @@ tracks/12/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Cameras/ViewP1:material:shader_parameter/r_displacement")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Cameras/ViewP1:material:shader_parameter/g_displacement")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Cameras/ViewP1:material:shader_parameter/b_displacement")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xd564"]
@@ -984,6 +1009,7 @@ next/introanimation = &"Animation_Shoot"
 
 [node name="TikTokOnTheClock" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("2_fgccr")
+volume_db = 6.0
 
 [node name="AWP" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("3_72jv1")
@@ -991,7 +1017,7 @@ volume_db = -10.0
 
 [node name="Ambience" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("4_nnxm7")
-volume_db = -25.0
+volume_db = -15.0
 autoplay = true
 
 [node name="Zumbido" type="AudioStreamPlayer" parent="Audio"]
@@ -999,12 +1025,15 @@ stream = ExtResource("5_7pjwa")
 volume_db = -10.0
 
 [node name="Footstep" type="AudioStreamPlayer" parent="Audio"]
+volume_db = -6.0
 
 [node name="MATARAM-ME" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("7_js7y1")
-volume_db = 8.667
+volume_db = 9.0
 
 [node name="Gasp" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("8_x4be7")
+volume_db = -6.0
 
 [node name="Cameras" type="Node" parent="."]
 
@@ -1027,7 +1056,7 @@ size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
 [node name="CameraP1" type="Camera3D" parent="Cameras/SubViewport"]
-transform = Transform3D(0.929133, -0.184873, 0.32021, 0, 0.866025, 0.5, -0.369746, -0.464567, 0.804652, 25.303, 13.29, 12.2097)
+transform = Transform3D(0.929133, -0.184873, 0.320209, 0, 0.866025, 0.5, -0.369746, -0.464566, 0.804652, 25.303, 13.29, 12.2097)
 current = true
 fov = 61.0
 
@@ -1042,7 +1071,7 @@ size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
 [node name="CameraP2" type="Camera3D" parent="Cameras/SubViewport2"]
-transform = Transform3D(-0.733492, -1.62868e-16, -0.679698, -2.22045e-16, 1, 6.61745e-24, 0.679698, 1.50924e-16, -0.733492, -12.3521, 4.5, -14.445)
+transform = Transform3D(-0.733492, -1.62868e-16, -0.679698, -2.22045e-16, 1, 1.32349e-23, 0.679698, 1.50924e-16, -0.733492, -12.3521, 4.5, -14.445)
 current = true
 fov = 65.0
 
@@ -1102,7 +1131,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.4, 0.4)
 pivot_offset = Vector2(960, 540)
-theme_override_colors/font_color = Color(0.901961, 0.901961, 0.901961, 1)
+theme_override_colors/font_color = Color(0.894118, 0.678431, 0.490196, 1)
 theme_override_constants/shadow_outline_size = -220
 theme_override_fonts/font = ExtResource("10_7qumc")
 theme_override_font_sizes/font_size = 300
@@ -1145,6 +1174,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Player1Hand" type="Control" parent="."]
+clip_contents = true
 layout_mode = 3
 anchors_preset = 0
 offset_left = 292.0
@@ -1196,7 +1226,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.4, 0.4)
 pivot_offset = Vector2(960, 540)
-theme_override_colors/font_color = Color(0.901961, 0.901961, 0.901961, 1)
+theme_override_colors/font_color = Color(0.894118, 0.678431, 0.490196, 1)
 theme_override_constants/shadow_outline_size = -220
 theme_override_fonts/font = ExtResource("10_7qumc")
 theme_override_font_sizes/font_size = 300
@@ -1241,6 +1271,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Player2Hand" type="Control" parent="."]
+clip_contents = true
 layout_mode = 3
 anchors_preset = 0
 offset_left = 1060.0
@@ -1340,6 +1371,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.454117, -0.0735426, 0.17263
 [connection signal="sig_startintro" from="." to="GameAnimations" method="play" binds= ["introanimation"]]
 [connection signal="sig_startmoving" from="." to="P1" method="_on_game_sig_startmoving"]
 [connection signal="sig_startmoving" from="." to="P2" method="_on_game_sig_startmoving"]
+[connection signal="sig_stopmoving" from="." to="Audio/Gasp" method="play"]
 [connection signal="sig_stopmoving" from="." to="P1" method="_on_game_sig_stopmoving"]
 [connection signal="sig_stopmoving" from="." to="P2" method="_on_game_sig_stopmoving"]
 

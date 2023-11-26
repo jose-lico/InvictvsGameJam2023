@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://bvlq7iejuw17a"]
+[gd_scene load_steps=54 format=3 uid="uid://bvlq7iejuw17a"]
 
 [ext_resource type="Material" uid="uid://gfyflr6wnq0k" path="res://mats/ground_mat.tres" id="1_a8uib"]
 [ext_resource type="Texture2D" uid="uid://bj5dl40s78k1c" path="res://assets/western_stuff/Textures/Planks/Planks_2/Planks_Base_Color.png" id="1_lrwac"]
@@ -19,7 +19,6 @@
 [ext_resource type="PackedScene" uid="uid://byssmev21yavt" path="res://assets/piano/piano_low_material_0.tscn" id="16_ivvkv"]
 [ext_resource type="PackedScene" uid="uid://dpxtdjy3rpo1q" path="res://assets/wild_west_asset_pack/bull_horns_back_low.tscn" id="18_k6kat"]
 [ext_resource type="PackedScene" uid="uid://dkbcaoq48wsqp" path="res://assets/wild_west_asset_pack/oil_lamp_low.tscn" id="19_bqrhe"]
-[ext_resource type="PackedScene" uid="uid://dd88vk0v0cyoe" path="res://assets/wild_west_asset_pack/alcohol_bottle_010_low_glasses_bottles_0.tscn" id="20_bfqy2"]
 [ext_resource type="PackedScene" uid="uid://cfpqu8ajgk2gx" path="res://assets/wild_west_asset_pack/whisky_glass_low_glasses_bottles_0.tscn" id="20_rvayj"]
 [ext_resource type="PackedScene" uid="uid://ckcnq1efq3x2w" path="res://assets/wild_west_asset_pack/alcohol_bottle_008_low_glasses_bottles_0.tscn" id="21_xasin"]
 [ext_resource type="PackedScene" uid="uid://djshwn0sckeub" path="res://assets/wild_west_asset_pack/wanted_poster_4_wnted_board_bar_stool_0.tscn" id="22_4b4fs"]
@@ -476,35 +475,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 1.77636e-15, 2.84217e-14, -5.32907e-15, 1
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/FirstFloor/Obstacles/Piano/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 1.77636e-15, 3.55271e-15, 0, 1, -0.0874367, 0.0328485, 0)
 shape = SubResource("BoxShape3D_tji6t")
-
-[node name="TableWithDrinks2" type="Node3D" parent="Ground/FirstFloor/Obstacles"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.2812, 2.83103, 6.90891)
-visible = false
-
-[node name="ChairLegs_low11" parent="Ground/FirstFloor/Obstacles/TableWithDrinks2" instance=ExtResource("15_tb2cp")]
-transform = Transform3D(-0.0268552, -0.0858999, -3.7548e-09, -5.37779e-16, -3.93402e-09, 0.09, -0.0858999, 0.0268552, 1.17388e-09, 2.16393, -1.60927, 1.45362)
-
-[node name="StandardTable_low_BarPokerTable_2" parent="Ground/FirstFloor/Obstacles/TableWithDrinks2" instance=ExtResource("14_adclw")]
-transform = Transform3D(0.09, 0, 0, 0, -3.93403e-09, 0.09, 0, -0.09, -3.93403e-09, -0.179605, -1.62708, 0.207901)
-
-[node name="StaticBody3D3" type="StaticBody3D" parent="Ground/FirstFloor/Obstacles/TableWithDrinks2/StandardTable_low_BarPokerTable_2"]
-transform = Transform3D(1, 2.06961e-08, 8.27842e-08, 0, 1, -2.30154e-08, 0, -1.83767e-08, 1, 0, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/FirstFloor/Obstacles/TableWithDrinks2/StandardTable_low_BarPokerTable_2/StaticBody3D3"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
-shape = SubResource("CylinderShape3D_vfgqa")
-
-[node name="ChairLegs_low12" parent="Ground/FirstFloor/Obstacles/TableWithDrinks2" instance=ExtResource("15_tb2cp")]
-transform = Transform3D(0.0890808, 0.0128304, 5.60835e-10, -5.56894e-16, -3.93402e-09, 0.09, 0.0128304, -0.0890808, -3.89384e-09, -1.83309, -1.60927, 1.81049)
-
-[node name="ChairLegs_low13" parent="Ground/FirstFloor/Obstacles/TableWithDrinks2" instance=ExtResource("15_tb2cp")]
-transform = Transform3D(0.0482602, 0.0759668, 3.32061e-09, -5.56894e-16, -3.93402e-09, 0.09, 0.0759668, -0.0482602, -2.10952e-09, -2.40409, -1.60927, -1.18727)
-
-[node name="AlcoholBottle008_low_GlassesBottles_1" parent="Ground/FirstFloor/Obstacles/TableWithDrinks2" instance=ExtResource("21_xasin")]
-transform = Transform3D(0.0423677, 0, 0.0265514, 0, 0.05, 0, -0.0265514, 0, 0.0423677, 0.0264836, -0.0600846, -0.245219)
-
-[node name="AlcoholBottle010_low_GlassesBottles_0" parent="Ground/FirstFloor/Obstacles/TableWithDrinks2" instance=ExtResource("20_bfqy2")]
-transform = Transform3D(0.05, 0, 0, 0, -2.18557e-09, 0.05, 0, -0.05, -2.18557e-09, 0.74118, -0.291785, -0.0331087)
 
 [node name="Posts" type="Node3D" parent="Ground/FirstFloor"]
 

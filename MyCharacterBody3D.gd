@@ -33,6 +33,10 @@ var can_move : bool = true
 var shootInput = 0
 var zoomed_in : bool = false
 
+
+@export var anim_tree : AnimationTree;
+var animation_state_machine;
+
 func _ready():
 		Genisys.bind_input_to_callback(forward, Callable(self, "_on_genisys_input"));
 		Genisys.bind_input_to_callback(left, Callable(self, "_on_genisys_input"));
@@ -41,6 +45,10 @@ func _ready():
 		player_hand_original_pos = player_hand.position
 		remote_transform = get_node("RemoteTransform3D")
 		animator = playerCam.get_node("AnimationPlayer")
+
+		anim_tree.active = true;
+		animation_state_machine = anim_tree["parameters/playback"]
+
 		
 func _exit_tree():
 		Genisys.unbind_input_to_callback(forward, Callable(self, "_on_genisys_input"));
@@ -60,6 +68,7 @@ func _physics_process(delta):
 		velocity.z = direction.z * MOVE_SPEED
 	
 	if(Input.is_key_pressed(editor_forward) && can_move):
+		animation_state_machine.travel("walking");
 		var direction = (transform.basis * Vector3.FORWARD).normalized()
 		velocity.x = direction.x * MOVE_SPEED 
 		velocity.z = direction.z * MOVE_SPEED
@@ -82,8 +91,10 @@ func _handle_genisys_input(name, pressed : bool):
 		if name == forward:
 			if pressed:
 				moveInput = 1
+				animation_state_machine.travel("walking");
 			else:
 				moveInput = 0
+				animation_state_machine.travel("Idle");
 		if name == left:
 			if pressed:
 				cam_direction.x = 1
@@ -146,42 +157,42 @@ func _on_game_sig_stopmoving():
 func _on_game_sig_shoot():
 	can_move = true
 	
-#	var space = get_world_3d().direct_space_state
-#
-#	if (playerCam ==null || enemyCam == null):
-#		print("rip pointers")
-#	else:
-#		#time for the pointers :) 
-#
-#		var one_bound = 0
-#		var getenemybody = enemyChar.get_child(0)
-#		var his_kids = getenemybody.get_children()
-#
-#		for kid in his_kids:
-#
-#			if (kid.is_in_group('bounds')):
-#
-#				var query = PhysicsRayQueryParameters3D.create(playerCam.global_position,
-#				kid.global_position)
-#				var collision = space.intersect_ray(query)
-#				print(collision)
-#
-#				if collision.collider.is_in_group('Player'):
-#
-#					var angulodogajo = self.transform.basis.z * -1
-#					angulodogajo.y = 0
-#
-#					var vectorinimigo = (kid.global_transform.origin - playerCam.global_transform.origin)
-#					vectorinimigo.y = 0
-#					vectorinimigo = vectorinimigo.normalized()
-#
-#					var angulomerdoso = angulodogajo.angle_to(vectorinimigo)
-#
-#					if (rad_to_deg(angulomerdoso)  < 20):
-#						one_bound += 1
+	var space = get_world_3d().direct_space_state
+
+	if (playerCam ==null || enemyCam == null):
+		print("rip pointers")
+	else:
+		#time for the pointers :) 
+
+		var one_bound = 0
+		var getenemybody = enemyChar.get_child(0)
+		var his_kids = getenemybody.get_children()
+
+		for kid in his_kids:
+
+			if (kid.is_in_group('bounds')):
+
+				var query = PhysicsRayQueryParameters3D.create(playerCam.global_position,
+				kid.global_position)
+				var collision = space.intersect_ray(query)
+				print(collision)
+
+				if collision.collider.is_in_group('Player'):
+
+					var angulodogajo = self.transform.basis.z * -1
+					angulodogajo.y = 0
+
+					var vectorinimigo = (kid.global_transform.origin - playerCam.global_transform.origin)
+					vectorinimigo.y = 0
+					vectorinimigo = vectorinimigo.normalized()
+
+					var angulomerdoso = angulodogajo.angle_to(vectorinimigo)
+
+					if (rad_to_deg(angulomerdoso)  < 10):
+						one_bound += 1
 				
-#		if (one_bound > 0):
-#			one_bound = 0
-#			get_tree().root.get_node('Game').calcwinner(1)
-#		else:
-#			get_tree().root.get_node('Game').calcwinner(0)
+		if (one_bound > 0):
+			one_bound = 0
+			get_tree().root.get_node('Game').calcwinner(1)
+		else:
+			get_tree().root.get_node('Game').calcwinner(0)

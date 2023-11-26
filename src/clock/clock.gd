@@ -10,7 +10,7 @@ signal sig_blackout();
 signal sig_stopmoving();
 
 const TICK_TIME = 1.25;
-const TIME_HOLD_AFTER_FLASH : float = 6.9;
+const TIME_HOLD_AFTER_FLASH : float = 2.0;
 
 @export var tick_audio: AudioStreamPlayer;
 
@@ -59,7 +59,7 @@ func start_new_timer(interval: float):
 func _enter_tree():
 	GameManager.state_changed.connect(_on_state_change);
 
-	sig_shoot.emit();
+	#sig_shoot.emit();
 
 	ref_timer = Timer.new();
 	add_child(ref_timer);
@@ -69,7 +69,7 @@ func _enter_tree():
 	ref_timer.timeout.connect(__on_timer_timeout__);
 
 	_on_state_change(GameManager.current_state);
-	# start_new_timer(1.0);
+	start_new_timer(1.0);
 
 func _exit_tree():
 	GameManager.state_changed.disconnect(_on_state_change);
@@ -144,29 +144,24 @@ func calcwinner(value):
 			start_new_timer(TICK_TIME);
 			animation_player_p1.play("miss");
 			animation_player_p2.play("miss");
-		elif winnerArray[0] == 1:
-			print("Player 1 won!")
-			GameManager.Go_To_Menu()
-			GameManager.state_changed.disconnect(_on_state_change)
-			queue_free()
-			
-		elif totalwinner == 0:
-			#MISSED!
-			print("BOTH MISSED")
-			animation_player_p1.play("miss");
-			animation_player_p2.play("miss");
-			
-			start_new_timer(1.0);
-			
-		elif winnerArray[0] == 1:
-			print("Player 1 won!")
-			
-			GameManager.Go_To_Menu()
-			GameManager.state_changed.disconnect(_on_state_change)
-			queue_free()
-			
 		elif winnerArray[1] == 1:
+			print("Player 1 won!")
+
+			animation_player_p2.play("lose");
+			animation_player_p1.play("win");
+
+			await get_tree().create_timer(1.0).timeout;
+			GameManager.Go_To_Menu()
+			GameManager.state_changed.disconnect(_on_state_change)
+			queue_free()
+			
+		elif winnerArray[0] == 1:
 			print("Player 2 won!")
+
+			animation_player_p1.play("lose");
+			animation_player_p2.play("win");
+
+			await get_tree().create_timer(1.0).timeout;
 
 			GameManager.Go_To_Menu()
 			GameManager.state_changed.disconnect(_on_state_change)

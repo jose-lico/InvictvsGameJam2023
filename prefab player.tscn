@@ -1,22 +1,26 @@
-[gd_scene load_steps=4 format=3 uid="uid://cs14j0uxsij30"]
+[gd_scene load_steps=5 format=3 uid="uid://cs14j0uxsij30"]
 
 [ext_resource type="Script" path="res://MyCharacterBody3D.gd" id="1_hwrng"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_dep7v"]
+radius = 1.25
+height = 6.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_03fx6"]
+size = Vector3(0.3, 0.3, 1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_v6a14"]
 
 [node name="CharBody" type="CharacterBody3D"]
-transform = Transform3D(0.209381, 0, -0.977836, -1.65687e-09, 1, -4.68446e-09, 0.977836, 0, 0.209381, 9.13, 1, -10.306)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 script = ExtResource("1_hwrng")
-Foward = "help"
-Left = "service"
-Right = "bet_1"
 
 [node name="Body" type="MeshInstance3D" parent="."]
-layers = 2048
 mesh = SubResource("CapsuleMesh_dep7v")
-skeleton = NodePath("../../Cameras/SubViewport")
+
+[node name="Front" type="MeshInstance3D" parent="Body"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.58963, 1.48966)
+mesh = SubResource("BoxMesh_03fx6")
 
 [node name="Bound8" type="Node3D" parent="Body" groups=["bounds"]]
 transform = Transform3D(0.999999, 0, 0, -1.55431e-15, 1, 1.66533e-16, 0, 0, 0.999999, -0.248464, 0, -0.389017)
@@ -46,6 +50,5 @@ transform = Transform3D(1, 0, 0, -2.22045e-16, 1, 0, 0, 0, 1, 0.352352, 0, -0.34
 shape = SubResource("CapsuleShape3D_v6a14")
 
 [node name="RemoteTransform3D" type="RemoteTransform3D" parent="."]
-transform = Transform3D(1, 0, 0, -2.22045e-16, 1, 0, 0, 0, 1, 0, 0.519959, 0)
-remote_path = NodePath("../../Cameras/SubViewport/CameraP1")
+transform = Transform3D(1, 0, 0, -2.22045e-16, 1, 0, 0, 0, 1, 0, 2, 0)
 update_scale = false

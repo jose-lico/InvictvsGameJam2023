@@ -182,4 +182,5 @@ func flash():
 
 
 func _on_sig_shoot():
+	flash();
 	pass # Replace with function body.

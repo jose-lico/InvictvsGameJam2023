@@ -128,7 +128,7 @@ func rotateCamera(delta):
 	tilt_hand(delta)
 
 	# COMMENT THIS FOR DEPLOYMENT ON MACHINE
-	camera_input = 0
+	# camera_input = 0
 
 func tilt_hand(delta):
 	# tilt tends towards the middle

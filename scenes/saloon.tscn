@@ -375,7 +375,7 @@ shape = SubResource("CylinderShape3D_alijd")
 transform = Transform3D(0.579701, -0.0654523, -0.812196, 0.00778869, 0.997168, -0.0747993, 0.814792, 0.0370352, 0.578569, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/FirstFloor/Obstacles/FallenTable/Table/StaticBody3D2"]
-transform = Transform3D(0.999414, -0.0326852, 0.0101248, 0.0120054, 0.0578538, -0.998253, 0.0320421, 0.99779, 0.0582123, -1.89684, 0.618948, -2.39253)
+transform = Transform3D(0.999414, -0.0326852, 0.0101248, 0.0120054, 0.0578537, -0.998253, 0.0320421, 0.99779, 0.0582123, -2.17165, 0.212959, -2.715)
 shape = SubResource("BoxShape3D_s0ng4")
 
 [node name="Chair_1" parent="Ground/FirstFloor/Obstacles/FallenTable" instance=ExtResource("15_tb2cp")]
@@ -558,6 +558,7 @@ transform = Transform3D(0.197107, -0.033894, -1.72316e-08, -0.033894, -0.197107,
 
 [node name="Sprite3D" type="Sprite3D" parent="Ground/FirstFloor/Posters/FrontPoster5"]
 transform = Transform3D(-0.45, 5.96046e-08, -3.55271e-15, -5.96046e-08, -0.45, -2.74779e-15, 0, -2.34168e-15, 0.45, -0.0269823, 0.119379, 0.034111)
+modulate = Color(0.866667, 0.72549, 0.682353, 0.721569)
 texture = ExtResource("21_wf6l6")
 
 [node name="FrontPoster6" parent="Ground/FirstFloor/Posters" instance=ExtResource("22_4b4fs")]
@@ -565,6 +566,7 @@ transform = Transform3D(0.188254, 0.0675308, -1.64577e-08, 0.0675308, -0.188254,
 
 [node name="Sprite3D" type="Sprite3D" parent="Ground/FirstFloor/Posters/FrontPoster6"]
 transform = Transform3D(-0.45, 7.45058e-08, -3.55271e-15, -7.45058e-08, -0.45, 1.11023e-15, -7.10543e-15, -3.37149e-15, 0.45, -0.0627747, 0.0794315, 0.034111)
+modulate = Color(0.866667, 0.72549, 0.682353, 0.721569)
 texture = ExtResource("22_isv8l")
 
 [node name="FrontPoster7" parent="Ground/FirstFloor/Posters" instance=ExtResource("22_4b4fs")]
@@ -572,6 +574,7 @@ transform = Transform3D(0.197555, 0.03118, -1.72708e-08, 0.03118, -0.197555, -2.
 
 [node name="Sprite3D" type="Sprite3D" parent="Ground/FirstFloor/Posters/FrontPoster7"]
 transform = Transform3D(-0.5, 6.70552e-08, 0, -6.70552e-08, -0.5, -2.35923e-15, 0, -1.80738e-15, 0.5, -0.0693293, -0.131279, 0.034111)
+modulate = Color(0.866667, 0.72549, 0.682353, 0.721569)
 texture = ExtResource("23_wsnmm")
 
 [node name="FrontPoster8" parent="Ground/FirstFloor/Posters" instance=ExtResource("22_4b4fs")]
@@ -579,6 +582,7 @@ transform = Transform3D(0.192731, -0.0534309, -1.68491e-08, -0.0534309, -0.19273
 
 [node name="Sprite3D" type="Sprite3D" parent="Ground/FirstFloor/Posters/FrontPoster8"]
 transform = Transform3D(-0.45, 6.70552e-08, -7.10543e-15, -6.70552e-08, -0.45, -1.81791e-15, 0, -1.00013e-16, 0.45, -0.0579739, 0.0962067, 0.0341148)
+modulate = Color(0.866667, 0.72549, 0.682353, 0.721569)
 texture = ExtResource("24_ysgnu")
 
 [node name="FrontPoster9" parent="Ground/FirstFloor/Posters" instance=ExtResource("22_4b4fs")]
@@ -586,6 +590,7 @@ transform = Transform3D(0.198333, -0.0257661, -1.73389e-08, -0.0257661, -0.19833
 
 [node name="Sprite3D" type="Sprite3D" parent="Ground/FirstFloor/Posters/FrontPoster9"]
 transform = Transform3D(-0.45, 7.82311e-08, 0, -7.82311e-08, -0.45, -2.85199e-15, -7.10543e-15, -1.75904e-15, 0.45, -0.0306692, 0.0762215, 0.034111)
+modulate = Color(0.866667, 0.72549, 0.682353, 0.721569)
 texture = ExtResource("25_wh28l")
 
 [node name="FrontPoster10" parent="Ground/FirstFloor/Posters" instance=ExtResource("22_4b4fs")]
@@ -593,6 +598,7 @@ transform = Transform3D(0.198745, 0.0223666, -1.73749e-08, 0.0223666, -0.198745,
 
 [node name="Sprite3D" type="Sprite3D" parent="Ground/FirstFloor/Posters/FrontPoster10"]
 transform = Transform3D(-0.45, 6.70552e-08, -7.10543e-15, -6.70552e-08, -0.45, -1.26282e-15, -3.55271e-15, -7.75385e-16, 0.45, -0.0216792, 0.0986118, 0.034111)
+modulate = Color(0.866667, 0.72549, 0.682353, 0.721569)
 texture = ExtResource("26_7rsip")
 
 [node name="BackPoster" parent="Ground/FirstFloor/Posters" instance=ExtResource("22_4b4fs")]
@@ -1089,7 +1095,7 @@ transform = Transform3D(1, -7.10543e-15, 0, 7.10543e-15, 1, -7.10543e-15, 3.5527
 shape = SubResource("BoxShape3D_b5wxx")
 
 [node name="StaticBody3D12" type="StaticBody3D" parent="Ground/StaticCollisions"]
-transform = Transform3D(-3.05981e-09, 0.0700001, 3.05981e-09, -4.34825e-23, -3.05981e-09, 0.0700001, 0.0700001, 3.05981e-09, 1.33749e-16, -19.1395, 1.71188, -1.37524)
+transform = Transform3D(-3.05981e-09, 0.0700001, 3.05981e-09, -4.34825e-23, -3.05981e-09, 0.0700001, 0.0700001, 3.05981e-09, 1.33749e-16, -17.7482, 1.71188, 0.387091)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/StaticCollisions/StaticBody3D12"]
 transform = Transform3D(1, -7.10543e-15, 0, 7.10543e-15, 1, -7.10543e-15, 3.55271e-15, 7.10543e-15, 1, -0.0874405, 4.35913, 1.90735e-06)

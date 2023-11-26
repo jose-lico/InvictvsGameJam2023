@@ -10,7 +10,7 @@ signal sig_blackout();
 signal sig_stopmoving();
 
 const TICK_TIME = 1.25;
-const TIME_HOLD_AFTER_FLASH : float = 2.0;
+const TIME_HOLD_AFTER_FLASH : float = 2.5;
 
 @export var tick_audio: AudioStreamPlayer;
 

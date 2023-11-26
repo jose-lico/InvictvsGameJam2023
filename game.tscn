@@ -152,13 +152,16 @@ tracks/4/path = NodePath("WorldEnvironment")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.4, 6.5),
+"transitions": PackedFloat32Array(1, 1, 1),
 "values": [{
 "args": ["ambient_light_color", Color(3.5, 3.5, 3.5, 1), 0.15, 0, -1],
 "method": &"tween_prop"
 }, {
-"args": ["ambient_light_color", Color(0.521569, 0.443137, 0.368627, 1), 6.0, 0, 1],
+"args": ["ambient_light_color", Color(0.521569, 0.443137, 0.368627, 1), 5.0, 0, 1],
+"method": &"tween_prop"
+}, {
+"args": ["ambient_light_color", Color(0.284704, 0.234752, 0.187114, 1), 4.0, 0, 1],
 "method": &"tween_prop"
 }]
 }
@@ -175,7 +178,7 @@ tracks/5/keys = {
 "args": ["ambient_light_energy", 16.0, 0.15, 0, -1],
 "method": &"tween_prop"
 }, {
-"args": ["ambient_light_energy", 1.0, 6.0, 0, 1],
+"args": ["ambient_light_energy", 1.0, 5.0, 0, 1],
 "method": &"tween_prop"
 }]
 }
@@ -822,7 +825,7 @@ size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
 [node name="CameraP1" type="Camera3D" parent="Cameras/SubViewport"]
-transform = Transform3D(0.5, 1.11023e-16, 0.866025, -2.22045e-16, 1, 1.49884e-29, -0.866025, -1.92297e-16, 0.5, 21.1137, 5, 7.2907)
+transform = Transform3D(0.5, 1.11023e-16, 0.866025, -2.22045e-16, 1, 1.98524e-23, -0.866025, -1.92297e-16, 0.5, 21.1137, 4.09758, 7.2907)
 cull_mask = 1047551
 current = true
 fov = 61.0
@@ -838,7 +841,7 @@ size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
 [node name="CameraP2" type="Camera3D" parent="Cameras/SubViewport2"]
-transform = Transform3D(0.499712, 1.10958e-16, 0.866192, -2.22045e-16, 1, 6.61744e-24, -0.866192, -1.92333e-16, 0.499712, 0, 5, 0)
+transform = Transform3D(0.499712, 1.10958e-16, 0.866192, -2.22045e-16, 1, 6.61744e-24, -0.866192, -1.92333e-16, 0.499712, 0, 4.00005, 0)
 cull_mask = 1046527
 current = true
 fov = 65.0
@@ -897,7 +900,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.4, 0.4)
 pivot_offset = Vector2(960, 540)
-theme_override_colors/font_color = Color(0.901961, 0.901961, 0.901961, 1)
+theme_override_colors/font_color = Color(0.894118, 0.678431, 0.490196, 1)
 theme_override_constants/shadow_outline_size = -220
 theme_override_fonts/font = ExtResource("10_7qumc")
 theme_override_font_sizes/font_size = 300
@@ -990,7 +993,7 @@ grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.4, 0.4)
 pivot_offset = Vector2(960, 540)
-theme_override_colors/font_color = Color(0.901961, 0.901961, 0.901961, 1)
+theme_override_colors/font_color = Color(0.894118, 0.678431, 0.490196, 1)
 theme_override_constants/shadow_outline_size = -220
 theme_override_fonts/font = ExtResource("10_7qumc")
 theme_override_font_sizes/font_size = 300
@@ -1073,7 +1076,7 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 layers = 2048
 
 [node name="RemoteTransform3D" parent="P1" index="3"]
-transform = Transform3D(1, 2.22045e-16, 0, -2.22045e-16, 1, 0, 0, 0, 1, 0, 2, 0)
+transform = Transform3D(1, 2.22045e-16, 0, -2.22045e-16, 1, 0, 0, 0, 1, 0, 1.09758, 0)
 remote_path = NodePath("../../Cameras/SubViewport/CameraP1")
 
 [node name="Sphere_Material_002_0" parent="P1/lowCowBoy/Armature/Skeleton3D" index="0"]
@@ -1103,6 +1106,7 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 layers = 1024
 
 [node name="RemoteTransform3D" parent="P2" index="3"]
+transform = Transform3D(1, 0, 0, -2.22045e-16, 1, 0, 0, 0, 1, 0, 1.00005, 0)
 remote_path = NodePath("../../Cameras/SubViewport2/CameraP2")
 
 [node name="Sphere_Material_002_0" parent="P2/lowCowBoy/Armature/Skeleton3D" index="0"]

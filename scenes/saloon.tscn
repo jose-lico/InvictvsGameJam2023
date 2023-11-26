@@ -61,7 +61,7 @@ height = 7.98074
 radius = 27.6843
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s0ng4"]
-size = Vector3(18.7587, 20.951, 50.9778)
+size = Vector3(18.7587, 32.0894, 50.9778)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kma0p"]
 size = Vector3(14.8198, 14.2964, 27.5341)
@@ -369,7 +369,7 @@ shape = SubResource("CylinderShape3D_alijd")
 transform = Transform3D(0.579701, -0.0654523, -0.812196, 0.00778869, 0.997168, -0.0747993, 0.814792, 0.0370352, 0.578569, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Ground/FirstFloor/Obstacles/FallenTable/Table/StaticBody3D2"]
-transform = Transform3D(0.99871, -0.0494034, 0.01173, 0.0123026, 0.0112991, -0.999861, 0.0492637, 0.998715, 0.0118923, -1.85479, 0.462234, -4.47726)
+transform = Transform3D(0.999414, -0.0326852, 0.0101248, 0.0120054, 0.0578538, -0.998253, 0.0320421, 0.99779, 0.0582123, -1.89684, 0.618948, -2.39253)
 shape = SubResource("BoxShape3D_s0ng4")
 
 [node name="Chair_1" parent="Ground/FirstFloor/Obstacles/FallenTable" instance=ExtResource("15_tb2cp")]

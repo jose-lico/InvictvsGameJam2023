@@ -8,12 +8,12 @@
 resource_name = "Windoorv4"
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("1_lm5sq")
-metallic = 1.0
+metallic = 0.5
+metallic_specular = 0.3
 metallic_texture = ExtResource("2_ion1y")
 metallic_texture_channel = 2
 roughness_texture = ExtResource("2_ion1y")
 roughness_texture_channel = 1
-normal_enabled = true
 normal_texture = ExtResource("3_femyq")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_6m1gs"]

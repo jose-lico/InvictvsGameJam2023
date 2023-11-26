@@ -1,6 +1,7 @@
-[gd_scene load_steps=33 format=3 uid="uid://bh7rox2t2dku0"]
+[gd_scene load_steps=35 format=3 uid="uid://bh7rox2t2dku0"]
 
 [ext_resource type="Script" path="res://src/clock/clock.gd" id="1_1rb5a"]
+[ext_resource type="Script" path="res://flashbangerz.gd" id="2_25288"]
 [ext_resource type="AudioStream" uid="uid://b7c5mtggq1yf3" path="res://audio/Audio_Tick.wav" id="2_fgccr"]
 [ext_resource type="AudioStream" uid="uid://boke673hsm6xh" path="res://audio/Audio_AWP.wav" id="3_72jv1"]
 [ext_resource type="Script" path="res://src/fps_counter.gd" id="3_kdw8v"]
@@ -13,84 +14,19 @@
 [ext_resource type="PackedScene" uid="uid://bvlq7iejuw17a" path="res://scenes/saloon.tscn" id="8_cogct"]
 [ext_resource type="Texture2D" uid="uid://dsanm14fe7g51" path="res://assets/fps/revolver3.png" id="8_xvh5g"]
 
+[sub_resource type="Environment" id="Environment_ch0kd"]
+background_mode = 1
+background_color = Color(0.239216, 0.129412, 0.0509804, 0.501961)
+ambient_light_source = 2
+ambient_light_color = Color(0.521569, 0.443137, 0.368627, 1)
+reflected_light_source = 1
+fog_enabled = true
+fog_light_color = Color(0.490196, 0.419608, 0.352941, 1)
+fog_light_energy = 0.5
+fog_density = 0.015
+
 [sub_resource type="Animation" id="Animation_dvox1"]
 resource_name = "Animation_Blackout"
-
-[sub_resource type="Animation" id="Animation_j2n5e"]
-resource_name = "Animation_Flash"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Cameras/ViewP1:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.3, 0.7, 1.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 2,
-"values": [Color(6, 6, 6, 1), Color(6, 6, 6, 1), Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Cameras/ViewP2:self_modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.3, 0.7, 1.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 2,
-"values": [Color(6, 6, 6, 1), Color(6, 6, 6, 1), Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = false
-tracks/2/path = NodePath("Cameras/SubViewport/CameraP1:far")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.7, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 2,
-"values": [100.0, 30.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = false
-tracks/3/path = NodePath("Cameras/SubViewport2/CameraP2:far")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.7, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 2,
-"values": [100.0, 30.0]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Audio/Ambience:volume_db")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0.3, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [-25.0, -40.0]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Audio/AWP:volume_db")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [-10.0, -30.0]
-}
 
 [sub_resource type="Animation" id="Animation_idgyy"]
 resource_name = "Animation_Light"
@@ -156,86 +92,189 @@ tracks/4/keys = {
 "values": [-25.0]
 }
 
+[sub_resource type="Animation" id="Animation_j2n5e"]
+resource_name = "Animation_Shoot"
+length = 16.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = false
+tracks/0/path = NodePath("Cameras/ViewP1:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.3, 0.7, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 2,
+"values": [Color(6, 6, 6, 1), Color(6, 6, 6, 1), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = false
+tracks/1/path = NodePath("Cameras/ViewP2:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3, 0.7, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 2,
+"values": [Color(6, 6, 6, 1), Color(6, 6, 6, 1), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Audio/Ambience:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-25.0, -40.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Audio/AWP:volume_db")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-10.0, -30.0]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("WorldEnvironment")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": ["ambient_light_color", Color(3.5, 3.5, 3.5, 1), 0.15, 0, -1],
+"method": &"tween_prop"
+}, {
+"args": ["ambient_light_color", Color(0.521569, 0.443137, 0.368627, 1), 6.0, 0, 1],
+"method": &"tween_prop"
+}]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("WorldEnvironment")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": ["ambient_light_energy", 16.0, 0.15, 0, -1],
+"method": &"tween_prop"
+}, {
+"args": ["ambient_light_energy", 1.0, 6.0, 0, 1],
+"method": &"tween_prop"
+}]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("WorldEnvironment")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": ["background_color", Color(3.5, 3.5, 3.5, 1), 0.15, 0, -1],
+"method": &"tween_prop"
+}, {
+"args": ["background_color", Color(0.239216, 0.129412, 0.0509804, 0.501961), 6.0, 0, 1],
+"method": &"tween_prop"
+}]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("P1/ViewLimiter:scale")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.3, 5.5, 14.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 2,
+"values": [Vector3(1.5, 1.5, 1.5), Vector3(1.5, 1.5, 1.5), Vector3(0.1, 0.1, 0.1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("P2/ViewLimiter:scale")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.3, 5.5, 14.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1.5, 1.5, 1.5), Vector3(1.5, 1.5, 1.5), Vector3(0.1, 0.1, 0.1)]
+}
+
 [sub_resource type="Animation" id="Animation_nyj2a"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = false
-tracks/0/path = NodePath("Cameras/SubViewport/CameraP1:fov")
+tracks/0/enabled = true
+tracks/0/path = NodePath("Audio/Ambience:volume_db")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [75.0]
+"values": [-25.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
-tracks/1/enabled = false
-tracks/1/path = NodePath("Cameras/SubViewport2/CameraP2:fov")
+tracks/1/enabled = true
+tracks/1/path = NodePath("Audio/AWP:volume_db")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [75.0]
+"values": [-10.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
-tracks/2/enabled = false
-tracks/2/path = NodePath("Cameras/ViewP2:self_modulate")
+tracks/2/enabled = true
+tracks/2/path = NodePath("P1/ViewLimiter:scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Vector3(1.5, 1.5, 1.5)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
-tracks/3/enabled = false
-tracks/3/path = NodePath("Cameras/ViewP1:self_modulate")
+tracks/3/enabled = true
+tracks/3/path = NodePath("P2/ViewLimiter:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Audio/Ambience:volume_db")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-25.0]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Audio/AWP:volume_db")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [-10.0]
+"update": 1,
+"values": [Vector3(1.5, 1.5, 1.5)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xd564"]
 _data = {
 "Animation_Blackout": SubResource("Animation_dvox1"),
-"Animation_Flash": SubResource("Animation_j2n5e"),
 "Animation_Light": SubResource("Animation_idgyy"),
+"Animation_Shoot": SubResource("Animation_j2n5e"),
 "RESET": SubResource("Animation_nyj2a")
 }
 
@@ -677,6 +716,10 @@ animation_player_p1 = NodePath("Player1Hand/Player1/AnimationPlayer_p1")
 animation_player_p2 = NodePath("Player2Hand/Player2/AnimationPlayer_p2")
 tickVolumeIncreaseRate = 15.0
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ch0kd")
+script = ExtResource("2_25288")
+
 [node name="GameAnimations" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_xd564")
@@ -907,7 +950,11 @@ layers = 1024
 
 [node name="Colider" parent="P1" index="1" groups=["Player"]]
 
-[node name="RemoteTransform3D" parent="P1" index="2"]
+[node name="ViewLimiter" parent="P1" index="2"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+layers = 2048
+
+[node name="RemoteTransform3D" parent="P1" index="3"]
 transform = Transform3D(1, 2.22045e-16, 0, -2.22045e-16, 1, 0, 0, 0, 1, 0, 2, 0)
 remote_path = NodePath("../../Cameras/SubViewport/CameraP1")
 
@@ -933,7 +980,11 @@ layers = 2048
 [node name="Colider" parent="P2" index="1" groups=["Player"]]
 transform = Transform3D(1, 0.000153501, 0, -0.000153501, 1, 0.000212076, 0, -0.000212076, 1, 0, 0, 0)
 
-[node name="RemoteTransform3D" parent="P2" index="2"]
+[node name="ViewLimiter" parent="P2" index="2"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+layers = 1024
+
+[node name="RemoteTransform3D" parent="P2" index="3"]
 remote_path = NodePath("../../Cameras/SubViewport2/CameraP2")
 
 [node name="Saloon" parent="." instance=ExtResource("8_cogct")]
@@ -949,6 +1000,8 @@ remote_path = NodePath("../../Cameras/SubViewport2/CameraP2")
 [connection signal="sig_shoot" from="." to="Audio/AWP" method="play"]
 [connection signal="sig_shoot" from="." to="Audio/Zumbido" method="play"]
 [connection signal="sig_shoot" from="." to="P1" method="_on_game_sig_shoot"]
+[connection signal="sig_shoot" from="." to="P2" method="_on_game_sig_shoot"]
+[connection signal="sig_shoot" from="." to="GameAnimations" method="play" binds= ["Animation_Shoot"]]
 [connection signal="sig_stopmoving" from="." to="P1" method="_on_game_sig_stopmoving"]
 
 [editable path="P1"]

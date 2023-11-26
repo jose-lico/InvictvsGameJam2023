@@ -3,13 +3,14 @@ extends Node3D
 # - - - - - - - - - - - - - - - - - - - - -
 # Signal
 signal sig_clock_tick(tick: int)
+signal sig_shoot();
 signal sig_light();
-signal sig_blackout();
 signal sig_flash();
+signal sig_blackout();
 signal sig_stopmoving();
 
-const TIME_HOLD_AFTER_FLASH : float = 1.5;
-const TICK_TIME = 10000.0;
+const TICK_TIME = 1.25;
+const TIME_HOLD_AFTER_FLASH : float = 6.9;
 
 @export var tick_audio: AudioStreamPlayer;
 
@@ -58,6 +59,8 @@ func start_new_timer(interval: float):
 func _enter_tree():
 	GameManager.state_changed.connect(_on_state_change);
 
+	sig_shoot.emit();
+
 	ref_timer = Timer.new();
 	add_child(ref_timer);
 
@@ -99,26 +102,26 @@ func __clear_current_timer__():
 #
 func __on_timer_timeout__():
 	current_tick_count += 1;
-	# print(current_tick_count);
 
 	sig_clock_tick.emit(current_tick_count);
 
 	if(tick_audio != null):
-		print(current_tick_count / 11.0)
-		tick_audio.set_volume_db(linear_to_db((current_tick_count / 11.0) * tickVolumeIncreaseRate));
-		if(current_tick_count < 12):
+		tick_audio.set_volume_db(linear_to_db((current_tick_count / 13.0) * tickVolumeIncreaseRate));
+		if(current_tick_count < 14):
 			tick_audio.play();
+		else:
+			sig_shoot.emit()
 
 	match current_tick_count:
-		2: sig_light.emit();
-		8: sig_blackout.emit();
-		12: sig_stopmoving.emit();
-		13: sig_flash.emit();
+		# 2: sig_light.emit();
+		# 8: sig_blackout.emit();
+		# 12: sig_stopmoving.emit();
+		13: sig_stopmoving.emit();
 
-	if(current_tick_count < total_ticks):
+	if(current_tick_count < total_ticks + 1):
 		ref_timer.start(time_between_ticks);
-	# else:
-	# 	start_new_timer(1.0);
+	else:
+		start_new_timer(TICK_TIME);
 
 
 var winnerArray = []

@@ -1,9 +1,8 @@
-[gd_scene load_steps=28 format=3 uid="uid://bh7rox2t2dku0"]
+[gd_scene load_steps=33 format=3 uid="uid://bh7rox2t2dku0"]
 
-
+[ext_resource type="Script" path="res://src/clock/clock.gd" id="1_1rb5a"]
 [ext_resource type="AudioStream" uid="uid://b7c5mtggq1yf3" path="res://audio/Audio_Tick.wav" id="2_fgccr"]
 [ext_resource type="AudioStream" uid="uid://boke673hsm6xh" path="res://audio/Audio_AWP.wav" id="3_72jv1"]
-[ext_resource type="Script" path="res://src/clock/clock.gd" id="1_1rb5a"]
 [ext_resource type="Script" path="res://src/fps_counter.gd" id="3_kdw8v"]
 [ext_resource type="Material" uid="uid://pnix2sbjxvlh" path="res://shaders/mats/canvasPixelation.tres" id="4_adg37"]
 [ext_resource type="Script" path="res://src/debug_screen.gd" id="4_c2jey"]
@@ -676,7 +675,7 @@ script = ExtResource("1_1rb5a")
 tick_audio = NodePath("Audio/TikTokOnTheClock")
 animation_player_p1 = NodePath("Player1Hand/Player1/AnimationPlayer_p1")
 animation_player_p2 = NodePath("Player2Hand/Player2/AnimationPlayer_p2")
-tickVolumeIncreaseRate = 18.0
+tickVolumeIncreaseRate = 15.0
 
 [node name="GameAnimations" type="AnimationPlayer" parent="."]
 libraries = {
@@ -946,11 +945,11 @@ remote_path = NodePath("../../Cameras/SubViewport2/CameraP2")
 [connection signal="sig_flash" from="." to="P1" method="shoot"]
 [connection signal="sig_flash" from="." to="P2" method="shoot"]
 [connection signal="sig_flash" from="." to="GameAnimations" method="play" binds= ["Animation_Flash"]]
-[connection signal="sig_light" from="." to="P1" method="_on_game_sig_light"]
-[connection signal="sig_light" from="." to="P2" method="_on_game_sig_light"]
 [connection signal="sig_light" from="." to="GameAnimations" method="play" binds= ["Animation_Light"]]
+[connection signal="sig_shoot" from="." to="Audio/AWP" method="play"]
+[connection signal="sig_shoot" from="." to="Audio/Zumbido" method="play"]
+[connection signal="sig_shoot" from="." to="P1" method="_on_game_sig_shoot"]
 [connection signal="sig_stopmoving" from="." to="P1" method="_on_game_sig_stopmoving"]
-[connection signal="sig_stopmoving" from="." to="P2" method="_on_game_sig_stopmoving"]
 
 [editable path="P1"]
 [editable path="P2"]

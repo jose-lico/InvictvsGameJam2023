@@ -29,7 +29,7 @@ var cam_direction = Vector2(0,0)
 var camera_input = 0
 var tilt = 0
 var moveInput = 0
-var can_play = 1
+var can_move : bool = true
 var shootInput = 0
 var zoomed_in : bool = false
 
@@ -59,7 +59,7 @@ func _physics_process(delta):
 		velocity.x = direction.x * MOVE_SPEED 
 		velocity.z = direction.z * MOVE_SPEED
 	
-	if(Input.is_key_pressed(editor_forward)):
+	if(Input.is_key_pressed(editor_forward) && can_move):
 		var direction = (transform.basis * Vector3.FORWARD).normalized()
 		velocity.x = direction.x * MOVE_SPEED 
 		velocity.z = direction.z * MOVE_SPEED
@@ -78,7 +78,7 @@ func _on_genisys_input(payload):
 	_handle_genisys_input(payload.data.name, true if payload.data.input_state == "active" else false);
 
 func _handle_genisys_input(name, pressed : bool):
-	if can_play == 1:
+	if can_move:
 		if name == forward:
 			if pressed:
 				moveInput = 1
@@ -102,7 +102,8 @@ func _handle_genisys_input(name, pressed : bool):
 		shootInput = 0
 
 func rotateCamera(delta):
-	self.rotate_y(deg_to_rad(CAM_SPEED * camera_input * delta))
+	if can_move:
+		self.rotate_y(deg_to_rad(CAM_SPEED * camera_input * delta))
 
 	if(velocity.length() > 2 && zoomed_in == false):
 		zoomed_in = true
@@ -118,7 +119,7 @@ func rotateCamera(delta):
 
 func tilt_hand(delta):
 	# tilt tends towards the middle
-	if(camera_input == 0):
+	if(camera_input == 0 || !can_move):
 			tilt = lerpf(tilt, 0, TILT_SPEED * TILT_RESET * delta);
 			player_hand.position = lerp(player_hand.position, player_hand_original_pos, TILT_SPEED * TILT_RESET * delta);
 	else:
@@ -143,50 +144,47 @@ func tilt_hand(delta):
 	remote_transform.rotation_degrees = Vector3(0, remote_transform.rotation_degrees.y, 0 + tilt * 0.15)
 	remote_transform.position += Vector3(hand_bobble_x * 0.0005, hand_bobble_y * 0.0019, 0)
 
-func shoot():
-	
-	var space = get_world_3d().direct_space_state
-
-	if (playerCam ==null || enemyCam == null):
-		print("rip pointers")
-	else:
-		#time for the pointers :) 
-		
-		var one_bound = 0
-		var getenemybody = enemyChar.get_child(0)
-		var his_kids = getenemybody.get_children()
-
-		for kid in his_kids:
-		
-			if (kid.is_in_group('bounds')):
-			
-				var query = PhysicsRayQueryParameters3D.create(playerCam.global_position,
-				kid.global_position)
-				var collision = space.intersect_ray(query)
-				print(collision)
-				
-				if collision.collider.is_in_group('Player'):
-					
-					var angulodogajo = self.transform.basis.z * -1
-					angulodogajo.y = 0
-					
-					var vectorinimigo = (kid.global_transform.origin - playerCam.global_transform.origin)
-					vectorinimigo.y = 0
-					vectorinimigo = vectorinimigo.normalized()
-						
-					var angulomerdoso = angulodogajo.angle_to(vectorinimigo)
-										
-					if (rad_to_deg(angulomerdoso)  < 20):
-						one_bound += 1
-				
-		if (one_bound > 0):
-			one_bound = 0
-			get_tree().root.get_node('Game').calcwinner(1)
-		else:
-			get_tree().root.get_node('Game').calcwinner(0)
-
 func _on_game_sig_stopmoving():
-	can_play = 0
+	can_move = false
 
-func _on_game_sig_light():
-	can_play = 1
+func _on_game_sig_shoot():
+	can_move = true
+#	var space = get_world_3d().direct_space_state
+#
+#	if (playerCam ==null || enemyCam == null):
+#		print("rip pointers")
+#	else:
+#		#time for the pointers :) 
+#
+#		var one_bound = 0
+#		var getenemybody = enemyChar.get_child(0)
+#		var his_kids = getenemybody.get_children()
+#
+#		for kid in his_kids:
+#
+#			if (kid.is_in_group('bounds')):
+#
+#				var query = PhysicsRayQueryParameters3D.create(playerCam.global_position,
+#				kid.global_position)
+#				var collision = space.intersect_ray(query)
+#				print(collision)
+#
+#				if collision.collider.is_in_group('Player'):
+#
+#					var angulodogajo = self.transform.basis.z * -1
+#					angulodogajo.y = 0
+#
+#					var vectorinimigo = (kid.global_transform.origin - playerCam.global_transform.origin)
+#					vectorinimigo.y = 0
+#					vectorinimigo = vectorinimigo.normalized()
+#
+#					var angulomerdoso = angulodogajo.angle_to(vectorinimigo)
+#
+#					if (rad_to_deg(angulomerdoso)  < 20):
+#						one_bound += 1
+				
+#		if (one_bound > 0):
+#			one_bound = 0
+#			get_tree().root.get_node('Game').calcwinner(1)
+#		else:
+#			get_tree().root.get_node('Game').calcwinner(0)

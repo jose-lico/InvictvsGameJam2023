@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://bh7rox2t2dku0"]
+[gd_scene load_steps=54 format=3 uid="uid://bh7rox2t2dku0"]
 
 [ext_resource type="Script" path="res://src/clock/clock.gd" id="1_1rb5a"]
 [ext_resource type="Script" path="res://flashbangerz.gd" id="2_25288"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cs14j0uxsij30" path="res://prefab player.tscn" id="6_csodm"]
 [ext_resource type="Texture2D" uid="uid://dx81re0af5oft" path="res://assets/fps/revolver2.png" id="7_eas78"]
 [ext_resource type="AudioStream" uid="uid://c5whu7l3u0ven" path="res://audio/Audio_MATARAM-ME.wav" id="7_n6o6u"]
+[ext_resource type="AudioStream" uid="uid://c073782o742bt" path="res://audio/Audio_Gasp.wav" id="8_064d2"]
 [ext_resource type="PackedScene" uid="uid://bvlq7iejuw17a" path="res://scenes/saloon.tscn" id="8_cogct"]
 [ext_resource type="Shader" path="res://shaders/normalEdgeDetection.gdshader" id="8_ksupc"]
 [ext_resource type="Texture2D" uid="uid://dsanm14fe7g51" path="res://assets/fps/revolver3.png" id="8_xvh5g"]
@@ -828,6 +829,10 @@ volume_db = -10.0
 [node name="MATARAM-ME" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("7_n6o6u")
 
+[node name="Gasp" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("8_064d2")
+volume_db = -15.0
+
 [node name="Cameras" type="Node" parent="."]
 
 [node name="ViewP1" type="TextureRect" parent="Cameras"]
@@ -1167,6 +1172,7 @@ mesh = SubResource("ArrayMesh_3dkhw")
 [connection signal="sig_startmoving" from="." to="P2" method="_on_game_sig_startmoving"]
 [connection signal="sig_stopmoving" from="." to="P1" method="_on_game_sig_stopmoving"]
 [connection signal="sig_stopmoving" from="." to="P2" method="_on_game_sig_stopmoving"]
+[connection signal="sig_stopmoving" from="." to="Audio/Gasp" method="play"]
 
 [editable path="P1"]
 [editable path="P2"]

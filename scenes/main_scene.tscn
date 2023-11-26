@@ -156,7 +156,6 @@ tracks/10/keys = {
 [sub_resource type="Animation" id="Animation_wuslw"]
 resource_name = "intro"
 length = 2.5
-step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -176,7 +175,7 @@ tracks/1/path = NodePath("Control/ColorRect/Label2:self_modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.45, 0.63),
+"times": PackedFloat32Array(0, 0.2, 0.39),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -188,7 +187,7 @@ tracks/2/path = NodePath("Control/ColorRect/Label:self_modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.45, 0.63),
+"times": PackedFloat32Array(0, 0.2, 0.39),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -211,7 +210,7 @@ tracks/4/path = NodePath("Control/Button:self_modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 2, 2.5),
+"times": PackedFloat32Array(0, 1.69, 2.11),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -223,7 +222,7 @@ tracks/5/path = NodePath("Control/TextureRect:self_modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 1.4028, 1.6867),
+"times": PackedFloat32Array(0, 0.9, 1.18),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -537,10 +536,9 @@ color = Color(0.0196078, 0.0196078, 0.0196078, 1)
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.000520833
-anchor_top = 0.80463
+anchor_top = 0.918056
 anchor_right = 1.00052
-anchor_bottom = 0.837963
+anchor_bottom = 0.951389
 grow_horizontal = 2
 grow_vertical = 2
 text = "Desculpa Querida"
@@ -553,10 +551,9 @@ metadata/_edit_use_anchors_ = true
 self_modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.000520833
-anchor_top = 0.828704
+anchor_top = 0.94213
 anchor_right = 1.00052
-anchor_bottom = 0.862037
+anchor_bottom = 0.975463
 grow_horizontal = 2
 grow_vertical = 2
 text = "isto nunca me aconteceu"

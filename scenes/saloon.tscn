@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://bvlq7iejuw17a"]
+[gd_scene load_steps=55 format=3 uid="uid://bvlq7iejuw17a"]
 
 [ext_resource type="Material" uid="uid://gfyflr6wnq0k" path="res://mats/ground_mat.tres" id="1_a8uib"]
 [ext_resource type="Texture2D" uid="uid://bj5dl40s78k1c" path="res://assets/western_stuff/Textures/Planks/Planks_2/Planks_Base_Color.png" id="1_lrwac"]
@@ -21,9 +21,15 @@
 [ext_resource type="PackedScene" uid="uid://dkbcaoq48wsqp" path="res://assets/wild_west_asset_pack/oil_lamp_low.tscn" id="19_bqrhe"]
 [ext_resource type="PackedScene" uid="uid://dd88vk0v0cyoe" path="res://assets/wild_west_asset_pack/alcohol_bottle_010_low_glasses_bottles_0.tscn" id="20_bfqy2"]
 [ext_resource type="PackedScene" uid="uid://cfpqu8ajgk2gx" path="res://assets/wild_west_asset_pack/whisky_glass_low_glasses_bottles_0.tscn" id="20_rvayj"]
+[ext_resource type="Texture2D" uid="uid://emisci3a1my" path="res://assets/eurico_martins_Portal_do_Gamer.png" id="21_wf6l6"]
 [ext_resource type="PackedScene" uid="uid://ckcnq1efq3x2w" path="res://assets/wild_west_asset_pack/alcohol_bottle_008_low_glasses_bottles_0.tscn" id="21_xasin"]
 [ext_resource type="PackedScene" uid="uid://djshwn0sckeub" path="res://assets/wild_west_asset_pack/wanted_poster_4_wnted_board_bar_stool_0.tscn" id="22_4b4fs"]
+[ext_resource type="Texture2D" uid="uid://dg1gcj7cq1pxk" path="res://assets/Joao_Leal_-_perfil_portal.png" id="22_isv8l"]
+[ext_resource type="Texture2D" uid="uid://bigbhl8b78s7o" path="res://assets/andre casa.png" id="23_wsnmm"]
 [ext_resource type="PackedScene" uid="uid://bfhh2ejhouypv" path="res://assets/wooden_fence_painted_white/wooden_fence_painted_white_wood_painted_white_0.tscn" id="24_l6bwk"]
+[ext_resource type="Texture2D" uid="uid://b3yvlkbfgd8lh" path="res://assets/vasco_santos.png" id="24_ysgnu"]
+[ext_resource type="Texture2D" uid="uid://yi3vbvo2ileq" path="res://assets/Ricardo_Campos_-_perfil_portal_-_v2.png" id="25_wh28l"]
+[ext_resource type="Texture2D" uid="uid://cywf7cckxqdkp" path="res://assets/jose_lico.png" id="26_7rsip"]
 
 [sub_resource type="Environment" id="Environment_5x2q5"]
 background_mode = 1
@@ -550,20 +556,44 @@ transform = Transform3D(0.196004, 0.0397812, -1.71352e-08, 0.0397812, -0.196004,
 [node name="FrontPoster5" parent="Ground/FirstFloor/Posters" instance=ExtResource("22_4b4fs")]
 transform = Transform3D(0.197107, -0.033894, -1.72316e-08, -0.033894, -0.197107, 2.96311e-09, -1.74846e-08, 1.36318e-15, -0.2, 27.7925, 5.00418, 12.3889)
 
+[node name="Sprite3D" type="Sprite3D" parent="Ground/FirstFloor/Posters/FrontPoster5"]
+transform = Transform3D(-0.45, 5.96046e-08, -3.55271e-15, -5.96046e-08, -0.45, -2.74779e-15, 0, -2.34168e-15, 0.45, -0.0269823, 0.119379, 0.034111)
+texture = ExtResource("21_wf6l6")
+
 [node name="FrontPoster6" parent="Ground/FirstFloor/Posters" instance=ExtResource("22_4b4fs")]
 transform = Transform3D(0.188254, 0.0675308, -1.64577e-08, 0.0675308, -0.188254, -5.90373e-09, -1.74846e-08, 1.77908e-15, -0.2, 26.5602, 5.58694, 12.3889)
+
+[node name="Sprite3D" type="Sprite3D" parent="Ground/FirstFloor/Posters/FrontPoster6"]
+transform = Transform3D(-0.45, 7.45058e-08, -3.55271e-15, -7.45058e-08, -0.45, 1.11023e-15, -7.10543e-15, -3.37149e-15, 0.45, -0.0627747, 0.0794315, 0.034111)
+texture = ExtResource("22_isv8l")
 
 [node name="FrontPoster7" parent="Ground/FirstFloor/Posters" instance=ExtResource("22_4b4fs")]
 transform = Transform3D(0.197555, 0.03118, -1.72708e-08, 0.03118, -0.197555, -2.72584e-09, -1.74846e-08, 1.44467e-15, -0.2, 26.0662, 4.53086, 12.3889)
 
+[node name="Sprite3D" type="Sprite3D" parent="Ground/FirstFloor/Posters/FrontPoster7"]
+transform = Transform3D(-0.5, 6.70552e-08, 0, -6.70552e-08, -0.5, -2.35923e-15, 0, -1.80738e-15, 0.5, -0.0693293, -0.131279, 0.034111)
+texture = ExtResource("23_wsnmm")
+
 [node name="FrontPoster8" parent="Ground/FirstFloor/Posters" instance=ExtResource("22_4b4fs")]
 transform = Transform3D(0.192731, -0.0534309, -1.68491e-08, -0.0534309, -0.192731, 4.67107e-09, -1.74846e-08, 1.26921e-15, -0.2, 22.1201, 5.31046, 12.3889)
+
+[node name="Sprite3D" type="Sprite3D" parent="Ground/FirstFloor/Posters/FrontPoster8"]
+transform = Transform3D(-0.45, 6.70552e-08, -7.10543e-15, -6.70552e-08, -0.45, -1.81791e-15, 0, -1.00013e-16, 0.45, -0.0579739, 0.0962067, 0.0341148)
+texture = ExtResource("24_ysgnu")
 
 [node name="FrontPoster9" parent="Ground/FirstFloor/Posters" instance=ExtResource("22_4b4fs")]
 transform = Transform3D(0.198333, -0.0257661, -1.73389e-08, -0.0257661, -0.198333, 2.25254e-09, -1.74846e-08, 9.2685e-16, -0.2, 23.2596, 5.41533, 12.3889)
 
+[node name="Sprite3D" type="Sprite3D" parent="Ground/FirstFloor/Posters/FrontPoster9"]
+transform = Transform3D(-0.45, 7.82311e-08, 0, -7.82311e-08, -0.45, -2.85199e-15, -7.10543e-15, -1.75904e-15, 0.45, -0.0306692, 0.0762215, 0.034111)
+texture = ExtResource("25_wh28l")
+
 [node name="FrontPoster10" parent="Ground/FirstFloor/Posters" instance=ExtResource("22_4b4fs")]
 transform = Transform3D(0.198745, 0.0223666, -1.73749e-08, 0.0223666, -0.198745, -1.95535e-09, -1.74846e-08, 7.50695e-16, -0.2, 24.4682, 5.26217, 12.3889)
+
+[node name="Sprite3D" type="Sprite3D" parent="Ground/FirstFloor/Posters/FrontPoster10"]
+transform = Transform3D(-0.45, 6.70552e-08, -7.10543e-15, -6.70552e-08, -0.45, -1.26282e-15, -3.55271e-15, -7.75385e-16, 0.45, -0.0216792, 0.0986118, 0.034111)
+texture = ExtResource("26_7rsip")
 
 [node name="BackPoster" parent="Ground/FirstFloor/Posters" instance=ExtResource("22_4b4fs")]
 transform = Transform3D(-0.195774, -0.0408992, 0, 0.0408992, -0.195774, 0, 0, 0, 0.2, 32.7482, 5.40937, 13.0197)

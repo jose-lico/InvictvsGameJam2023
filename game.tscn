@@ -108,51 +108,61 @@ resource_name = "Animation_Shoot"
 length = 16.25
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = false
-tracks/0/path = NodePath("Cameras/ViewP1:self_modulate")
+tracks/0/enabled = true
+tracks/0/path = NodePath("Audio/Ambience:volume_db")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.3, 0.7, 1.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 2,
-"values": [Color(6, 6, 6, 1), Color(6, 6, 6, 1), Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = false
-tracks/1/path = NodePath("Cameras/ViewP2:self_modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.3, 0.7, 1.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 2,
-"values": [Color(6, 6, 6, 1), Color(6, 6, 6, 1), Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Audio/Ambience:volume_db")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0.3, 0.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [-25.0, -40.0]
 }
-tracks/3/type = "value"
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Audio/AWP:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-10.0, -30.0]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("WorldEnvironment")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": ["ambient_light_color", Color(3.5, 3.5, 3.5, 1), 0.15, 0, -1],
+"method": &"tween_prop"
+}, {
+"args": ["ambient_light_color", Color(0.521569, 0.443137, 0.368627, 1), 6.0, 0, 1],
+"method": &"tween_prop"
+}]
+}
+tracks/3/type = "method"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Audio/AWP:volume_db")
+tracks/3/path = NodePath("WorldEnvironment")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.6),
 "transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [-10.0, -30.0]
+"values": [{
+"args": ["ambient_light_energy", 16.0, 0.15, 0, -1],
+"method": &"tween_prop"
+}, {
+"args": ["ambient_light_energy", 1.0, 6.0, 0, 1],
+"method": &"tween_prop"
+}]
 }
 tracks/4/type = "method"
 tracks/4/imported = false
@@ -232,14 +242,38 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Cameras/ViewP1:material:shader_parameter/color_multi")
+tracks/9/path = NodePath("Cameras/ViewP1:material:shader_parameter/r_displacement")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.9, 1.3, 1.6, 2.1, 2.6, 3.7, 4.5, 5.6, 6.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [1.0, 50.0, 1.0]
+"values": [Vector2(0, 0), Vector2(4.795, 24.4), Vector2(0.555, 9.85), Vector2(-0.345, 19.23), Vector2(2.725, 6.095), Vector2(1.255, 20.665), Vector2(-0.18, 29.075), Vector2(9.625, 14.87), Vector2(8.335, 17.15), Vector2(7.375, 18.395), Vector2(0, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Cameras/ViewP1:material:shader_parameter/g_displacement")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.8, 1.1, 1.4, 1.81, 2.2, 3.53, 4.3, 5.4, 6.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(10.09, 5.9), Vector2(13.15, 9.27), Vector2(5.105, 2.095), Vector2(12.705, 8.535), Vector2(4.79, 1.47), Vector2(13.8, 3.07), Vector2(5.31, 1.07), Vector2(7.385, 1.69), Vector2(14.695, 7.83), Vector2(0, 0)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Cameras/ViewP1:material:shader_parameter/b_displacement")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.7, 1, 1.5, 1.9, 2.65, 3.3, 4.7, 5.2, 6.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(8.84, 11.85), Vector2(4.67, 16.07), Vector2(3.035, 7.08), Vector2(15.37, 8.765), Vector2(5.78, 8.78), Vector2(14.165, 17.03), Vector2(4.145, 7.625), Vector2(3.815, 7.27), Vector2(12.865, 16.18), Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_nyj2a"]
@@ -295,14 +329,38 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Cameras/ViewP1:material:shader_parameter/color_multi")
+tracks/4/path = NodePath("Cameras/ViewP1:material:shader_parameter/r_displacement")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [1.0]
+"values": [Vector2(0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Cameras/ViewP1:material:shader_parameter/g_displacement")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Cameras/ViewP1:material:shader_parameter/b_displacement")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_sotaw"]

@@ -1,4 +1,5 @@
-[gd_scene load_steps=41 format=3 uid="uid://bh7rox2t2dku0"]
+[gd_scene load_steps=44 format=3 uid="uid://bh7rox2t2dku0"]
+
 [ext_resource type="Script" path="res://src/clock/clock.gd" id="1_1rb5a"]
 [ext_resource type="Script" path="res://flashbangerz.gd" id="2_25288"]
 [ext_resource type="AudioStream" uid="uid://b7c5mtggq1yf3" path="res://audio/Audio_Tick.wav" id="2_fgccr"]
@@ -289,8 +290,8 @@ viewport_path = NodePath("Cameras/SubViewport2")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jqhpf"]
 render_priority = 0
 shader = ExtResource("8_ksupc")
-shader_parameter/min_step = 0.13
-shader_parameter/max_step = 0.42
+shader_parameter/min_step = 0.02
+shader_parameter/max_step = 0.16
 
 [sub_resource type="QuadMesh" id="QuadMesh_3ot4o"]
 material = SubResource("ShaderMaterial_jqhpf")
@@ -853,7 +854,7 @@ size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
 [node name="CameraP2" type="Camera3D" parent="Cameras/SubViewport2"]
-transform = Transform3D(0.499712, 1.10958e-16, 0.866192, -2.22045e-16, 1, 6.61744e-24, -0.866192, -1.92333e-16, 0.499712, 0, 5, 0)
+transform = Transform3D(0.499712, 1.10958e-16, 0.866192, -2.22045e-16, 1, 6.61744e-24, -0.866192, -1.92333e-16, 0.499712, 0, 4.23202, 0)
 cull_mask = 1046527
 current = true
 fov = 65.0

@@ -5,4 +5,10 @@
 [resource]
 shader = ExtResource("1_m6ano")
 shader_parameter/color_multi = 1.0
-shader_parameter/pixelSize = 5
+shader_parameter/pixelSize = 3
+shader_parameter/edge_color = Color(0.0235294, 0.0235294, 0.0156863, 1)
+shader_parameter/threshold = 0.045
+shader_parameter/blend = 1.0
+shader_parameter/r_displacement = Vector2(0, 0)
+shader_parameter/g_displacement = Vector2(0, 0)
+shader_parameter/b_displacement = Vector2(0, 0)

@@ -29,14 +29,11 @@ const mat3 ky = mat3(
 	vec3(-1, -1, -1)
 );
 
-void vertex() { 
-	POSITION = vec4(VERTEX, 1.0);
-}
 
 void fragment() { 
 	
 	vec4 texture_color = texture(screen_texture, SCREEN_UV);
-	
+//	ALBEDO = texture_color.rgb;
 	mat3 I;
 	for (int i = 0; i < 3; i++ ) {
 		for (int j = 0; j < 3; j++) {

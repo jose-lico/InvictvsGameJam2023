@@ -192,3 +192,7 @@ func _on_sig_shoot():
 
 func _on_sig_startintro():
 	pass # Replace with function body.
+
+
+func _on_sig_clock_tick(tick):
+	Genisys.send_data("hardware/led_strips/set_pattern", {payload="%s" % [tick]});

@@ -96,10 +96,6 @@ func _handle_genisys_input(name, pressed : bool):
 				cam_direction.y = 0
 				
 		camera_input = cam_direction.x + cam_direction.y
-	else:
-		#camera_input = 0
-		moveInput = 0
-		shootInput = 0
 
 func rotateCamera(delta):
 	if can_move:
@@ -114,7 +110,7 @@ func rotateCamera(delta):
 
 	tilt_hand(delta)
 
-	# Im a noob :)
+	# COMMENT THIS FOR DEPLOYMENT ON MACHINE
 	camera_input = 0
 
 func tilt_hand(delta):
@@ -149,6 +145,7 @@ func _on_game_sig_stopmoving():
 
 func _on_game_sig_shoot():
 	can_move = true
+	
 #	var space = get_world_3d().direct_space_state
 #
 #	if (playerCam ==null || enemyCam == null):

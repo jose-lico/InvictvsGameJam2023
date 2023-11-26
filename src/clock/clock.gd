@@ -86,7 +86,6 @@ func _on_state_change(state: GameManager.STATES):
 				{payload={"group": "buttons", "id": "ingame_set"}});
 			start_new_timer(TICK_TIME);
 
-
 # - - - - - - - - - - - - - - - - - - - - -
 # Clear the timer state
 func __clear_current_timer__():
@@ -178,3 +177,7 @@ func calcwinner(value):
 func flash():
 	Genisys.send_data("hardware/led_strips/set_pattern", {payload="flash"});
 	Genisys.send_data("hardware/outputs/start_blink_pattern", {payload={"group": "buttons", "id": "flash"}});
+
+
+func _on_sig_shoot():
+	pass # Replace with function body.

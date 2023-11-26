@@ -27,9 +27,10 @@
 
 [sub_resource type="Environment" id="Environment_5x2q5"]
 background_mode = 1
-background_color = Color(0.239216, 0.129412, 0.0509804, 0.501961)
+background_color = Color(3.5, 3.5, 3.5, 1)
 ambient_light_source = 2
-ambient_light_color = Color(0.521569, 0.443137, 0.368627, 1)
+ambient_light_color = Color(3.5, 3.5, 3.5, 1)
+ambient_light_energy = 16.0
 reflected_light_source = 1
 fog_enabled = true
 fog_light_color = Color(0.490196, 0.419608, 0.352941, 1)

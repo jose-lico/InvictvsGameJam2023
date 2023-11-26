@@ -7,7 +7,7 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wt8qd"]
 resource_name = "GlassesBottles"
 albedo_texture = ExtResource("1_duh1l")
-metallic = 1.0
+metallic = 0.95
 metallic_texture = ExtResource("2_yftp7")
 metallic_texture_channel = 2
 roughness_texture = ExtResource("2_yftp7")

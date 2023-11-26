@@ -8,7 +8,7 @@
 resource_name = "Lights"
 vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("1_rdd18")
-metallic = 1.0
+metallic = 0.95
 metallic_texture = ExtResource("2_glpov")
 metallic_texture_channel = 2
 roughness_texture = ExtResource("2_glpov")

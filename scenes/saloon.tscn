@@ -864,7 +864,7 @@ transform = Transform3D(-8.74228e-08, 2.25, -8.74228e-08, 1.12928e-22, -9.83507e
 transform = Transform3D(-8.74228e-08, 2.25, -8.74228e-08, 1.12928e-22, -9.83507e-08, -2, -2, -9.83507e-08, 3.82137e-15, 13.8926, 8.64, 12.5489)
 
 [node name="Joist_18" parent="Ground/SecondFloor/Joists" instance=ExtResource("14_6sxvm")]
-transform = Transform3D(-8.74227e-08, 2.25, -8.74228e-08, 2.34344e-21, -9.83507e-08, -2, -2, -9.83507e-08, 3.82137e-15, 20.6493, 8.64, 12.5489)
+transform = Transform3D(-8.74227e-08, 2.25, -8.74228e-08, 2.34344e-21, -9.83507e-08, -2, -2, -9.83507e-08, 3.82137e-15, 20.6424, 8.64, 12.5489)
 
 [node name="Fences" type="Node3D" parent="Ground/SecondFloor"]
 

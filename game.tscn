@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://bh7rox2t2dku0"]
+[gd_scene load_steps=43 format=3 uid="uid://bh7rox2t2dku0"]
 
 [ext_resource type="Script" path="res://src/clock/clock.gd" id="1_1rb5a"]
 [ext_resource type="Script" path="res://flashbangerz.gd" id="2_25288"]
@@ -16,6 +16,14 @@
 [ext_resource type="Texture2D" uid="uid://dsanm14fe7g51" path="res://assets/fps/revolver3.png" id="8_xvh5g"]
 [ext_resource type="FontFile" uid="uid://cl6vdmb7q5frf" path="res://assets/font/rio_grande/RioGrande.ttf" id="10_7qumc"]
 [ext_resource type="Texture2D" uid="uid://ccg4nwljmqvhh" path="res://assets/animations/lowCowBoy_Cowboy_red.png" id="13_1b4l7"]
+[ext_resource type="AudioStream" uid="uid://b2mtw8oje252n" path="res://audio/footsteps/Audio_wood_step1.wav" id="13_ua1te"]
+[ext_resource type="AudioStream" uid="uid://by8rt2in062pp" path="res://audio/footsteps/Audio_wood_step2.wav" id="14_oj8by"]
+[ext_resource type="AudioStream" uid="uid://d2w16ksevgi3n" path="res://audio/footsteps/Audio_wood_step3.wav" id="15_n5dxi"]
+[ext_resource type="AudioStream" uid="uid://fjape4b4gd5l" path="res://audio/footsteps/Audio_wood_step4.wav" id="16_3vfgd"]
+[ext_resource type="AudioStream" uid="uid://me4sqsc1gran" path="res://audio/footsteps/Audio_wood_step5.wav" id="17_xwf83"]
+[ext_resource type="AudioStream" uid="uid://cfchjwcmu2x0d" path="res://audio/footsteps/Audio_wood_step6.wav" id="18_fdvsb"]
+[ext_resource type="AudioStream" uid="uid://cfjri0o77vbic" path="res://audio/footsteps/Audio_wood_step7.wav" id="19_457ip"]
+[ext_resource type="AudioStream" uid="uid://cxb6piqloga0v" path="res://audio/footsteps/Audio_wood_step8.wav" id="20_sngy1"]
 
 [sub_resource type="Environment" id="Environment_ch0kd"]
 background_mode = 1
@@ -813,6 +821,8 @@ autoplay = true
 stream = ExtResource("5_7pjwa")
 volume_db = -10.0
 
+[node name="Footstep" type="AudioStreamPlayer" parent="Audio"]
+
 [node name="Cameras" type="Node" parent="."]
 
 [node name="ViewP1" type="TextureRect" parent="Cameras"]
@@ -1076,6 +1086,7 @@ texture = ExtResource("8_xvh5g")
 transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 21.1137, 3, 7.2907)
 playerCam = NodePath("../Cameras/SubViewport/CameraP1")
 enemyCam = NodePath("../Cameras/SubViewport2/CameraP2")
+footsteps = [ExtResource("13_ua1te"), ExtResource("14_oj8by"), ExtResource("15_n5dxi"), ExtResource("16_3vfgd"), ExtResource("17_xwf83"), ExtResource("18_fdvsb"), ExtResource("19_457ip"), ExtResource("20_sngy1")]
 enemyChar = NodePath("../P2")
 player_hand = NodePath("../Player1Hand/Player1")
 forward = "help"
@@ -1105,6 +1116,7 @@ layers = 1024
 transform = Transform3D(0.499712, 0, 0.866192, 0, 1, 0, -0.866192, 0, 0.499712, 0, 3, 0)
 playerCam = NodePath("../Cameras/SubViewport2/CameraP2")
 enemyCam = NodePath("../Cameras/SubViewport/CameraP1")
+footsteps = [ExtResource("13_ua1te"), ExtResource("14_oj8by"), ExtResource("15_n5dxi"), ExtResource("16_3vfgd"), ExtResource("17_xwf83"), ExtResource("18_fdvsb"), ExtResource("19_457ip"), ExtResource("20_sngy1")]
 enemyChar = NodePath("../P1")
 player_hand = NodePath("../Player2Hand/Player2")
 forward = "bet_6"

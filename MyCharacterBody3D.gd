@@ -32,7 +32,7 @@ var cam_direction = Vector2(0,0)
 var camera_input = 0
 var tilt = 0
 var moveInput = 0
-var can_move : bool = true
+var can_move : bool = false
 var shootInput = 0
 var zoomed_in : bool = false
 var current_step : int = 0
@@ -193,7 +193,7 @@ func _on_game_sig_shoot():
 				var query = PhysicsRayQueryParameters3D.create(playerCam.global_position,
 				kid.global_position)
 				var collision = space.intersect_ray(query)
-				print(collision)
+		
 
 				if collision.collider.is_in_group('Player'):
 

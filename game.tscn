@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://bh7rox2t2dku0"]
+[gd_scene load_steps=50 format=3 uid="uid://bh7rox2t2dku0"]
 
 [ext_resource type="Script" path="res://src/clock/clock.gd" id="1_1rb5a"]
 [ext_resource type="Script" path="res://flashbangerz.gd" id="2_25288"]
@@ -12,18 +12,17 @@
 [ext_resource type="PackedScene" uid="uid://cs14j0uxsij30" path="res://prefab player.tscn" id="6_csodm"]
 [ext_resource type="Texture2D" uid="uid://dx81re0af5oft" path="res://assets/fps/revolver2.png" id="7_eas78"]
 [ext_resource type="PackedScene" uid="uid://bvlq7iejuw17a" path="res://scenes/saloon.tscn" id="8_cogct"]
-[ext_resource type="Shader" path="res://shaders/normalEdgeDetection.gdshader" id="8_ksupc"]
 [ext_resource type="Texture2D" uid="uid://dsanm14fe7g51" path="res://assets/fps/revolver3.png" id="8_xvh5g"]
 [ext_resource type="FontFile" uid="uid://cl6vdmb7q5frf" path="res://assets/font/rio_grande/RioGrande.ttf" id="10_7qumc"]
 [ext_resource type="Texture2D" uid="uid://ccg4nwljmqvhh" path="res://assets/animations/lowCowBoy_Cowboy_red.png" id="13_1b4l7"]
-[ext_resource type="AudioStream" uid="uid://b2mtw8oje252n" path="res://audio/footsteps/Audio_wood_step1.wav" id="13_ua1te"]
-[ext_resource type="AudioStream" uid="uid://by8rt2in062pp" path="res://audio/footsteps/Audio_wood_step2.wav" id="14_oj8by"]
-[ext_resource type="AudioStream" uid="uid://d2w16ksevgi3n" path="res://audio/footsteps/Audio_wood_step3.wav" id="15_n5dxi"]
-[ext_resource type="AudioStream" uid="uid://fjape4b4gd5l" path="res://audio/footsteps/Audio_wood_step4.wav" id="16_3vfgd"]
-[ext_resource type="AudioStream" uid="uid://me4sqsc1gran" path="res://audio/footsteps/Audio_wood_step5.wav" id="17_xwf83"]
-[ext_resource type="AudioStream" uid="uid://cfchjwcmu2x0d" path="res://audio/footsteps/Audio_wood_step6.wav" id="18_fdvsb"]
-[ext_resource type="AudioStream" uid="uid://cfjri0o77vbic" path="res://audio/footsteps/Audio_wood_step7.wav" id="19_457ip"]
-[ext_resource type="AudioStream" uid="uid://cxb6piqloga0v" path="res://audio/footsteps/Audio_wood_step8.wav" id="20_sngy1"]
+[ext_resource type="AudioStream" uid="uid://b2mtw8oje252n" path="res://audio/footsteps/Audio_wood_step1.wav" id="14_blknm"]
+[ext_resource type="AudioStream" uid="uid://by8rt2in062pp" path="res://audio/footsteps/Audio_wood_step2.wav" id="15_ee83p"]
+[ext_resource type="AudioStream" uid="uid://d2w16ksevgi3n" path="res://audio/footsteps/Audio_wood_step3.wav" id="16_xyffk"]
+[ext_resource type="AudioStream" uid="uid://fjape4b4gd5l" path="res://audio/footsteps/Audio_wood_step4.wav" id="17_36yl5"]
+[ext_resource type="AudioStream" uid="uid://me4sqsc1gran" path="res://audio/footsteps/Audio_wood_step5.wav" id="18_a0308"]
+[ext_resource type="AudioStream" uid="uid://cfchjwcmu2x0d" path="res://audio/footsteps/Audio_wood_step6.wav" id="19_3m4vb"]
+[ext_resource type="AudioStream" uid="uid://cfjri0o77vbic" path="res://audio/footsteps/Audio_wood_step7.wav" id="20_dho2a"]
+[ext_resource type="AudioStream" uid="uid://cxb6piqloga0v" path="res://audio/footsteps/Audio_wood_step8.wav" id="21_s5dog"]
 
 [sub_resource type="Environment" id="Environment_ch0kd"]
 background_mode = 1
@@ -68,14 +67,14 @@ tracks/1/keys = {
 }
 tracks/2/type = "value"
 tracks/2/imported = false
-tracks/2/enabled = false
+tracks/2/enabled = true
 tracks/2/path = NodePath("Cameras/SubViewport/CameraP1:far")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(5.6),
 "transitions": PackedFloat32Array(1),
-"update": 2,
+"update": 0,
 "values": [5.0]
 }
 tracks/3/type = "value"
@@ -281,12 +280,98 @@ tracks/3/keys = {
 "values": [Vector3(1.5, 1.5, 1.5)]
 }
 
+[sub_resource type="Animation" id="Animation_sotaw"]
+resource_name = "introanimation"
+length = 10.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(10),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"endintro"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("P1/RemoteTransform3D:update_position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 8.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("P1/RemoteTransform3D:update_rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 8.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Cameras/SubViewport/CameraP1:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 3.9, 6.3, 8.4),
+"transitions": PackedFloat32Array(1.5, 1.5, 1.5, 1),
+"update": 0,
+"values": [Vector3(-0.523599, 0.378736, 0), Vector3(-0.523599, 1.5708, 0), Vector3(-0.523599, 0.811578, 0), Vector3(0, 1.0472, 0)]
+}
+tracks/4/type = "position_3d"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Cameras/SubViewport/CameraP1")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = PackedFloat32Array(0, 1, 25.303, 13.29, 12.2097, 6.3001, 1, 25.303, 13.29, 12.21, 7.5, 1, 24.1129, 7.20599, 11.0589, 8.4, 1, 20.455, 4.5, 8.369)
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Player1Hand/Player1:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 8.4, 8.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Cameras/SubViewport/CameraP1:cull_mask")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 8.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1048575, 1047551]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xd564"]
 _data = {
 "Animation_Blackout": SubResource("Animation_dvox1"),
 "Animation_Light": SubResource("Animation_idgyy"),
 "Animation_Shoot": SubResource("Animation_j2n5e"),
-"RESET": SubResource("Animation_nyj2a")
+"RESET": SubResource("Animation_nyj2a"),
+"introanimation": SubResource("Animation_sotaw")
 }
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_tljrq"]
@@ -294,17 +379,6 @@ viewport_path = NodePath("Cameras/SubViewport")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_5ef12"]
 viewport_path = NodePath("Cameras/SubViewport2")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jqhpf"]
-render_priority = 0
-shader = ExtResource("8_ksupc")
-shader_parameter/min_step = 0.02
-shader_parameter/max_step = 0.16
-
-[sub_resource type="QuadMesh" id="QuadMesh_3ot4o"]
-material = SubResource("ShaderMaterial_jqhpf")
-flip_faces = true
-size = Vector2(2, 2)
 
 [sub_resource type="Animation" id="Animation_in5w5"]
 resource_name = "ZoomIn"
@@ -844,14 +918,10 @@ size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
 [node name="CameraP1" type="Camera3D" parent="Cameras/SubViewport"]
-transform = Transform3D(0.5, 1.11023e-16, 0.866025, -2.22045e-16, 1, 1.49884e-29, -0.866025, -1.92297e-16, 0.5, 21.1137, 5, 7.2907)
+transform = Transform3D(0.5, 1.11023e-16, 0.866025, -2.22045e-16, 1, 1.49884e-29, -0.866025, -1.92297e-16, 0.5, 20.4552, 4.5, 8.36922)
 cull_mask = 1047551
 current = true
 fov = 61.0
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Cameras/SubViewport/CameraP1"]
-extra_cull_margin = 16384.0
-mesh = SubResource("QuadMesh_3ot4o")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Cameras/SubViewport/CameraP1"]
 libraries = {
@@ -864,16 +934,10 @@ size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
 [node name="CameraP2" type="Camera3D" parent="Cameras/SubViewport2"]
-transform = Transform3D(0.499712, 1.10958e-16, 0.866192, -2.22045e-16, 1, 6.61744e-24, -0.866192, -1.92333e-16, 0.499712, 0, 4.23202, 0)
+transform = Transform3D(-0.733492, -1.62868e-16, -0.679698, -2.22045e-16, 1, -1.57772e-30, 0.679698, 1.50924e-16, -0.733492, -12.3521, 4.5, -14.445)
 cull_mask = 1046527
 current = true
 fov = 65.0
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Cameras/SubViewport2/CameraP2"]
-transform = Transform3D(1, 1.85288e-22, -0.000332892, -1.19114e-22, 1, -7.39433e-20, 0.000332892, 7.39169e-20, 1, 0, 0, 0)
-extra_cull_margin = 16384.0
-mesh = SubResource("QuadMesh_3ot4o")
-skeleton = NodePath("../../../SubViewport/CameraP1")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Cameras/SubViewport2/CameraP2"]
 libraries = {
@@ -1083,10 +1147,10 @@ pivot_offset = Vector2(250, 250)
 texture = ExtResource("8_xvh5g")
 
 [node name="P1" parent="." node_paths=PackedStringArray("playerCam", "enemyCam", "enemyChar", "player_hand") groups=["Player"] instance=ExtResource("6_csodm")]
-transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 21.1137, 3, 7.2907)
+transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 20.4552, 3, 8.36922)
 playerCam = NodePath("../Cameras/SubViewport/CameraP1")
 enemyCam = NodePath("../Cameras/SubViewport2/CameraP2")
-footsteps = Array[AudioStreamWAV]([ExtResource("13_ua1te"), ExtResource("14_oj8by"), ExtResource("15_n5dxi"), ExtResource("16_3vfgd"), ExtResource("17_xwf83"), ExtResource("18_fdvsb"), ExtResource("19_457ip"), ExtResource("20_sngy1")])
+footsteps = Array[AudioStreamWAV]([ExtResource("14_blknm"), ExtResource("15_ee83p"), ExtResource("16_xyffk"), ExtResource("17_36yl5"), ExtResource("18_a0308"), ExtResource("19_3m4vb"), ExtResource("20_dho2a"), ExtResource("21_s5dog")])
 enemyChar = NodePath("../P2")
 player_hand = NodePath("../Player1Hand/Player1")
 forward = "help"
@@ -1106,17 +1170,17 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 layers = 2048
 
 [node name="RemoteTransform3D" parent="P1" index="3"]
-transform = Transform3D(1, 2.22045e-16, 0, -2.22045e-16, 1, 0, 0, 0, 1, 0, 2, 0)
+transform = Transform3D(1, 2.22045e-16, 0, -2.22045e-16, 1, 0, 0, 0, 1, 0, 1.5, 0)
 remote_path = NodePath("../../Cameras/SubViewport/CameraP1")
 
 [node name="Sphere_Material_002_0" parent="P1/lowCowBoy/Armature/Skeleton3D" index="0"]
 layers = 1024
 
 [node name="P2" parent="." node_paths=PackedStringArray("playerCam", "enemyCam", "enemyChar", "player_hand") groups=["Player"] instance=ExtResource("6_csodm")]
-transform = Transform3D(0.499712, 0, 0.866192, 0, 1, 0, -0.866192, 0, 0.499712, 0, 3, 0)
+transform = Transform3D(-0.733492, 0, -0.679698, 0, 1, 0, 0.679698, 0, -0.733492, -12.3521, 3, -14.445)
 playerCam = NodePath("../Cameras/SubViewport2/CameraP2")
 enemyCam = NodePath("../Cameras/SubViewport/CameraP1")
-footsteps = Array[AudioStreamWAV]([ExtResource("13_ua1te"), ExtResource("14_oj8by"), ExtResource("15_n5dxi"), ExtResource("16_3vfgd"), ExtResource("17_xwf83"), ExtResource("18_fdvsb"), ExtResource("19_457ip"), ExtResource("20_sngy1")])
+footsteps = Array[AudioStreamWAV]([ExtResource("14_blknm"), ExtResource("15_ee83p"), ExtResource("16_xyffk"), ExtResource("17_36yl5"), ExtResource("18_a0308"), ExtResource("19_3m4vb"), ExtResource("20_dho2a"), ExtResource("21_s5dog")])
 enemyChar = NodePath("../P1")
 player_hand = NodePath("../Player2Hand/Player2")
 forward = "bet_6"
@@ -1144,6 +1208,7 @@ layers = 2048
 mesh = SubResource("ArrayMesh_3dkhw")
 
 [node name="Saloon" parent="." instance=ExtResource("8_cogct")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.454117, -0.0735426, 0.17263)
 
 [connection signal="sig_blackout" from="." to="GameAnimations" method="play" binds= ["Animation_Blackout"]]
 [connection signal="sig_flash" from="." to="." method="flash"]
@@ -1158,6 +1223,7 @@ mesh = SubResource("ArrayMesh_3dkhw")
 [connection signal="sig_shoot" from="." to="P1" method="_on_game_sig_shoot"]
 [connection signal="sig_shoot" from="." to="P2" method="_on_game_sig_shoot"]
 [connection signal="sig_shoot" from="." to="GameAnimations" method="play" binds= ["Animation_Shoot"]]
+[connection signal="sig_startintro" from="." to="GameAnimations" method="play" binds= ["introanimation"]]
 [connection signal="sig_startmoving" from="." to="P1" method="_on_game_sig_startmoving"]
 [connection signal="sig_startmoving" from="." to="P2" method="_on_game_sig_startmoving"]
 [connection signal="sig_stopmoving" from="." to="P1" method="_on_game_sig_stopmoving"]

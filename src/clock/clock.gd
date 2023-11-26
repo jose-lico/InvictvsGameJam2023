@@ -9,7 +9,7 @@ signal sig_flash();
 signal sig_blackout();
 signal sig_stopmoving();
 signal sig_startmoving();
-
+signal sig_startintro();
 const TICK_TIME = 1.25;
 const TIME_HOLD_AFTER_FLASH : float = 2.5;
 
@@ -70,17 +70,21 @@ func _enter_tree():
 	ref_timer.timeout.connect(__on_timer_timeout__);
 
 	_on_state_change(GameManager.current_state);
-	start_new_timer(1.0);
+
 
 func _exit_tree():
 	GameManager.state_changed.disconnect(_on_state_change);
 	queue_free()
 
+func endintro():
+	GameManager.change_state(GameManager.STATES.GAME)
+	sig_startmoving.emit()
+
+
 func _on_state_change(state: GameManager.STATES):
 	match state:
 		GameManager.STATES.INTROGAME:
-			GameManager.change_state(GameManager.STATES.GAME);
-
+			sig_startintro.emit()
 
 		GameManager.STATES.GAME:
 			Genisys.send_data("hardware/outputs/start_blink_pattern",
@@ -181,4 +185,8 @@ func flash():
 
 
 func _on_sig_shoot():
+	pass # Replace with function body.
+
+
+func _on_sig_startintro():
 	pass # Replace with function body.

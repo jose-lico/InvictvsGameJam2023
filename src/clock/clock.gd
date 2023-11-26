@@ -159,8 +159,9 @@ func calcwinner(value):
 
 			animation_player_p2.play("lose");
 			animation_player_p1.play("win");
-
-			await get_tree().create_timer(1.0).timeout;
+			get_node("Audio/MATARAM-ME").play()
+			
+			await get_tree().create_timer(1.6).timeout;
 			GameManager.Go_To_Menu()
 			GameManager.state_changed.disconnect(_on_state_change)
 			queue_free()
@@ -170,8 +171,9 @@ func calcwinner(value):
 
 			animation_player_p1.play("lose");
 			animation_player_p2.play("win");
-
-			await get_tree().create_timer(1.0).timeout;
+			get_node("Audio/MATARAM-ME").play()
+			
+			await get_tree().create_timer(1.6).timeout;
 
 			GameManager.Go_To_Menu()
 			GameManager.state_changed.disconnect(_on_state_change)

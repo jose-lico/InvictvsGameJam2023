@@ -52,8 +52,8 @@ func _on_get_active_capabilities(payload: Dictionary):
 		send_data("core/settings/add_capability", {payload="hardware"});
 
 	if(!_ledpatterns_data.is_empty()):
+		send_data("hardware/led_strips/remove_patterns");
 		send_data("hardware/led_strips/add_patterns", {payload=_ledpatterns_data.patterns});
-		# send_data("hardware/led_strips/set_pattern", {payload="first_example"});
 
 
 	if(!_blinkpatterns_data.is_empty()):

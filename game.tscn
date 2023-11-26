@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://bh7rox2t2dku0"]
+[gd_scene load_steps=51 format=3 uid="uid://bh7rox2t2dku0"]
 
 [ext_resource type="Script" path="res://src/clock/clock.gd" id="1_1rb5a"]
 [ext_resource type="Script" path="res://flashbangerz.gd" id="2_25288"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://giyajfuodes5" path="res://audio/Audio_Zumbido.wav" id="5_7pjwa"]
 [ext_resource type="PackedScene" uid="uid://cs14j0uxsij30" path="res://prefab player.tscn" id="6_csodm"]
 [ext_resource type="Texture2D" uid="uid://dx81re0af5oft" path="res://assets/fps/revolver2.png" id="7_eas78"]
+[ext_resource type="AudioStream" uid="uid://c5whu7l3u0ven" path="res://audio/Audio_MATARAM-ME.wav" id="7_js7y1"]
 [ext_resource type="PackedScene" uid="uid://bvlq7iejuw17a" path="res://scenes/saloon.tscn" id="8_cogct"]
 [ext_resource type="Texture2D" uid="uid://dsanm14fe7g51" path="res://assets/fps/revolver3.png" id="8_xvh5g"]
 [ext_resource type="FontFile" uid="uid://cl6vdmb7q5frf" path="res://assets/font/rio_grande/RioGrande.ttf" id="10_7qumc"]
@@ -304,7 +305,7 @@ tracks/1/path = NodePath("P1/RemoteTransform3D:update_position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 8.4),
+"times": PackedFloat32Array(0, 9),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -316,7 +317,7 @@ tracks/2/path = NodePath("P1/RemoteTransform3D:update_rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 8.4),
+"times": PackedFloat32Array(0, 9),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -328,7 +329,7 @@ tracks/3/path = NodePath("Cameras/SubViewport/CameraP1:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 3.9, 6.3, 8.4),
+"times": PackedFloat32Array(0, 3.9, 6.3, 9),
 "transitions": PackedFloat32Array(1.5, 1.5, 1.5, 1),
 "update": 0,
 "values": [Vector3(-0.523599, 0.378736, 0), Vector3(-0.523599, 1.5708, 0), Vector3(-0.523599, 0.811578, 0), Vector3(0, 1.0472, 0)]
@@ -339,7 +340,7 @@ tracks/4/enabled = true
 tracks/4/path = NodePath("Cameras/SubViewport/CameraP1")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
-tracks/4/keys = PackedFloat32Array(0, 1, 25.303, 13.29, 12.2097, 6.3001, 1, 25.303, 13.29, 12.21, 7.5, 1, 24.1129, 7.20599, 11.0589, 8.4, 1, 20.455, 4.5, 8.369)
+tracks/4/keys = PackedFloat32Array(0, 1, 25.303, 13.29, 12.2097, 6.3001, 1, 25.303, 13.29, 12.21, 8.1, 1, 24.113, 5.206, 11.059, 9, 1, 20.455, 4.5, 8.369)
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
@@ -347,7 +348,7 @@ tracks/5/path = NodePath("Player1Hand/Player1:self_modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 8.4, 8.7),
+"times": PackedFloat32Array(0, 9, 9.3),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -359,10 +360,58 @@ tracks/6/path = NodePath("Cameras/SubViewport/CameraP1:cull_mask")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 8.2),
+"times": PackedFloat32Array(0, 8.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [1048575, 1047551]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Cameras/SubViewport2/CameraP2:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 6.3, 8, 9),
+"transitions": PackedFloat32Array(1, 1, 1.5, 1.5),
+"update": 0,
+"values": [Vector3(-22.83, 6.9754, -12.9894), Vector3(-22.83, 6.9754, -12.9894), Vector3(-17.699, 4.5, -16.855), Vector3(-12.352, 4.5, -14.445)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Cameras/SubViewport2/CameraP2:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 4.3, 6.3, 8, 9),
+"transitions": PackedFloat32Array(1.5, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.352556, -2.62323, 0), Vector3(-0.352556, -1.0472, 0), Vector3(-0.352556, -1.74533, 0), Vector3(-0.0951964, -2.18608, 0), Vector3(0, -2.39459, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Cameras/SubViewport2/CameraP2:cull_mask")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 8.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1048575, 1046527]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Player2Hand/Player2:self_modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 9, 9.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xd564"]
@@ -897,6 +946,10 @@ volume_db = -10.0
 
 [node name="Footstep" type="AudioStreamPlayer" parent="Audio"]
 
+[node name="MATARAM-ME" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("7_js7y1")
+volume_db = 8.667
+
 [node name="Cameras" type="Node" parent="."]
 
 [node name="ViewP1" type="TextureRect" parent="Cameras"]
@@ -918,7 +971,7 @@ size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
 [node name="CameraP1" type="Camera3D" parent="Cameras/SubViewport"]
-transform = Transform3D(0.5, 1.11023e-16, 0.866025, -2.22045e-16, 1, 1.49884e-29, -0.866025, -1.92297e-16, 0.5, 20.4552, 4.5, 8.36922)
+transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 20.455, 4.5, 8.369)
 cull_mask = 1047551
 current = true
 fov = 61.0
@@ -934,7 +987,7 @@ size = Vector2i(1920, 1080)
 render_target_update_mode = 4
 
 [node name="CameraP2" type="Camera3D" parent="Cameras/SubViewport2"]
-transform = Transform3D(-0.733492, -1.62868e-16, -0.679698, -2.22045e-16, 1, -1.57772e-30, 0.679698, 1.50924e-16, -0.733492, -12.3521, 4.5, -14.445)
+transform = Transform3D(-0.73373, 0, -0.679441, 0, 1, 0, 0.679441, 0, -0.73373, -12.352, 4.5, -14.445)
 cull_mask = 1046527
 current = true
 fov = 65.0

@@ -66,9 +66,13 @@ func _physics_process(delta):
 
 	velocity = Vector3.ZERO
 
+	if(moveInput == 1):
+		var direction = (transform.basis * Vector3.FORWARD).normalized()
+		velocity.x = direction.x * MOVE_SPEED 
+		velocity.z = direction.z * MOVE_SPEED
+		
 	if(Input.is_key_pressed(editor_forward) && can_move):
 		animation_state_machine.travel("walking");
-		moveInput = 1
 		var direction = (transform.basis * Vector3.FORWARD).normalized()
 		velocity.x = direction.x * MOVE_SPEED 
 		velocity.z = direction.z * MOVE_SPEED
@@ -81,11 +85,7 @@ func _physics_process(delta):
 		
 	rotateCamera(delta)
 
-	if(moveInput == 1):
-		var direction = (transform.basis * Vector3.FORWARD).normalized()
-		velocity.x = direction.x * MOVE_SPEED 
-		velocity.z = direction.z * MOVE_SPEED
-		moveInput = 0;
+	
 	
 	move_and_slide()
 
@@ -153,7 +153,7 @@ func tilt_hand(delta):
 	var hand_bobble_x = cos((Time.get_ticks_msec() * delta * (0.33 + velocity.length() * 0.05)) * 0.5)  * (2 + velocity.length() * 0.5);
 	
 	# play steps audio
-	if(hand_bobble_y < -2.5 && moveInput == 1):
+	if(hand_bobble_y < -2.5 && abs(velocity.z) > 0):
 		current_step+=1;
 		if(current_step == footsteps.size()):
 			current_step = 0;

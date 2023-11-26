@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://bh7rox2t2dku0"]
+[gd_scene load_steps=49 format=3 uid="uid://bh7rox2t2dku0"]
 
 [ext_resource type="Script" path="res://src/clock/clock.gd" id="1_1rb5a"]
 [ext_resource type="Script" path="res://flashbangerz.gd" id="2_25288"]
@@ -1086,7 +1086,7 @@ texture = ExtResource("8_xvh5g")
 transform = Transform3D(0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, 0.5, 21.1137, 3, 7.2907)
 playerCam = NodePath("../Cameras/SubViewport/CameraP1")
 enemyCam = NodePath("../Cameras/SubViewport2/CameraP2")
-footsteps = [ExtResource("13_ua1te"), ExtResource("14_oj8by"), ExtResource("15_n5dxi"), ExtResource("16_3vfgd"), ExtResource("17_xwf83"), ExtResource("18_fdvsb"), ExtResource("19_457ip"), ExtResource("20_sngy1")]
+footsteps = Array[AudioStreamWAV]([ExtResource("13_ua1te"), ExtResource("14_oj8by"), ExtResource("15_n5dxi"), ExtResource("16_3vfgd"), ExtResource("17_xwf83"), ExtResource("18_fdvsb"), ExtResource("19_457ip"), ExtResource("20_sngy1")])
 enemyChar = NodePath("../P2")
 player_hand = NodePath("../Player1Hand/Player1")
 forward = "help"
@@ -1116,7 +1116,7 @@ layers = 1024
 transform = Transform3D(0.499712, 0, 0.866192, 0, 1, 0, -0.866192, 0, 0.499712, 0, 3, 0)
 playerCam = NodePath("../Cameras/SubViewport2/CameraP2")
 enemyCam = NodePath("../Cameras/SubViewport/CameraP1")
-footsteps = [ExtResource("13_ua1te"), ExtResource("14_oj8by"), ExtResource("15_n5dxi"), ExtResource("16_3vfgd"), ExtResource("17_xwf83"), ExtResource("18_fdvsb"), ExtResource("19_457ip"), ExtResource("20_sngy1")]
+footsteps = Array[AudioStreamWAV]([ExtResource("13_ua1te"), ExtResource("14_oj8by"), ExtResource("15_n5dxi"), ExtResource("16_3vfgd"), ExtResource("17_xwf83"), ExtResource("18_fdvsb"), ExtResource("19_457ip"), ExtResource("20_sngy1")])
 enemyChar = NodePath("../P1")
 player_hand = NodePath("../Player2Hand/Player2")
 forward = "bet_6"
@@ -1158,8 +1158,6 @@ mesh = SubResource("ArrayMesh_3dkhw")
 [connection signal="sig_shoot" from="." to="P1" method="_on_game_sig_shoot"]
 [connection signal="sig_shoot" from="." to="P2" method="_on_game_sig_shoot"]
 [connection signal="sig_shoot" from="." to="GameAnimations" method="play" binds= ["Animation_Shoot"]]
-[connection signal="sig_startmoving" from="." to="P1" method="_on_game_sig_startmoving"]
-[connection signal="sig_startmoving" from="." to="P2" method="_on_game_sig_startmoving"]
 [connection signal="sig_stopmoving" from="." to="P1" method="_on_game_sig_stopmoving"]
 [connection signal="sig_stopmoving" from="." to="P2" method="_on_game_sig_stopmoving"]
 

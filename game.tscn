@@ -1170,9 +1170,9 @@ mesh = SubResource("ArrayMesh_3dkhw")
 [connection signal="sig_shoot" from="." to="GameAnimations" method="play" binds= ["Animation_Shoot"]]
 [connection signal="sig_startmoving" from="." to="P1" method="_on_game_sig_startmoving"]
 [connection signal="sig_startmoving" from="." to="P2" method="_on_game_sig_startmoving"]
+[connection signal="sig_stopmoving" from="." to="Audio/Gasp" method="play"]
 [connection signal="sig_stopmoving" from="." to="P1" method="_on_game_sig_stopmoving"]
 [connection signal="sig_stopmoving" from="." to="P2" method="_on_game_sig_stopmoving"]
-[connection signal="sig_stopmoving" from="." to="Audio/Gasp" method="play"]
 
 [editable path="P1"]
 [editable path="P2"]

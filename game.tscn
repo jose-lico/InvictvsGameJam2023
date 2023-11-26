@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://bh7rox2t2dku0"]
+[gd_scene load_steps=53 format=3 uid="uid://bh7rox2t2dku0"]
 
 [ext_resource type="Script" path="res://src/clock/clock.gd" id="1_1rb5a"]
 [ext_resource type="Script" path="res://flashbangerz.gd" id="2_25288"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://giyajfuodes5" path="res://audio/Audio_Zumbido.wav" id="5_7pjwa"]
 [ext_resource type="PackedScene" uid="uid://cs14j0uxsij30" path="res://prefab player.tscn" id="6_csodm"]
 [ext_resource type="Texture2D" uid="uid://dx81re0af5oft" path="res://assets/fps/revolver2.png" id="7_eas78"]
+[ext_resource type="AudioStream" uid="uid://c5whu7l3u0ven" path="res://audio/Audio_MATARAM-ME.wav" id="7_n6o6u"]
 [ext_resource type="PackedScene" uid="uid://bvlq7iejuw17a" path="res://scenes/saloon.tscn" id="8_cogct"]
 [ext_resource type="Shader" path="res://shaders/normalEdgeDetection.gdshader" id="8_ksupc"]
 [ext_resource type="Texture2D" uid="uid://dsanm14fe7g51" path="res://assets/fps/revolver3.png" id="8_xvh5g"]
@@ -137,10 +138,10 @@ tracks/2/path = NodePath("Audio/Ambience:volume_db")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.3, 0.6),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.4, 3.9),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [-25.0, -40.0]
+"values": [-25.0, -40.0, -25.0]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -149,7 +150,7 @@ tracks/3/path = NodePath("Audio/AWP:volume_db")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.6),
+"times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [-10.0, -30.0]
@@ -822,6 +823,10 @@ stream = ExtResource("5_7pjwa")
 volume_db = -10.0
 
 [node name="Footstep" type="AudioStreamPlayer" parent="Audio"]
+volume_db = -10.0
+
+[node name="MATARAM-ME" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("7_n6o6u")
 
 [node name="Cameras" type="Node" parent="."]
 

@@ -151,11 +151,13 @@ func tilt_hand(delta):
 	remote_transform.rotation_degrees = Vector3(0, remote_transform.rotation_degrees.y, 0 + tilt * 0.15)
 	remote_transform.position += Vector3(hand_bobble_x * 0.0005, hand_bobble_y * 0.0019, 0)
 
+func _on_game_sig_startmoving():
+	can_move = true
 func _on_game_sig_stopmoving():
 	can_move = false
 
 func _on_game_sig_shoot():
-	can_move = true
+	
 	
 	var space = get_world_3d().direct_space_state
 

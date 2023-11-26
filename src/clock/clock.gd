@@ -8,6 +8,7 @@ signal sig_light();
 signal sig_flash();
 signal sig_blackout();
 signal sig_stopmoving();
+signal sig_startmoving();
 
 const TICK_TIME = 1.25;
 const TIME_HOLD_AFTER_FLASH : float = 2.5;
@@ -115,12 +116,14 @@ func __on_timer_timeout__():
 		# 2: sig_light.emit();
 		# 8: sig_blackout.emit();
 		# 12: sig_stopmoving.emit();
-		13: sig_stopmoving.emit();
+		12: sig_stopmoving.emit();
+		13: sig_shoot.emit();
+		
 
 	if(current_tick_count < total_ticks + 1):
 		ref_timer.start(time_between_ticks);
-	else:
-		start_new_timer(TICK_TIME);
+
+		
 
 
 var winnerArray = []
@@ -128,7 +131,7 @@ func calcwinner(value):
 	winnerArray.push_front(value)
 
 	if (winnerArray.size() == 2 ):
-		await get_tree().create_timer(TIME_HOLD_AFTER_FLASH).timeout;
+		await get_tree().create_timer(TICK_TIME/2).timeout;
 
 		var totalwinner = winnerArray[0] + winnerArray[1]
 		#winner calc!!
@@ -138,12 +141,15 @@ func calcwinner(value):
 			start_new_timer(TICK_TIME);
 			animation_player_p1.play("tie");
 			animation_player_p2.play("tie");
+			sig_startmoving.emit()
+			
 		elif totalwinner == 0:
 			#MISSED!
 			print("BOTH MISSED")
 			start_new_timer(TICK_TIME);
 			animation_player_p1.play("miss");
 			animation_player_p2.play("miss");
+			sig_startmoving.emit()
 		elif winnerArray[1] == 1:
 			print("Player 1 won!")
 

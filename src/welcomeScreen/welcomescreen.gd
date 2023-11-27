@@ -7,6 +7,11 @@ extends Node
 
 # - - - - - - - - - - - - - - - - - - - - -
 func _enter_tree():
+	var screen_size = DisplayServer.screen_get_size()
+	var window = get_window();
+	window.mode = Window.MODE_WINDOWED
+	window.position = Vector2i(0, 0)
+	window.size = Vector2i(screen_size.x, screen_size.y*2)
 	GameManager.state_changed.connect(_on_state_change);
 
 func _exit_tree():
